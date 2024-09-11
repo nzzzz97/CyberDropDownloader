@@ -14,7 +14,7 @@ class SupportedDomains:
                                                   "omegascans", "pimpandhost", "pixeldrain", "postimg", "realbooru", 
                                                   "reddit", "redd.it", "redgifs", "rule34.xxx", "rule34.xyz", "rule34vault", "saint",
                                                   "scrolller", "simpcity", "socialmediagirls", "toonily", "xbunker",
-                                                  "xbunkr")
+                                                  "xbunkr","thefappeningblog")
 
     supported_forums: ClassVar[Tuple[str, ...]] = ("celebforum.to", "f95zone.to", "leakedmodels.com", "nudostar.com",
                                                    "simpcity.su", "forums.socialmediagirls.com", "xbunker.nu")

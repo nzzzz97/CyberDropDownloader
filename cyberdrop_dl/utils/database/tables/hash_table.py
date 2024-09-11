@@ -13,8 +13,8 @@ class HashTable:
 
     async def startup(self) -> None:
         """Startup process for the HistoryTable"""
-        await self.db_conn.execute(create_hash)
-        await self.db_conn.commit()
+        #await self.db_conn.execute(create_hash)
+        #await self.db_conn.commit()
 
 
     async def get_file_hash_exists(self, full_path):

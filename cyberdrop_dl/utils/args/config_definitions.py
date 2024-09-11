@@ -22,6 +22,8 @@ authentication_settings: Dict = {
         "simpcity_xf_user_cookie": "",
         "simpcity_username": "",
         "simpcity_password": "",
+        "thefappeningblog_username": "",
+        "thefappeningblog_password": "",
         "socialmediagirls_xf_user_cookie": "",
         "socialmediagirls_username": "",
         "socialmediagirls_password": "",

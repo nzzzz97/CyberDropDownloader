@@ -11,3 +11,16 @@ __pycache__
 venv
 # vscode
 .vscode
+.idea/CyberDropDownloader.iml
+.idea/dataSources.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+cyberdrop_dl/AppData/Configs/Default/Logs/Download_Error_URLs.csv
+cyberdrop_dl/AppData/Configs/Default/Logs/downloader.log
+cyberdrop_dl/AppData/Configs/Default/Logs/Last_Scraped_Forum_Posts.txt
+cyberdrop_dl/AppData/Configs/Default/Logs/Scrape_Error_URLs.csv
+cyberdrop_dl/AppData/Configs/Default/Logs/Unsupported_URLs.txt
+poetry.lock
+cyberdrop_dl_debug.log

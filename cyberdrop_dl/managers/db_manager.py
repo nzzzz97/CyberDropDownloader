@@ -1,7 +1,8 @@
 from dataclasses import field
 from pathlib import Path
 from typing import TYPE_CHECKING
-
+import asyncio
+import aiomysql
 import aiosqlite
 
 from cyberdrop_dl.utils.database.tables.history_table import HistoryTable
@@ -11,11 +12,11 @@ from cyberdrop_dl.utils.database.tables.hash_table import HashTable
 if TYPE_CHECKING:
     from cyberdrop_dl.managers.manager import Manager
 
-
 class DBManager:
     def __init__(self, manager: 'Manager', db_path: Path):
         self.manager = manager
-        self._db_conn: aiosqlite.Connection = field(init=False)
+        self._db_conn = aiomysql.Connection = field(init=False)
+
         self._db_path: Path = db_path
 
         self.ignore_history: bool = False
@@ -26,7 +27,9 @@ class DBManager:
 
     async def startup(self) -> None:
         """Startup process for the DBManager"""
-        self._db_conn = await aiosqlite.connect(self._db_path)
+        loop = asyncio.get_running_loop()
+        self._db_conn =  await aiomysql.create_pool(host='127.0.0.1', port=3306,
+                               user='root', password='', db='cdl', loop=loop, autocommit=True)
 
         self.ignore_history = self.manager.config_manager.settings_data['Runtime_Options']['ignore_history']
 
@@ -38,15 +41,17 @@ class DBManager:
 
         await self._pre_allocate()
 
-        await self.history_table.startup()
-        await self.hash_table.startup()
+        #await self.history_table.startup()
+        #await self.hash_table.startup()
         await self.temp_table.startup()
 
     async def close(self) -> None:
         """Close the DBManager"""
-        await self._db_conn.close()
+        #await self._db_conn.wait_closed()
+        self._db_conn.terminate()
 
     async def _pre_allocate(self) -> None:
+        return True
         """We pre-allocate 100MB of space to the SQL file just in case the user runs out of disk space"""
         create_pre_allocation_table = "CREATE TABLE IF NOT EXISTS t(x);"
         drop_pre_allocation_table = "DROP TABLE t;"

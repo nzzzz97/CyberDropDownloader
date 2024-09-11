@@ -197,6 +197,17 @@ def edit_forum_authentication_values_prompt(manager: Manager) -> None:
                 vi_mode=manager.vi_mode,
             ).execute()
 
+            thefappeningblog_username = inquirer.text(
+                message="Enter your Fappening Blog Username:",
+                default=manager.config_manager.authentication_data["Forums"]["thefappeningblog_username"],
+                vi_mode=manager.vi_mode,
+            ).execute()
+            thefappeningblog_password = inquirer.text(
+                message="Enter your Fappening Blog Password:",
+                default=manager.config_manager.authentication_data["Forums"]["thefappeningblog_password"],
+                vi_mode=manager.vi_mode,
+            ).execute()
+
             socialmediagirls_username = inquirer.text(
                 message="Enter your SocialMediaGirls Username:",
                 default=manager.config_manager.authentication_data["Forums"]["socialmediagirls_username"],
