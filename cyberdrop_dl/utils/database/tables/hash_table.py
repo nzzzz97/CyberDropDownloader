@@ -3,6 +3,7 @@ import pathlib
 from sqlite3 import IntegrityError
 
 import aiosqlite
+import aiomysql
 
 from cyberdrop_dl.utils.database.table_definitions import create_hash
 
@@ -10,7 +11,7 @@ from rich.console import Console
 console=Console()
 class HashTable:
     def __init__(self, db_conn: aiosqlite.Connection):
-        self.db_conn: aiosqlite.Connection = db_conn
+        self.db_conn: aiomysql.Connection = db_conn
 
     async def startup(self) -> None:
         """Startup process for the HistoryTable"""
@@ -38,6 +39,7 @@ class HashTable:
         if "referer" not in current_cols:
             await self.db_conn.execute("""ALTER TABLE hash ADD COLUMN referer TEXT""")
             await self.db_conn.commit()
+
     async def get_file_hash_exists(self, full_path):
         """
         Checks if a file exists in the database based on its folder, filename, and size.
@@ -57,14 +59,15 @@ class HashTable:
             size = path.stat().st_size
 
             # Connect to the database
-            cursor = await self.db_conn.cursor()
 
-            # Check if the file exists with matching folder, filename, and size
-            await cursor.execute("SELECT hash FROM hash WHERE folder=? AND download_filename=? AND file_size=?", (folder, filename, size))
-            result = await cursor.fetchone()
-            if result and result[0]:
-                return result[0]
-            return None
+            async with self.db_conn.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    # Check if the file exists with matching folder, filename, and size
+                    await cursor.execute("SELECT hash FROM hash WHERE folder=%s AND download_filename=%s AND file_size=%s", (folder, filename, size))
+                    result = await cursor.fetchone()
+                    if result and result[0]:
+                        return result[0]
+                    return None
         except Exception as e:
             console.print(f"Error checking file: {e}")
             return False
@@ -79,13 +82,12 @@ class HashTable:
         Returns:
             A list of (folder, filename) tuples, or an empty list if no matches found.
         """
-
-        cursor = await self.db_conn.cursor()
-
         try:
-            await cursor.execute("SELECT folder, download_filename FROM hash WHERE hash = ? and file_size=?", (hash_value,size))
-            results = await cursor.fetchall()
-            return results
+            async with self.db_conn.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute("SELECT folder, download_filename FROM hash WHERE hash = %s and file_size=%s", (hash_value,size))
+                    results = await cursor.fetchall()
+                    return results
         except Exception as e:
             console.print(f"Error retrieving folder and filename: {e}")
             return []
@@ -105,33 +107,35 @@ class HashTable:
             True if the record was inserted or updated successfully, False otherwise.
         """
 
-        cursor = await self.db_conn.cursor()
+
         full_path=pathlib.Path(file).absolute()
         file_size=full_path.stat().st_size
 
         download_filename=full_path.name
         folder=str(full_path.parent)
 
-        # Assuming a table named 'file_info' with columns: id (primary key), hash, size, filename, folder
-        try:
-            await cursor.execute("INSERT INTO hash (hash, file_size, download_filename, folder,original_filename,referer) VALUES (?, ?, ?, ?,?,?)",
-                        (hash_value, file_size, download_filename, folder,original_filename,referer))
-            await self.db_conn.commit()
-            return True
-        except IntegrityError:
-            # Handle potential duplicate key (assuming a unique constraint on hash, filename, and folder)
-            await cursor.execute("""UPDATE hash
-    SET file_size = ?,
-    hash = ?,
-    referer= CASE WHEN ? IS NOT NULL THEN ? ELSE referer END,
-    original_filename = CASE WHEN ? IS NOT NULL THEN ? ELSE original_filename END
-WHERE download_filename = ? AND folder = ?;""",
-                        (file_size,hash_value,referer,referer,original_filename,original_filename,download_filename,folder))
-            await self.db_conn.commit()
-            return True
-        except Exception as e:
-            console.print(f"Error inserting/updating record: {e}")
-            return False
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                # Assuming a table named 'file_info' with columns: id (primary key), hash, size, filename, folder
+                try:
+                    await cursor.execute("INSERT INTO hash (hash, file_size, download_filename, folder,original_filename,referer) VALUES (%s, %s, %s, %s,%s,%s)",
+                                (hash_value, file_size, download_filename, folder,original_filename,referer))
+                    await self.db_conn.commit()
+                    return True
+                except IntegrityError:
+                    # Handle potential duplicate key (assuming a unique constraint on hash, filename, and folder)
+                    await cursor.execute("""UPDATE hash
+            SET file_size = %s,
+            hash = %s,
+            referer= CASE WHEN %s IS NOT NULL THEN %s ELSE referer END,
+            original_filename = CASE WHEN %s IS NOT NULL THEN %s ELSE original_filename END
+        WHERE download_filename = %s AND folder = %s;""",
+                                (file_size,hash_value,referer,referer,original_filename,original_filename,download_filename,folder))
+                    await self.db_conn.commit()
+                    return True
+                except Exception as e:
+                    console.print(f"Error inserting/updating record: {e}")
+                    return False
 
 
     async def get_all_unique_hashes(self):
@@ -145,12 +149,12 @@ WHERE download_filename = ? AND folder = ?;""",
             A list of (folder, filename) tuples, or an empty list if no matches found.
         """
 
-        cursor = await self.db_conn.cursor()
-
         try:
-            await cursor.execute("SELECT DISTINCT hash FROM hash")
-            results = await cursor.fetchall()
-            return list(map(lambda x: x[0], results))
+            async with self.db_conn.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute("SELECT DISTINCT hash FROM hash")
+                    results = await cursor.fetchall()
+                    return list(map(lambda x: x[0], results))
         except Exception as e:
             console.print(f"Error retrieving folder and filename: {e}")
             return []

@@ -66,7 +66,7 @@ class HistoryTable:
                 if sql_file_check and sql_file_check[1] != 0:
                     # Update the referer if it has changed so that check_complete_by_referer can work
                     if str(referer) != sql_file_check[0]:
-                        await cursor.execute("""UPDATE media SET referer = ? WHERE domain = %s and url_path = %s""", (str(referer), domain, url_path))
+                        await cursor.execute("""UPDATE media SET referer = %s WHERE domain = %s and url_path = %s""", (str(referer), domain, url_path))
                     return True
                 return False
     
@@ -86,9 +86,10 @@ class HistoryTable:
         """Sets an album_id in the database"""
         domain = await get_db_domain(domain)
         url_path = await get_db_path(media_item.url, str(media_item.referer))
-        await self.db_conn.execute("""UPDATE media SET album_id = ? WHERE domain = %s and url_path = %s""",
-                                   (media_item.album_id, domain, url_path))
-        await self.db_conn.commit()
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                await cursor.execute("""UPDATE media SET album_id = %s WHERE domain = %s and url_path = %s""",
+                                       (media_item.album_id, domain, url_path))
 
     async def check_complete_by_referer(self, domain: str, referer: URL) -> bool:
         """Checks whether an individual file has completed given its domain and url path"""
@@ -113,7 +114,7 @@ class HistoryTable:
                     await cursor.execute("""UPDATE media SET domain = %s, album_id = %s WHERE domain = 'no_crawler' and url_path = %s and referer = %s""",
                                                (domain, media_item.album_id, url_path, str(media_item.referer)))
                 except IntegrityError:
-                    await cursor.execute("""DELETE FROM media WHERE domain = 'no_crawler' and url_path = ?""", (url_path,))
+                    await cursor.execute("""DELETE FROM media WHERE domain = 'no_crawler' and url_path = %s""", (url_path,))
                 await cursor.execute("""INSERT IGNORE INTO media (domain, url_path, referer, album_id, download_path, download_filename, original_filename, completed, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP)""",
                                            (domain, url_path, str(media_item.referer), media_item.album_id, str(media_item.download_folder), download_filename, media_item.original_filename, 0))
                 await cursor.execute("""UPDATE media SET download_filename = %s WHERE domain = %s and url_path = %s""",
@@ -135,9 +136,10 @@ class HistoryTable:
         domain = await get_db_domain(domain)
         url_path = await get_db_path(media_item.url, str(media_item.referer))
         file_size=pathlib.Path(media_item.complete_file).stat().st_size
-        await self.db_conn.execute("""UPDATE media SET file_size=? WHERE domain = ? and url_path = ?""",
-                                   (file_size,domain, url_path))
-        await self.db_conn.commit()
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                await self.db_conn.execute("""UPDATE media SET file_size=%s WHERE domain = %s and url_path = %s""",
+                                           (file_size,domain, url_path))
     async def check_filename_exists(self, filename: str) -> bool:
         """Checks whether a downloaded filename exists in the database"""
         async with self.db_conn.acquire() as conn:
@@ -159,30 +161,33 @@ class HistoryTable:
 
     async def get_failed_items(self) -> Iterable[Row]:
         """Returns a list of failed items"""
-        cursor = await self.db_conn.cursor()
-        result = await cursor.execute("""SELECT referer, download_path,completed_at,created_at FROM media WHERE completed = 0""")
-        failed_files = await result.fetchall()
-        return failed_files
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                result = await cursor.execute("""SELECT referer, download_path,completed_at,created_at FROM media WHERE completed = 0""")
+                failed_files = await result.fetchall()
+                return failed_files
 
 
     async def get_all_items(self,after,before) -> Iterable[Row]:
         """Returns a list of all items"""
-        cursor = await self.db_conn.cursor()
-        result = await cursor.execute("""
-        SELECT referer, download_path,completed_at,created_at
-        FROM media
-        WHERE COALESCE(completed_at, '1970-01-01') BETWEEN ? AND ?
-        ORDER BY completed_at DESC;""",(after.format("YYYY-MM-DD"),before.format("YYYY-MM-DD")))
-        all_files = await result.fetchall()
-        return all_files
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                result = await cursor.execute("""
+                SELECT referer, download_path,completed_at,created_at
+                FROM media
+                WHERE COALESCE(completed_at, '1970-01-01') BETWEEN %s AND %s
+                ORDER BY completed_at DESC;""",(after.format("YYYY-MM-DD"),before.format("YYYY-MM-DD")))
+                all_files = await result.fetchall()
+                return all_files
 
 
     async def get_unique_download_paths(self) -> Iterable[Row]:
         """Returns a list of unique download paths"""
-        cursor = await self.db_conn.cursor()
-        result = await cursor.execute("""SELECT DISTINCT download_path FROM media""")
-        all_files = await result.fetchall()
-        return all_files
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                result = await cursor.execute("""SELECT DISTINCT download_path FROM media""")
+                all_files = await result.fetchall()
+                return all_files
 
 
     async def get_all_bunkr_failed(self):
@@ -193,15 +198,16 @@ class HistoryTable:
     async def get_all_bunkr_failed_via_size(self) -> Iterable[Row]:
         try:
             """Returns a list of all items"""
-            cursor = await self.db_conn.cursor()
-            result = await cursor.execute("""
-            SELECT referer,download_path,completed_at,created_at
-            from media
-            where file_size=322509
-    ;
-            """)
-            all_files = await result.fetchall()
-            return all_files
+            async with self.db_conn.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    result = await cursor.execute("""
+                    SELECT referer,download_path,completed_at,created_at
+                    from media
+                    where file_size=322509
+            ;
+                    """)
+                    all_files = await result.fetchall()
+                    return all_files
         except Exception as e:
             log(f"Error getting bunkr failed via size: {e}",20)
             return []
@@ -209,15 +215,16 @@ class HistoryTable:
     async def get_all_bunkr_failed_via_hash(self) -> Iterable[Row]:
         try:
             """Returns a list of all items"""
-            cursor = await self.db_conn.cursor()
-            result = await cursor.execute("""
-    SELECT m.referer,download_path,completed_at,created_at
-    FROM hash h
-    INNER JOIN media m ON h.download_filename= m.download_filename
-    WHERE h.hash = 'eb669b6362e031fa2b0f1215480c4e30';
-            """)
-            all_files = await result.fetchall()
-            return all_files
+            async with self.db_conn.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    result = await cursor.execute("""
+            SELECT m.referer,download_path,completed_at,created_at
+            FROM hash h
+            INNER JOIN media m ON h.download_filename= m.download_filename
+            WHERE h.hash = 'eb669b6362e031fa2b0f1215480c4e30';
+                    """)
+                    all_files = await result.fetchall()
+                    return all_files
         except Exception as e:
             log(f"Error getting bunkr failed via hash: {e}",20)
             return []
@@ -225,18 +232,17 @@ class HistoryTable:
 
     async def fix_bunkr_v4_entries(self) -> None:
         """Fixes bunkr v4 entries in the database"""
-        cursor = await self.db_conn.cursor()
-        result = await cursor.execute("""SELECT * from media WHERE domain = 'bunkr' and completed = 1""")
-        bunkr_entries = await cursor.fetchall()
+        async with self.db_conn.acquire() as conn:
+            async with conn.cursor() as cursor:
+                result = await cursor.execute("""SELECT * from media WHERE domain = 'bunkr' and completed = 1""")
+                bunkr_entries = await cursor.fetchall()
 
-        for entry in bunkr_entries:
-            entry = list(entry)
-            entry[0] = "bunkrr"
-            await self.db_conn.execute("""INSERT or REPLACE INTO media VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", entry)
-        await self.db_conn.commit()
+                for entry in bunkr_entries:
+                    entry = list(entry)
+                    entry[0] = "bunkrr"
+                    await self.db_conn.execute("""INSERT or REPLACE INTO media VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", entry)
 
-        await self.db_conn.execute("""DELETE FROM media WHERE domain = 'bunkr'""")
-        await self.db_conn.commit()
+                await self.db_conn.execute("""DELETE FROM media WHERE domain = 'bunkr'""")
 
     async def fix_primary_keys(self) -> None:
         cursor = await self.db_conn.cursor()

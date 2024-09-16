@@ -23,6 +23,7 @@ def parse_args() -> argparse.Namespace:
     general.add_argument("--completed-after", help="only download completed downloads at or after this date", default=None,type=lambda x:None if not x else arrow.get(x))
     general.add_argument("--completed-before", help="only download completed downloads at or before this date", default=None,type=lambda x:None if not x else arrow.get(x))
     general.add_argument("--max-items-retry", help="max number of links to retry",type=int)
+    general.add_argument("--scrape_id", help="Scrape Table ID", type=int)
 
 
     # File Paths

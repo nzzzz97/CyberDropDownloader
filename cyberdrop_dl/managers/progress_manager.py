@@ -75,10 +75,6 @@ class ProgressManager:
         await log_with_color(f"Removed From Current Downloads {self.hash_progress.removed_files} files", "yellow", 20)
         await log_with_color(f"Removed From Previous Downloads {self.hash_progress.removed_prev_files} files", "yellow", 20)
 
-
-
-
-
         scrape_failures = await self.scrape_stats_progress.return_totals()
         await log_with_color("\nScrape Failures:", "cyan", 20)
         for key, value in scrape_failures.items():
@@ -88,6 +84,17 @@ class ProgressManager:
         await log_with_color("\nDownload Failures:", "cyan", 20)
         for key, value in download_failures.items():
             await log_with_color(f"Download Failures ({key}): {value}", "red", 20)
+
+        if self.manager.args_manager.parsed_args['scrape_id'] > 0:
+            await self.manager.db_manager.scrape_table.update_scrape(self.manager.args_manager.parsed_args['scrape_id'],
+                                                               self.download_progress.completed_files,
+                                                               self.download_progress.previously_completed_files,
+                                                               self.download_progress.skipped_files,
+                                                               self.download_progress.failed_files,
+                                                               scrape_failures,
+                                                               download_failures)
+
+
 
         await self.send_webhook_message(self.manager.config_manager.settings_data['Logs']['webhook_url'])
 
