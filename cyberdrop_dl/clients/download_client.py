@@ -15,7 +15,6 @@ from aiohttp import ClientSession
 
 from cyberdrop_dl.clients.errors import DownloadFailure, InvalidContentTypeFailure
 from cyberdrop_dl.utils.utilities import FILE_FORMATS, log
-from cyberdrop_dl.clients.hash_client import HashClient
 
 if TYPE_CHECKING:
     from typing import Callable, Coroutine, Any
@@ -62,8 +61,7 @@ class DownloadClient:
         self._global_limiter = self.client_manager.global_rate_limiter
         self.trace_configs = []
         self._file_path=None
-        self._hash_client=HashClient(self.manager)
-        if os.getenv("PYCHARM_HOSTED") is not None:
+        if os.getenv("PYCHARM_HOSTED") is not None or 'TERM_PROGRAM' in os.environ.keys() and os.environ['TERM_PROGRAM'] == 'vscode':
             async def on_request_start(session, trace_config_ctx, params):
                 await log(f"Starting download {params.method} request to {params.url}", 40)
 
@@ -82,11 +80,11 @@ class DownloadClient:
     async def _download(self, domain: str, manager: Manager, media_item: MediaItem,
                         save_content: Callable[[aiohttp.StreamReader], Coroutine[Any, Any, None]], client_session: ClientSession) -> bool:
         """Downloads a file"""
-        headers = copy.deepcopy(self._headers)
-        headers['Referer'] = str(media_item.referer)
+        download_headers = copy.deepcopy(self._headers)
+        download_headers['Referer'] = str(media_item.referer)
         if domain == "pixeldrain":
             if self.manager.config_manager.authentication_data['PixelDrain']['pixeldrain_api_key']:
-                headers["Authorization"] = await self.manager.download_manager.basic_auth("Cyberdrop-DL", self.manager.config_manager.authentication_data['PixelDrain']['pixeldrain_api_key'])
+                download_headers["Authorization"] = await self.manager.download_manager.basic_auth("Cyberdrop-DL", self.manager.config_manager.authentication_data['PixelDrain']['pixeldrain_api_key'])
 
         downloaded_filename = await self.manager.db_manager.history_table.get_downloaded_filename(domain, media_item)
         download_dir = await self.get_download_dir(media_item)
@@ -95,11 +93,11 @@ class DownloadClient:
         resume_point = 0
         if isinstance(media_item.partial_file, Path) and media_item.partial_file.exists():
             resume_point = media_item.partial_file.stat().st_size if media_item.partial_file.exists() else 0
-            headers['Range'] = f'bytes={resume_point}-'
+            download_headers['Range'] = f'bytes={resume_point}-'
 
         await asyncio.sleep(self.client_manager.download_delay)
 
-        async with client_session.get(media_item.url, headers=headers, ssl=self.client_manager.ssl_context,
+        async with client_session.get(media_item.url, headers=download_headers, ssl=self.client_manager.ssl_context,
                                       proxy=self.client_manager.proxy) as resp:
             if resp.status == HTTPStatus.REQUESTED_RANGE_NOT_SATISFIABLE:
                 media_item.partial_file.unlink()
@@ -111,13 +109,14 @@ class DownloadClient:
             if not isinstance(media_item.complete_file, Path):
                 proceed, skip = await self.get_final_file_info(media_item, domain)
                 await self.mark_incomplete(media_item, domain)
+                await self.client_manager.check_bunkr_maint(resp.headers)
                 if skip:
                     await self.manager.progress_manager.download_progress.add_skipped()
                     return False
                 if not proceed:
                     await log(f"Skipping {media_item.url} as it has already been downloaded", 10)
                     await self.manager.progress_manager.download_progress.add_previously_completed(False)
-                    await self.mark_completed(media_item, domain)
+                    await self.process_completed(media_item, domain)
                     await  self.handle_media_item_completion(media_item,downloaded=False)
 
 
@@ -161,8 +160,9 @@ class DownloadClient:
         if self.manager.config_manager.settings_data['Download_Options']['skip_download_mark_completed']:
             await log(f"Download Skip {media_item.url} due to mark completed option", 10)
             await self.manager.progress_manager.download_progress.add_skipped()
+            #set completed path
             await self.mark_incomplete(media_item, domain)
-            await self.mark_completed(media_item, domain)
+            await self.process_completed(media_item, domain)
             return False
         
         async def save_content(content: aiohttp.StreamReader) -> None:
@@ -171,7 +171,7 @@ class DownloadClient:
         downloaded = await self._download(domain, manager, media_item, save_content)
         if downloaded:
             media_item.partial_file.rename(media_item.complete_file)
-            await self.mark_completed(media_item, domain)
+            await self.process_completed(media_item, domain)
             await  self.handle_media_item_completion(media_item,downloaded=True)
         return downloaded
         
@@ -181,19 +181,27 @@ class DownloadClient:
         """Marks the media item as incomplete in the database"""
         await self.manager.db_manager.history_table.insert_incompleted(domain, media_item)
     
-    async def mark_completed(self, media_item: MediaItem, domain: str) -> None:
-        await self._add_db(media_item,domain)
-       
-    async def _add_db(self,media_item: MediaItem, domain: str):
+    async def process_completed(self, media_item: MediaItem, domain: str) -> None:
         """Marks the media item as completed in the database and adds to the completed list"""
+        await self.mark_completed(domain, media_item)
+        await self.add_file_size(domain, media_item)
+    async def mark_completed(self, domain, media_item):
         await self.manager.db_manager.history_table.mark_complete(domain, media_item)
+    async def add_file_size(self,domain, media_item):
+        if not isinstance(media_item.complete_file,Path):
+            media_item.complete_file = await self.get_file_location(media_item)
+        if media_item.complete_file.exists():
+            await self.manager.db_manager.history_table.add_filesize(domain, media_item)
+
 
     async def handle_media_item_completion(self, media_item,downloaded=False) -> None:
         """Sends to hash client to handle hashing and marks as completed/current download"""
         try:
-            await self._hash_client.hash_item_during_download(media_item)
+            await self.manager.hash_manager.hash_client.hash_item_during_download(media_item)
             if downloaded or self.manager.config_manager.global_settings_data['Dupe_Cleanup_Options']['dedupe_already_downloaded']:
                     self.manager.path_manager.add_completed(media_item)
+            if not downloaded:
+                self.manager.path_manager.add_prev(media_item)
         except Exception as e:
             await log(f"Error handling media item completion: {str(e)}", 10)
        
@@ -203,7 +211,7 @@ class DownloadClient:
     async def get_download_dir(self, media_item: MediaItem) -> Path:
         """Returns the download directory for the media item"""
         download_folder = media_item.download_folder
-        if self.manager.args_manager.retry:
+        if self.manager.args_manager.retry_any:
             return download_folder
 
         if self.manager.config_manager.settings_data['Download_Options']['block_download_sub_folders']:
@@ -212,10 +220,12 @@ class DownloadClient:
             media_item.download_folder = download_folder
         return download_folder
     
+    async def get_file_location(self,media_item):
+        download_dir = await self.get_download_dir(media_item)
+        return download_dir / media_item.filename
     async def get_final_file_info(self, media_item: MediaItem, domain: str) -> tuple[bool, bool]:
         """Complicated checker for if a file already exists, and was already downloaded"""
-        download_dir = await self.get_download_dir(media_item)
-        media_item.complete_file = download_dir / media_item.filename
+        media_item.complete_file = await self.get_file_location(media_item)
         media_item.partial_file = media_item.complete_file.with_suffix(media_item.complete_file.suffix + '.part')
         
         expected_size = media_item.filesize if isinstance(media_item.filesize, int) else None

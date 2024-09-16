@@ -71,6 +71,7 @@ settings: Dict = {
     },
     "Logs": {
         "log_folder": str(APP_STORAGE / "Configs" / "{config}" / "Logs"),
+        "webhook_url": "",
         "main_log_filename": "downloader.log",
         "last_forum_post_filename": "Last_Scraped_Forum_Posts.txt",
         "unsupported_urls_filename": "Unsupported_URLs.txt",
@@ -97,6 +98,7 @@ settings: Dict = {
     "Runtime_Options": {
         "ignore_history": False,
         "log_level": 10,
+        "console_log_level":100,
         "skip_check_for_partial_files": False,
         "skip_check_for_empty_folders": False,
         "delete_partial_files": False,
@@ -106,6 +108,7 @@ settings: Dict = {
     "Sorting": {
         "sort_downloads": False,
         "sort_folder": str(DOWNLOAD_STORAGE / "Cyberdrop-DL Sorted Downloads"),
+        "sort_cdl_only": True,
         "sort_incremementer_format": " ({i})",
         "sorted_audio": "{sort_dir}/{base_dir}/Audio/{filename}{ext}",
         "sorted_image": "{sort_dir}/{base_dir}/Images/{filename}{ext}",
@@ -139,9 +142,10 @@ global_settings: Dict = {
     {
   "delete_after_download": False,
   "hash_while_downloading": False,
-  "keep_prev_download": False,
-  "count_missing_as_existing": False,
-  "dedupe_already_downloaded": False
+ "keep_prev_download": False,
+        "keep_new_download": True,
+  "dedupe_already_downloaded": False,
+  "delete_off_disk": False
 
     },
 

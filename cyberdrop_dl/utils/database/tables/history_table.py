@@ -1,4 +1,5 @@
 from __future__ import annotations
+import pathlib
 
 from sqlite3 import Row, IntegrityError
 
@@ -9,6 +10,8 @@ from typing import TYPE_CHECKING, Iterable, Any
 from yarl import URL
 
 from cyberdrop_dl.utils.database.table_definitions import create_history, create_fixed_history
+from cyberdrop_dl.utils.utilities import log
+
 
 if TYPE_CHECKING:
     from cyberdrop_dl.utils.dataclasses.url_objects import MediaItem
@@ -127,6 +130,14 @@ class HistoryTable:
                                            (domain, url_path))
 
 
+    async def add_filesize(self, domain: str, media_item: MediaItem) -> None:
+        """add the file size to the db"""
+        domain = await get_db_domain(domain)
+        url_path = await get_db_path(media_item.url, str(media_item.referer))
+        file_size=pathlib.Path(media_item.complete_file).stat().st_size
+        await self.db_conn.execute("""UPDATE media SET file_size=? WHERE domain = ? and url_path = ?""",
+                                   (file_size,domain, url_path))
+        await self.db_conn.commit()
     async def check_filename_exists(self, filename: str) -> bool:
         """Checks whether a downloaded filename exists in the database"""
         async with self.db_conn.acquire() as conn:
@@ -148,12 +159,68 @@ class HistoryTable:
 
     async def get_failed_items(self) -> Iterable[Row]:
         """Returns a list of failed items"""
-        async with self.db_conn.acquire() as conn:
-            async with conn.cursor() as cursor:
-                await cursor.execute("""SELECT referer, download_path FROM media WHERE completed = 0""")
-                failed_files = await cursor.fetchall()
-                return failed_files
+        cursor = await self.db_conn.cursor()
+        result = await cursor.execute("""SELECT referer, download_path,completed_at,created_at FROM media WHERE completed = 0""")
+        failed_files = await result.fetchall()
+        return failed_files
 
+
+    async def get_all_items(self,after,before) -> Iterable[Row]:
+        """Returns a list of all items"""
+        cursor = await self.db_conn.cursor()
+        result = await cursor.execute("""
+        SELECT referer, download_path,completed_at,created_at
+        FROM media
+        WHERE COALESCE(completed_at, '1970-01-01') BETWEEN ? AND ?
+        ORDER BY completed_at DESC;""",(after.format("YYYY-MM-DD"),before.format("YYYY-MM-DD")))
+        all_files = await result.fetchall()
+        return all_files
+
+
+    async def get_unique_download_paths(self) -> Iterable[Row]:
+        """Returns a list of unique download paths"""
+        cursor = await self.db_conn.cursor()
+        result = await cursor.execute("""SELECT DISTINCT download_path FROM media""")
+        all_files = await result.fetchall()
+        return all_files
+
+
+    async def get_all_bunkr_failed(self):
+        hash_list= await self.get_all_bunkr_failed_via_hash()
+        size_list= await self.get_all_bunkr_failed_via_size()
+        return hash_list + size_list
+
+    async def get_all_bunkr_failed_via_size(self) -> Iterable[Row]:
+        try:
+            """Returns a list of all items"""
+            cursor = await self.db_conn.cursor()
+            result = await cursor.execute("""
+            SELECT referer,download_path,completed_at,created_at
+            from media
+            where file_size=322509
+    ;
+            """)
+            all_files = await result.fetchall()
+            return all_files
+        except Exception as e:
+            log(f"Error getting bunkr failed via size: {e}",20)
+            return []
+
+    async def get_all_bunkr_failed_via_hash(self) -> Iterable[Row]:
+        try:
+            """Returns a list of all items"""
+            cursor = await self.db_conn.cursor()
+            result = await cursor.execute("""
+    SELECT m.referer,download_path,completed_at,created_at
+    FROM hash h
+    INNER JOIN media m ON h.download_filename= m.download_filename
+    WHERE h.hash = 'eb669b6362e031fa2b0f1215480c4e30';
+            """)
+            all_files = await result.fetchall()
+            return all_files
+        except Exception as e:
+            log(f"Error getting bunkr failed via hash: {e}",20)
+            return []
     """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
 
     async def fix_bunkr_v4_entries(self) -> None:
@@ -189,7 +256,7 @@ class HistoryTable:
             await self.db_conn.execute("""ALTER TABLE media_copy RENAME TO media""")
             await self.db_conn.commit()
 
-    async def add_columns(self) -> None:
+    async def add_columns_media(self) -> None:
         cursor = await self.db_conn.cursor()
         result = await cursor.execute("""pragma table_info(media)""")
         result = await result.fetchall()
@@ -205,4 +272,8 @@ class HistoryTable:
 
         if "completed_at" not in current_cols:
             await self.db_conn.execute("""ALTER TABLE media ADD COLUMN completed_at TIMESTAMP""")
+            await self.db_conn.commit()
+
+        if "file_size" not in current_cols:
+            await self.db_conn.execute("""ALTER TABLE media ADD COLUMN file_size INT""")
             await self.db_conn.commit()

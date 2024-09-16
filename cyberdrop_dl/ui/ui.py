@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 from InquirerPy import inquirer
 from InquirerPy.validator import PathValidator
 from rich.console import Console
+from pydoc import pager
 
 from cyberdrop_dl import __version__
 from cyberdrop_dl.ui.prompts.settings_authentication_prompts import edit_authentication_values_prompt
@@ -15,9 +16,9 @@ from cyberdrop_dl.ui.prompts.general_prompts import (
 from cyberdrop_dl.ui.prompts.settings_global_prompts import edit_global_settings_prompt
 from cyberdrop_dl.ui.prompts.url_file_prompts import edit_urls_prompt
 from cyberdrop_dl.ui.prompts.settings_user_prompts import create_new_config_prompt, edit_config_values_prompt
-from cyberdrop_dl.clients.hash_client import HashClient
 from cyberdrop_dl.ui.prompts.settings_hash_prompts import path_prompt
-from rich.live import Live
+from cyberdrop_dl.clients.hash_client import hash_directory_scanner
+import cyberdrop_dl.utils.changelog as Changelog
 
 
 console = Console()
@@ -46,13 +47,13 @@ def program_ui(manager: Manager):
 
         # Retry Failed Downloads
         elif action == 3:
-            manager.args_manager.retry = True
+            manager.args_manager.retry_failed = True
             break
             
         # Scanning folder to create hashes
         elif action == 4:
             path=path_prompt(manager)
-            HashClient(manager).hash_directory(path)
+            hash_directory_scanner(manager,path)
         
         # Sort All Configs
         elif action == 5:
@@ -150,6 +151,9 @@ def program_ui(manager: Manager):
         elif action == 10:
             import_cyberdrop_v4_items_prompt(manager)
 
-        # Exit
         elif action == 11:
+            pager(Changelog.__doc__)
+
+        # Exit
+        elif action == 12:
             exit(0)

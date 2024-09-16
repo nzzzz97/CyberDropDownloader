@@ -1,3 +1,5 @@
+import signal
+from contextlib import contextmanager
 from dataclasses import field
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -12,11 +14,12 @@ from cyberdrop_dl.utils.database.tables.hash_table import HashTable
 if TYPE_CHECKING:
     from cyberdrop_dl.managers.manager import Manager
 
+
+
 class DBManager:
     def __init__(self, manager: 'Manager', db_path: Path):
         self.manager = manager
         self._db_conn = aiomysql.Connection = field(init=False)
-
         self._db_path: Path = db_path
 
         self.ignore_history: bool = False

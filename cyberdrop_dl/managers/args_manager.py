@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import field
 from pathlib import Path
+import arrow
 
 from cyberdrop_dl.utils.args.args import parse_args
 
@@ -15,7 +16,13 @@ class ArgsManager:
 
         self.all_configs = False
         self.sort_all_configs = False
-        self.retry = False
+        self.retry_failed = False
+        self.retry_all=False
+        self.retry_any=False
+        self.retry_maintenance = False
+        self.webhook_url = ""
+
+        self.max_items = None
 
         self.immediate_download = False
         self.no_ui = False
@@ -32,6 +39,7 @@ class ArgsManager:
         
         # Sorting
         self.sort_downloads = field(init=False)
+        self.sort_cdl_only = field(init=True)
         self.sort_folder = None
         
         # Logs
@@ -43,6 +51,8 @@ class ArgsManager:
         
         # UI
         self.vi_mode = None
+        self.after=None
+        self.before=None
 
     def startup(self) -> None:
         """Parses arguments and sets variables accordingly"""
@@ -70,11 +80,17 @@ class ArgsManager:
             self.sort_all_configs = True
             self.all_configs = True
             self.immediate_download = True
-
         if self.parsed_args['retry_failed']:
-            self.retry = True
+            self.retry_failed = True
+            self.retry_any=True
             self.immediate_download = True
-
+        if self.parsed_args['retry_all']:
+            self.retry_all = True
+            self.retry_any = True
+            self.immediate_download = True
+        if self.parsed_args['retry_maintenance']:
+            self.retry_maintenance = True
+            self.immediate_download = True
         if self.parsed_args['input_file']:
             self.input_file = Path(self.parsed_args['input_file'])
         if self.parsed_args['output_folder']:
@@ -88,6 +104,8 @@ class ArgsManager:
             self.log_dir = Path(self.parsed_args['log_folder'])
         if self.parsed_args['sort_downloads']:
             self.sort_downloads = True
+        if not self.parsed_args['sort_cdl_only']:
+            self.sort_cdl_only = False
         if self.parsed_args['sort_folder']:
             self.sort_folder = Path(self.parsed_args['sort_folder'])
             
@@ -109,11 +127,24 @@ class ArgsManager:
 
         self.other_links = self.parsed_args['links']
 
+
+        self.after= self.parsed_args['completed_after'] or arrow.get(0)
+        self.before= self.parsed_args['completed_before'] or arrow.get("3000")
+        self.max_items = self.parsed_args['max_items_retry']
+        self.webhook_url = self.parsed_args['webhook_url']
+
+        self.after= self.parsed_args['completed_after'] or arrow.get(0)
+        self.before= self.parsed_args['completed_before'] or arrow.get("3000")
+        self.max_items = self.parsed_args['max_items_retry']
+
+
         del self.parsed_args['download']
         del self.parsed_args['download_all_configs']
         del self.parsed_args['config']
         del self.parsed_args['no_ui']
         del self.parsed_args['retry_failed']
+        del self.parsed_args['retry_all']
+        del self.parsed_args['retry_maintenance']
         del self.parsed_args['input_file']
         del self.parsed_args['output_folder']
         del self.parsed_args['appdata_folder']
@@ -122,4 +153,5 @@ class ArgsManager:
         del self.parsed_args['proxy']
         del self.parsed_args['links']
         del self.parsed_args['sort_downloads']
+        del self.parsed_args['sort_cdl_only']
         del self.parsed_args['sort_folder']

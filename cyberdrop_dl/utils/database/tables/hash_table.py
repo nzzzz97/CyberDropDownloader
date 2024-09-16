@@ -6,7 +6,8 @@ import aiosqlite
 
 from cyberdrop_dl.utils.database.table_definitions import create_hash
 
-
+from rich.console import Console
+console=Console()
 class HashTable:
     def __init__(self, db_conn: aiosqlite.Connection):
         self.db_conn: aiosqlite.Connection = db_conn
@@ -16,7 +17,27 @@ class HashTable:
         #await self.db_conn.execute(create_hash)
         #await self.db_conn.commit()
 
+    async def add_columns_hash(self) -> None:
+        cursor = await self.db_conn.cursor()
+        result = await cursor.execute("""pragma table_info(hash)""")
+        result = await result.fetchall()
+        current_cols = [col[1] for col in result]
 
+        if "download_filename" not in current_cols:
+            await self.db_conn.execute("""ALTER TABLE hash RENAME COLUMN filename TO download_filename;""")
+            await self.db_conn.commit()
+
+        if "file_size" not in current_cols:
+            await self.db_conn.execute("""ALTER TABLE hash RENAME COLUMN size TO file_size;""")
+            await self.db_conn.commit()
+
+        if "original_filename" not in current_cols:
+            await self.db_conn.execute("""ALTER TABLE hash ADD COLUMN original_filename TEXT""")
+            await self.db_conn.commit()
+
+        if "referer" not in current_cols:
+            await self.db_conn.execute("""ALTER TABLE hash ADD COLUMN referer TEXT""")
+            await self.db_conn.commit()
     async def get_file_hash_exists(self, full_path):
         """
         Checks if a file exists in the database based on its folder, filename, and size.
@@ -39,13 +60,13 @@ class HashTable:
             cursor = await self.db_conn.cursor()
 
             # Check if the file exists with matching folder, filename, and size
-            await cursor.execute("SELECT hash FROM hash WHERE folder=? AND filename=? AND size=?", (folder, filename, size))
+            await cursor.execute("SELECT hash FROM hash WHERE folder=? AND download_filename=? AND file_size=?", (folder, filename, size))
             result = await cursor.fetchone()
             if result and result[0]:
                 return result[0]
             return None
         except Exception as e:
-            print(f"Error checking file: {e}")
+            console.print(f"Error checking file: {e}")
             return False
 
     async def get_files_with_hash_matches(self,hash_value,size):
@@ -62,15 +83,15 @@ class HashTable:
         cursor = await self.db_conn.cursor()
 
         try:
-            await cursor.execute("SELECT folder, filename FROM hash WHERE hash = ? and size=?", (hash_value,size))
+            await cursor.execute("SELECT folder, download_filename FROM hash WHERE hash = ? and file_size=?", (hash_value,size))
             results = await cursor.fetchall()
             return results
         except Exception as e:
-            print(f"Error retrieving folder and filename: {e}")
+            console.print(f"Error retrieving folder and filename: {e}")
             return []
     
    
-    async def insert_or_update_hash_db(self, hash_value, file_size, file):
+    async def insert_or_update_hash_db(self, hash_value, file,original_filename,referer):
         """
         Inserts or updates a record in the specified SQLite database.
 
@@ -86,28 +107,53 @@ class HashTable:
 
         cursor = await self.db_conn.cursor()
         full_path=pathlib.Path(file).absolute()
-        
-        filename=full_path.name
+        file_size=full_path.stat().st_size
+
+        download_filename=full_path.name
         folder=str(full_path.parent)
 
         # Assuming a table named 'file_info' with columns: id (primary key), hash, size, filename, folder
         try:
-            await cursor.execute("INSERT INTO hash (hash, size, filename, folder) VALUES (?, ?, ?, ?)",
-                        (hash_value, file_size, filename, folder))
+            await cursor.execute("INSERT INTO hash (hash, file_size, download_filename, folder,original_filename,referer) VALUES (?, ?, ?, ?,?,?)",
+                        (hash_value, file_size, download_filename, folder,original_filename,referer))
             await self.db_conn.commit()
             return True
         except IntegrityError:
             # Handle potential duplicate key (assuming a unique constraint on hash, filename, and folder)
-            await cursor.execute("UPDATE hash SET size=?,hash=? WHERE filename=? AND folder=?",
-                        (file_size,hash_value, filename, folder))
+            await cursor.execute("""UPDATE hash
+    SET file_size = ?,
+    hash = ?,
+    referer= CASE WHEN ? IS NOT NULL THEN ? ELSE referer END,
+    original_filename = CASE WHEN ? IS NOT NULL THEN ? ELSE original_filename END
+WHERE download_filename = ? AND folder = ?;""",
+                        (file_size,hash_value,referer,referer,original_filename,original_filename,download_filename,folder))
             await self.db_conn.commit()
             return True
         except Exception as e:
-            print(f"Error inserting/updating record: {e}")
+            console.print(f"Error inserting/updating record: {e}")
             return False
 
 
+    async def get_all_unique_hashes(self):
+        """
+        Retrieves a list of (folder, filename) tuples based on a given hash.
 
+        Args:
+            hash_value: The hash value to search for.
+
+        Returns:
+            A list of (folder, filename) tuples, or an empty list if no matches found.
+        """
+
+        cursor = await self.db_conn.cursor()
+
+        try:
+            await cursor.execute("SELECT DISTINCT hash FROM hash")
+            results = await cursor.fetchall()
+            return list(map(lambda x: x[0], results))
+        except Exception as e:
+            console.print(f"Error retrieving folder and filename: {e}")
+            return []
 
 
 

@@ -200,6 +200,11 @@ def edit_log_file_naming_path_prompt(manager: Manager, config: Dict) -> None:
         validate=EmptyInputValidator("Input should not be empty"),
         vi_mode=manager.vi_mode,
     ).execute()
+    webhook_url = inquirer.text(
+        message="Enter the Discord webhook url:",
+        default=config['Logs']['webhook_url'],
+        vi_mode=manager.vi_mode,
+    ).execute()
 
     config['Logs']['log_folder'] = Path(log_folder)
     config['Logs']['main_log_filename'] = main_log_filename
@@ -207,6 +212,7 @@ def edit_log_file_naming_path_prompt(manager: Manager, config: Dict) -> None:
     config['Logs']['unsupported_urls_filename'] = unsupported_urls_filename
     config['Logs']['download_error_urls_filename'] = download_error_urls_filename
     config['Logs']['scrape_error_urls_filename'] = scrape_error_urls_filename
+    config['Logs']['webhook_url'] = webhook_url
 
 
 def edit_file_size_limits_prompt(manager: Manager, config: Dict) -> None:
@@ -360,6 +366,15 @@ def edit_runtime_options_prompt(manager: Manager, config: Dict) -> None:
         vi_mode=manager.vi_mode,
     ).execute()
 
+
+    console_log_level = inquirer.number(
+        message="Enter the log level for console output:",
+        default=int(config['Runtime_Options']['console_log_level']),
+        validate=NumberValidator(),
+        long_instruction="100 is the default, and reserved for disabling (uses pythons logging numerical levels)",
+        vi_mode=manager.vi_mode,
+    ).execute()
+
     for key in config["Runtime_Options"]:
         config["Runtime_Options"][key] = False
 
@@ -367,6 +382,8 @@ def edit_runtime_options_prompt(manager: Manager, config: Dict) -> None:
         config["Runtime_Options"][key] = True
 
     config['Runtime_Options']['log_level'] = int(log_level)
+    config['Runtime_Options']['console_log_level'] = int(console_log_level)
+
 
 
 def edit_sort_options_prompt(manager: Manager, config: Dict) -> None:

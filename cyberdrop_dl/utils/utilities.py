@@ -15,6 +15,7 @@ from yarl import URL
 
 from cyberdrop_dl.clients.errors import NoExtensionFailure, FailedLoginFailure, InvalidContentTypeFailure, \
     PasswordProtected
+from cyberdrop_dl.managers.console_manager import log as log_console
 
 if TYPE_CHECKING:
     from typing import Tuple
@@ -28,6 +29,10 @@ logger_debug = logging.getLogger("cyberdrop_dl_debug")
 MAX_NAME_LENGTHS = {"FILE": 95, "FOLDER": 60}
 
 DEBUG_VAR = False
+CONSOLE_DEBUG_VAR = False
+
+global LOG_OUTPUT_TEXT
+LOG_OUTPUT_TEXT = "```diff\n"
 
 FILE_FORMATS = {
     'Images': {
@@ -98,25 +103,39 @@ def error_handling_wrapper(func):
     return wrapper
 
 
-async def log(message: [str, Exception], level: int) -> None:
+async def log(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
     logger.log(level, message)
     if DEBUG_VAR:
         logger_debug.log(level, message)
+    log_console(level, message, sleep=sleep)
 
 
-async def log_debug(message: [str, Exception], level: int) -> None:
+
+
+async def log_debug(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
     if DEBUG_VAR:
         logger_debug.log(level, message.encode('ascii', 'ignore').decode('ascii'))
+async def log_debug_console(message: [str, Exception], level: int, sleep: int = None):
+    if CONSOLE_DEBUG_VAR:
+        log_console(level, message.encode('ascii', 'ignore').decode('ascii'), sleep=sleep)
 
 
 async def log_with_color(message: str, style: str, level: int) -> None:
     """Simple logging function with color"""
+    global LOG_OUTPUT_TEXT
     logger.log(level, message)
     if DEBUG_VAR:
         logger_debug.log(level, message)
     rich.print(f"[{style}]{message}[/{style}]")
+    LOG_OUTPUT_TEXT += f"[{style}]{message}\n"
+
+
+async def get_log_output_text() -> str:
+    global LOG_OUTPUT_TEXT
+    return LOG_OUTPUT_TEXT + "```"
+
 
 
 """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""

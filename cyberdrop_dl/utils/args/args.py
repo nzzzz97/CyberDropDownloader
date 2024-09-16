@@ -1,4 +1,5 @@
 import argparse
+import  arrow
 
 from cyberdrop_dl import __version__ as VERSION
 from cyberdrop_dl.utils.dataclasses.supported_domains import SupportedDomains
@@ -17,6 +18,12 @@ def parse_args() -> argparse.Namespace:
     general.add_argument("--download-all-configs", action="store_true", help="Skip the UI and go straight to downloading (runs all configs sequentially)", default=False)
     general.add_argument("--sort-all-configs", action="store_true", help="Sort all configs sequentially", default=False)
     general.add_argument("--retry-failed", action="store_true", help="retry failed downloads", default=False)
+    general.add_argument("--retry-all", action="store_true", help="retry all downloads", default=False)
+    general.add_argument("--retry-maintenance", action="store_true", help="retry all failed downloads due to maintenance, only supports bunkr and requires files to be hashed", default=False)
+    general.add_argument("--completed-after", help="only download completed downloads at or after this date", default=None,type=lambda x:None if not x else arrow.get(x))
+    general.add_argument("--completed-before", help="only download completed downloads at or before this date", default=None,type=lambda x:None if not x else arrow.get(x))
+    general.add_argument("--max-items-retry", help="max number of links to retry",type=int)
+
 
     # File Paths
     file_paths = parser.add_argument_group("File_Paths")
@@ -30,6 +37,7 @@ def parse_args() -> argparse.Namespace:
     file_paths.add_argument("--unsupported-urls-filename", type=str, help="filename for the unsupported urls log file", default="")
     file_paths.add_argument("--download-error-urls-filename", type=str, help="filename for the download error urls log file", default="")
     file_paths.add_argument("--scrape-error-urls-filename", type=str, help="filename for the scrape error urls log file", default="")
+    file_paths.add_argument("--webhook_url", help="Discord webhook url to send download recap to", default="")
 
     # Settings
     download_options = parser.add_argument_group("Download_Options")
@@ -72,6 +80,7 @@ def parse_args() -> argparse.Namespace:
 
     sorting_options = parser.add_argument_group("Sorting")
     sorting_options.add_argument("--sort-downloads", action="store_true", help="sort downloads into folders", default=False)
+    sorting_options.add_argument("--sort-cdl-only", action="store_true", help="only sort CDL files.", default=True)
     sorting_options.add_argument("--sort_folder", type=str, help="path to where you want CDL to store it's log files", default="")
     
     ui_options = parser.add_argument_group("UI_Options")
@@ -82,4 +91,8 @@ def parse_args() -> argparse.Namespace:
     
     # Links
     parser.add_argument("links", metavar="link", nargs="*", help="link to content to download (passing multiple links is supported)", default=[])
-    return parser.parse_args()
+    args= parser.parse_args()
+    #set ignore history on retry_all
+    if args.retry_all or args.retry_maintenance:
+        args.ignore_history = True
+    return args
