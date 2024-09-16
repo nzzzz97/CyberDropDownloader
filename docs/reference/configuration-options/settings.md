@@ -140,6 +140,12 @@ What you want Cyberdrop-DL to call the scrape error log.
 
 Cyberdrop-DL will output the links it fails to scrape, and the reason in CSV format.
 
+***
+
+* discord\_webhook\_url
+
+The URL of the Discord webhook that you want to send download stats to.
+
 </details>
 
 <details>
@@ -290,11 +296,21 @@ You can use the shared path flags below in any part of the sorting schemas. You 
 Shared Path Flags:
 
 * sort\_dir - sort\_folder path
-* base\_dir - the highest level folder name inside the downloads folder
-* parent\_dir - the folder name of where the file is
+* base\_dir - the highest level folder name inside the folder being scanned 'scan_folder' (model name / thread name)
+* parent\_dir - the folder name of where the file is (album name)
 * filename - the files name (stem)
 * ext - the files extension
 
+
+***
+
+* scan\_folder
+
+Sets the starting point for the file scan
+
+Each direct child of the scan_folder is recursively scanned ,and files are moved based on your settings
+
+If this is not set then the downloads_dir is used instead
 ***
 
 * sort\_downloads
