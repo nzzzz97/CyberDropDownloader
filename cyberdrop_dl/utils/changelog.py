@@ -3,15 +3,15 @@
 ------------------------------------------------------------
 
 C\bCH\bHA\bAN\bNG\bGE\bEL\bLO\bOG\bG
-\tVersion 5.6.20
+\tVersion 5.6.12
 
 
 D\bDE\bES\bSC\bCR\bRI\bIP\bPT\bTI\bIO\bON\bN
 \tThis update introduces the following changes:
-\t\t1. Ability to scrape URLs from PixelDrain text post
+\t\t1. Per-config authentication settings
 
 \tDetails:
-\t\t- Cyberdrop-DL will now scrape URLs from PixelDrain text posts and make a folder for all the URLs within the post, reducing clutter.
+\t\t- If an authentication.yaml file is placed within your config directory, it will be used instead of the global authentication values.
 
 
 \tFor more details, visit the wiki: https://script-ware.gitbook.io
