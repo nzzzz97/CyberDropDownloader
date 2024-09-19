@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import pathlib
 from sqlite3 import IntegrityError
 
@@ -11,7 +12,7 @@ from rich.console import Console
 console=Console()
 class HashTable:
     def __init__(self, db_conn: aiosqlite.Connection):
-        self.db_conn: aiomysql.Connection = db_conn
+        self.db_conn: aiosqlite.Connection = db_conn
 
     async def startup(self) -> None:
         """Startup process for the HistoryTable"""
@@ -59,6 +60,7 @@ class HashTable:
             size = path.stat().st_size
 
             # Connect to the database
+            cursor = await self.db_conn.cursor()
 
             async with self.db_conn.acquire() as conn:
                 async with conn.cursor() as cursor:
@@ -82,6 +84,9 @@ class HashTable:
         Returns:
             A list of (folder, filename) tuples, or an empty list if no matches found.
         """
+
+        cursor = await self.db_conn.cursor()
+
         try:
             async with self.db_conn.acquire() as conn:
                 async with conn.cursor() as cursor:
@@ -148,6 +153,7 @@ class HashTable:
         Returns:
             A list of (folder, filename) tuples, or an empty list if no matches found.
         """
+
 
         try:
             async with self.db_conn.acquire() as conn:

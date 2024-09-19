@@ -385,6 +385,7 @@ class ScrapeMapper:
             return False
         except NoExtensionFailure:
             return False
+
     async def map_url(self, scrape_item: ScrapeItem,date:arrow.Arrow=None):
         if not isinstance(scrape_item.url, URL):
             scrape_item.url = URL(scrape_item.url)
@@ -449,6 +450,7 @@ class ScrapeMapper:
         else:
             await log(f"Unsupported URL: {scrape_item.url}", 30)
             await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url)
+
     async def filter_items(self, scrape_item) -> None:
         """Maps URLs to their respective handlers"""
         if not scrape_item.url:
