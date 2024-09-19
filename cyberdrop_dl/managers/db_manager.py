@@ -20,13 +20,13 @@ if TYPE_CHECKING:
 class DBManager:
     def __init__(self, manager: 'Manager', db_path: Path):
         self.manager = manager
-        self._db_conn = aiomysql.Connection = field(init=False)
+        self._db_conn: aiosqlite.Connection = field(init=False)
         self._db_path: Path = db_path
 
         self.ignore_history: bool = False
 
         self.history_table: HistoryTable = field(init=False)
-        self.hash_table: HashTable = field(init=False)  
+        self.hash_table: HashTable = field(init=False)
         self.temp_table: TempTable = field(init=False)
         self.scrape_table: ScrapeTable = field(init=False)
 

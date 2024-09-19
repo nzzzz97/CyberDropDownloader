@@ -188,7 +188,8 @@ async def get_filename_and_ext(filename: str, forum: bool = False) -> Tuple[str,
     if len(filename_parts[-1]) > 5:
         raise NoExtensionFailure()
     ext = "." + filename_parts[-1].lower()
-    filename = filename_parts[0][:MAX_NAME_LENGTHS['FILE']] if len(filename_parts[0]) > MAX_NAME_LENGTHS['FILE'] else filename_parts[0]
+    filename = filename_parts[0][:MAX_NAME_LENGTHS['FILE']] if len(filename_parts[0]) > MAX_NAME_LENGTHS['FILE'] else \
+        filename_parts[0]
     filename = filename.strip()
     filename = filename.rstrip(".")
     filename = await sanitize(filename + ext)

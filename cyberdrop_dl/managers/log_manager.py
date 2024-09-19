@@ -64,10 +64,10 @@ class LogManager:
         """Updates the last forum post"""
         input_file = self.manager.path_manager.input_file
         base_urls = []
-        
+
         async with aiofiles.open(input_file, 'r') as f:
             current_urls = await f.readlines()
-            
+
         for url in current_urls:
             if "http" not in url:
                 continue

@@ -5,24 +5,22 @@ from dataclasses import field
 
 from cyberdrop_dl import __version__
 from cyberdrop_dl.managers.args_manager import ArgsManager
-from cyberdrop_dl.managers.client_manager import ClientManager
-from cyberdrop_dl.managers.db_manager import DBManager
 from cyberdrop_dl.managers.cache_manager import CacheManager
+from cyberdrop_dl.managers.client_manager import ClientManager
 from cyberdrop_dl.managers.config_manager import ConfigManager
+from cyberdrop_dl.managers.console_manager import ConsoleManager
+from cyberdrop_dl.managers.db_manager import DBManager
 from cyberdrop_dl.managers.download_manager import DownloadManager
+from cyberdrop_dl.managers.hash_manager import HashManager
+from cyberdrop_dl.managers.live_manager import LiveManager
 from cyberdrop_dl.managers.log_manager import LogManager
 from cyberdrop_dl.managers.path_manager import PathManager
 from cyberdrop_dl.managers.progress_manager import ProgressManager
-from cyberdrop_dl.managers.hash_manager import HashManager
-from cyberdrop_dl.managers.live_manager import LiveManager
-from cyberdrop_dl.managers.redis_manager import RedisManager
-
 from cyberdrop_dl.utils.args import config_definitions
 from cyberdrop_dl.utils.dataclasses.supported_domains import SupportedDomains
 from cyberdrop_dl.utils.transfer.first_time_setup import TransitionManager
-from cyberdrop_dl.managers.console_manager import ConsoleManager
-
 from cyberdrop_dl.utils.utilities import log
+from cyberdrop_dl.managers.redis_manager import RedisManager
 
 
 
@@ -51,9 +49,9 @@ class Manager:
         self.task_group: asyncio.TaskGroup = field(init=False)
         self.task_list: list = []
         self.scrape_mapper = field(init=False)
-        
+
         self.vi_mode: bool = None
-        self.console_manager:ConsoleManager = field(init=False)
+        self.console_manager: ConsoleManager = field(init=False)
 
     def startup(self) -> None:
         """Startup process for the manager"""
@@ -68,7 +66,8 @@ class Manager:
         self.cache_manager.startup(self.path_manager.cache_dir / "cache.yaml")
         self.config_manager = ConfigManager(self)
         self.config_manager.startup()
-        self.vi_mode = self.config_manager.global_settings_data['UI_Options']['vi_mode'] if self.args_manager.vi_mode is None else self.args_manager.vi_mode
+        self.vi_mode = self.config_manager.global_settings_data['UI_Options'][
+            'vi_mode'] if self.args_manager.vi_mode is None else self.args_manager.vi_mode
 
         self.path_manager.startup()
         self.log_manager = LogManager(self)
@@ -113,7 +112,7 @@ class Manager:
         MAX_NAME_LENGTHS['FOLDER'] = int(self.config_manager.global_settings_data['General']['max_folder_name_length'])
 
     async def async_db_hash_startup(self):
-        #start up the db manager and hash manager only for scanning
+        # start up the db manager and hash manager only for scanning
         if not isinstance(self.db_manager, DBManager):
             self.db_manager = DBManager(self, self.path_manager.history_db)
             await self.db_manager.startup()
@@ -128,8 +127,6 @@ class Manager:
         self.progress_manager = ProgressManager(self)
         await self.progress_manager.startup()
 
-
-    
     async def args_consolidation(self) -> None:
         """Consolidates runtime arguments with config values"""
         for arg in self.args_manager.parsed_args:
@@ -157,7 +154,8 @@ class Manager:
             else:
                 forum_xf_cookies_provided[f"{forum} XF Cookie Provided"] = False
 
-            if self.config_manager.authentication_data["Forums"][f"{forum}_username"] and self.config_manager.authentication_data["Forums"][f"{forum}_password"]:
+            if self.config_manager.authentication_data["Forums"][f"{forum}_username"] and \
+                    self.config_manager.authentication_data["Forums"][f"{forum}_password"]:
                 forum_credentials_provided[f"{forum} Credentials Provided"] = True
             else:
                 forum_credentials_provided[f"{forum} Credentials Provided"] = False
@@ -167,13 +165,17 @@ class Manager:
         imgur_credentials_provided = bool(self.config_manager.authentication_data["Imgur"]["imgur_client_id"])
         jdownloader_credentials_provided = False
 
-        if self.config_manager.authentication_data["JDownloader"]['jdownloader_username'] and self.config_manager.authentication_data["JDownloader"]['jdownloader_password'] and self.config_manager.authentication_data["JDownloader"]['jdownloader_device']:
+        if self.config_manager.authentication_data["JDownloader"]['jdownloader_username'] and \
+                self.config_manager.authentication_data["JDownloader"]['jdownloader_password'] and \
+                self.config_manager.authentication_data["JDownloader"]['jdownloader_device']:
             jdownloader_credentials_provided = True
 
-        pixeldrain_credentials_provided = bool(self.config_manager.authentication_data["PixelDrain"]["pixeldrain_api_key"])
+        pixeldrain_credentials_provided = bool(
+            self.config_manager.authentication_data["PixelDrain"]["pixeldrain_api_key"])
         reddit_credentials_provided = False
 
-        if self.config_manager.authentication_data["Reddit"]['reddit_personal_use_script'] and self.config_manager.authentication_data["Reddit"]['reddit_secret']:
+        if self.config_manager.authentication_data["Reddit"]['reddit_personal_use_script'] and \
+                self.config_manager.authentication_data["Reddit"]['reddit_secret']:
             reddit_credentials_provided = True
 
         auth_provided = {
@@ -191,8 +193,8 @@ class Manager:
         print_settings['Files']['download_folder'] = str(print_settings['Files']['download_folder'])
         print_settings["Logs"]["log_folder"] = str(print_settings["Logs"]["log_folder"])
         print_settings['Sorting']['sort_folder'] = str(print_settings['Sorting']['sort_folder'])
-        print_settings['Sorting']['scan_folder'] = str(print_settings['Sorting']['scan_folder']) if str(print_settings['Sorting']['scan_folder']) else ""
-
+        print_settings['Sorting']['scan_folder'] = str(print_settings['Sorting']['scan_folder']) if str(
+            print_settings['Sorting']['scan_folder']) else ""
 
         input_file = str(self.path_manager.input_file)
         download_dir = str(self.path_manager.download_dir)
@@ -207,7 +209,9 @@ class Manager:
 
         await log(f"Using Authentication: \n{json.dumps(auth_provided, indent=4, sort_keys=True)}", 10)
         await log(f"Using Settings: \n{json.dumps(print_settings, indent=4, sort_keys=True)}", 10)
-        await log(f"Using Global Settings: \n{json.dumps(self.config_manager.global_settings_data, indent=4, sort_keys=True)}", 10)
+        await log(
+            f"Using Global Settings: \n{json.dumps(self.config_manager.global_settings_data, indent=4, sort_keys=True)}",
+            10)
 
     async def close(self) -> None:
         """Closes the manager"""
