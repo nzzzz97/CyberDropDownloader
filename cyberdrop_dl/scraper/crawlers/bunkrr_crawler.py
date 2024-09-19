@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 class BunkrrCrawler(Crawler):
     def __init__(self, manager: Manager):
         super().__init__(manager, "bunkrr", "Bunkrr")
-        self.primary_base_domain = URL("https://bunkr.sk")
+        self.primary_base_domain = URL("https://bunkr.pk")
         self.request_limiter = AsyncLimiter(10, 1)
 
     """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
@@ -74,8 +74,6 @@ class BunkrrCrawler(Crawler):
 
             # Try to get final file URL
             try:
-                filename = card_listing.select_one("div[class*=details]").select_one("p").text
-                file_ext = "." + filename.split(".")[-1]
                 if file_ext.lower() not in FILE_FORMATS['Images'] and file_ext.lower() not in FILE_FORMATS['Videos']:
                     raise FileNotFoundError()
                 src = thumbnail.replace("/thumbs/", "/")
@@ -88,7 +86,8 @@ class BunkrrCrawler(Crawler):
                 if "no-image" in src.name:
                     raise FileNotFoundError("No image found, reverting to parent")
 
-                new_scrape_item = await self.create_scrape_item(scrape_item, link, "", True, album_id, date, add_parent = scrape_item.url)
+                new_scrape_item = await self.create_scrape_item(scrape_item, link, "", True, album_id, date,
+                                                                add_parent=scrape_item.url)
 
                 filename, ext = await get_filename_and_ext(src.name)
                 if not await self.check_album_results(src, results):

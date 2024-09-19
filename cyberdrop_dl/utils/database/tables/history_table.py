@@ -167,8 +167,7 @@ class HistoryTable:
                 failed_files = await result.fetchall()
                 return failed_files
 
-
-    async def get_all_items(self,after,before) -> Iterable[Row]:
+    async def get_all_items(self, after, before) -> Iterable[Row]:
         """Returns a list of all items"""
         async with self.db_conn.acquire() as conn:
             async with conn.cursor() as cursor:
@@ -209,7 +208,7 @@ class HistoryTable:
                     all_files = await result.fetchall()
                     return all_files
         except Exception as e:
-            log(f"Error getting bunkr failed via size: {e}",20)
+            log(f"Error getting bunkr failed via size: {e}", 20)
             return []
 
     async def get_all_bunkr_failed_via_hash(self) -> Iterable[Row]:
@@ -226,8 +225,9 @@ class HistoryTable:
                     all_files = await result.fetchall()
                     return all_files
         except Exception as e:
-            log(f"Error getting bunkr failed via hash: {e}",20)
+            log(f"Error getting bunkr failed via hash: {e}", 20)
             return []
+
     """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
 
     async def fix_bunkr_v4_entries(self) -> None:
@@ -253,7 +253,8 @@ class HistoryTable:
             await self.db_conn.execute(create_fixed_history)
             await self.db_conn.commit()
 
-            await self.db_conn.execute("""INSERT INTO media_copy (domain, url_path, referer, download_path, download_filename, original_filename, completed) SELECT * FROM media GROUP BY domain, url_path, original_filename;""")
+            await self.db_conn.execute(
+                """INSERT INTO media_copy (domain, url_path, referer, download_path, download_filename, original_filename, completed) SELECT * FROM media GROUP BY domain, url_path, original_filename;""")
             await self.db_conn.commit()
 
             await self.db_conn.execute("""DROP TABLE media""")
@@ -267,7 +268,7 @@ class HistoryTable:
         result = await cursor.execute("""pragma table_info(media)""")
         result = await result.fetchall()
         current_cols = [col[1] for col in result]
-        
+
         if "album_id" not in current_cols:
             await self.db_conn.execute("""ALTER TABLE media ADD COLUMN album_id TEXT""")
             await self.db_conn.commit()

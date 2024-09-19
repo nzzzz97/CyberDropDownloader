@@ -3,14 +3,13 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
-import sys
 import re
 import traceback
 from enum import IntEnum
 from functools import wraps
 from pathlib import Path
 from typing import TYPE_CHECKING
-from cyberdrop_dl.utils.globals import *
+
 import rich
 from yarl import URL
 
@@ -61,6 +60,7 @@ FILE_FORMATS = {
 
 def error_handling_wrapper(func):
     """Wrapper handles errors for url scraping"""
+
     @wraps(func)
     async def wrapper(self, *args, **kwargs):
         link = args[0] if isinstance(args[0], URL) else args[0].url
@@ -101,15 +101,15 @@ def error_handling_wrapper(func):
                 await log(traceback.format_exc(), 40)
                 await self.manager.log_manager.write_scrape_error_log(link, " See Log for Details")
                 await self.manager.progress_manager.scrape_stats_progress.add_failure("Unknown")
+
     return wrapper
 
 
 async def log(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
-    extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
-    logger.log(level, message,extra=extras)
+    logger.log(level, message)
     if DEBUG_VAR:
-        logger_debug.log(level, message,extra=extras)
+        logger_debug.log(level, message)
     log_console(level, message, sleep=sleep)
 
 
@@ -118,21 +118,20 @@ async def log(message: [str, Exception], level: int, sleep: int = None) -> None:
 async def log_debug(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
     if DEBUG_VAR:
-        extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
-        logger_debug.log(level, message.encode('ascii', 'ignore').decode('ascii'),extra=extras)
+        logger_debug.log(level, message.encode('ascii', 'ignore').decode('ascii'))
+
+
 async def log_debug_console(message: [str, Exception], level: int, sleep: int = None):
     if CONSOLE_DEBUG_VAR:
-        extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
-        log_console(level, message.encode('ascii', 'ignore').decode('ascii'), sleep=sleep,extra=extras)
+        log_console(level, message.encode('ascii', 'ignore').decode('ascii'), sleep=sleep)
 
 
 async def log_with_color(message: str, style: str, level: int) -> None:
     """Simple logging function with color"""
     global LOG_OUTPUT_TEXT
-    extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
-    logger.log(level, message,extra=extras)
+    logger.log(level, message)
     if DEBUG_VAR:
-        logger_debug.log(level, message,extra=extras)
+        logger_debug.log(level, message)
     rich.print(f"[{style}]{message}[/{style}]")
     LOG_OUTPUT_TEXT += f"[{style}]{message}\n"
 
@@ -255,7 +254,8 @@ async def check_partials_and_empty_folders(manager: Manager):
             await log_with_color("There are partial downloads in the downloads folder", "yellow", 20)
         temp_downloads = any(Path(f).is_file() for f in await manager.db_manager.temp_table.get_temp_names())
         if temp_downloads:
-            await log_with_color("There are partial downloads from the previous run, please re-run the program.", "yellow", 20)
+            await log_with_color("There are partial downloads from the previous run, please re-run the program.",
+                                 "yellow", 20)
 
     if not manager.config_manager.settings_data['Runtime_Options']['skip_check_for_empty_folders']:
         await log_with_color("Checking for empty folders...", "yellow", 20)
