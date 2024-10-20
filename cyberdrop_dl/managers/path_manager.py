@@ -85,7 +85,8 @@ class PathManager:
             self.input_file.touch(exist_ok=True)
         self.history_db.touch(exist_ok=True)
 
-    def add_completed(self,media_item:MediaItem):
+    async def add_completed(self,media_item:MediaItem):
+
         self._completed_downloads.add(media_item)
         self._completed_downloads_set.add(media_item.complete_file.absolute())
     def add_prev(self,media_item:MediaItem):
@@ -104,3 +105,6 @@ class PathManager:
     @property
     def prev_downloads_paths(self):
         return self._prev_downloads_set
+
+    def get_log_dir(self):
+        return self.log_dir

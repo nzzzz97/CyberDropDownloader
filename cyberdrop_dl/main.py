@@ -4,7 +4,7 @@ import logging
 import os
 import sys
 import traceback
-
+from pythonjsonlogger import jsonlogger
 
 from cyberdrop_dl.managers.manager import Manager
 from cyberdrop_dl.scraper.scraper import ScrapeMapper
@@ -12,6 +12,8 @@ from cyberdrop_dl.ui.ui import program_ui
 from cyberdrop_dl.utils.sorting import Sorter
 from cyberdrop_dl.utils.utilities import check_latest_pypi, log_with_color, check_partials_and_empty_folders, log
 from cyberdrop_dl.managers.console_manager import print_
+from cyberdrop_dl.utils.redis_logger import RedisChannelHandler
+from cyberdrop_dl.utils.globals import *
 
 
 def startup() -> Manager:
@@ -79,6 +81,7 @@ async def director(manager: Manager) -> None:
         file_handler_debug.setFormatter(formatter)
         logger_debug.addHandler(file_handler_debug)
 
+
         # aiosqlite_log = logging.getLogger("aiosqlite")
         # aiosqlite_log.setLevel(manager.config_manager.settings_data['Runtime_Options']['log_level'])
         # aiosqlite_log.addHandler(file_handler_debug)
@@ -105,10 +108,17 @@ async def director(manager: Manager) -> None:
         if cyberdrop_dl.utils.utilities.DEBUG_VAR:
             manager.config_manager.settings_data['Runtime_Options']['log_level'] = 10
         file_handler.setLevel(manager.config_manager.settings_data['Runtime_Options']['log_level'])
-
+        jsonFormatter = jsonlogger.JsonFormatter("%(levelname)-8s : %(asctime)s : %(filename)s:%(lineno)d : %(message)s")
         formatter = logging.Formatter("%(levelname)-8s : %(asctime)s : %(filename)s:%(lineno)d : %(message)s")
-        file_handler.setFormatter(formatter)
+        file_handler.setFormatter(jsonFormatter)
         logger.addHandler(file_handler)
+
+        handler = RedisChannelHandler("logs", host="localhost", port=6379, password=None)
+        handler.setLevel(logging.DEBUG)
+        handler.setFormatter(jsonFormatter)
+
+        logger.addHandler(handler)
+
         import cyberdrop_dl.managers.console_manager
         cyberdrop_dl.managers.console_manager.LEVEL=manager.config_manager.settings_data['Runtime_Options']['console_log_level']
 
@@ -167,6 +177,7 @@ async def director(manager: Manager) -> None:
 
 def main():
     manager = startup()
+
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)

@@ -58,6 +58,6 @@ class JDownloader:
                 "overwritePackagizerRules": True
                 }])
 
-        except (JDownloaderFailure, AssertionError) as e:
+        except (JDownloaderFailure, AssertionError, myjdapi.MYJDConnectionException) as e:
             await log(f"Failed to send {url} to JDownloader", 40)
             await log(e.message, 40)

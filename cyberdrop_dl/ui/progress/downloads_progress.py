@@ -1,5 +1,5 @@
 from typing import Tuple, TYPE_CHECKING
-
+from cyberdrop_dl.utils.redis_message import RedisMessage
 from rich.console import Group
 from rich.panel import Panel
 from rich.progress import Progress, BarColumn
@@ -45,6 +45,7 @@ class DownloadsProgress:
         """Adds a completed file to the progress bar"""
         self.progress.advance(self.completed_files_task_id, 1)
         self.completed_files += 1
+        await self.manager.redis_manager.update_progress("downloaded", self.completed_files)
 
     async def add_previously_completed(self, increase_total: bool = True) -> None:
         """Adds a previously completed file to the progress bar"""
@@ -52,13 +53,18 @@ class DownloadsProgress:
             await self.update_total()
         self.previously_completed_files += 1
         self.progress.advance(self.previously_completed_files_task_id, 1)
+        await self.manager.redis_manager.update_progress("previous", self.previously_completed_files)
 
     async def add_skipped(self) -> None:
         """Adds a skipped file to the progress bar"""
         self.progress.advance(self.skipped_files_task_id, 1)
         self.skipped_files += 1
+        await self.manager.redis_manager.update_progress("skipped",self.skipped_files)
 
     async def add_failed(self) -> None:
         """Adds a failed file to the progress bar"""
         self.progress.advance(self.failed_files_task_id, 1)
         self.failed_files += 1
+        await self.manager.redis_manager.update_progress("failed", self.failed_files)
+
+

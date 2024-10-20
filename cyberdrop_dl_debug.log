@@ -1,0 +1,1130 @@
+INFO     : 2024-10-18 16:20:49,197 : utilities.py:112 : Starting Async Processes...
+DEBUG    : 2024-10-18 16:20:59,254 : utilities.py:112 : Starting Cyberdrop-DL Process for Default Config
+DEBUG    : 2024-10-18 16:20:59,256 : utilities.py:112 : Running version 5.6.11
+DEBUG    : 2024-10-18 16:20:59,257 : utilities.py:112 : Using Config: Default
+DEBUG    : 2024-10-18 16:20:59,258 : utilities.py:112 : Using Config File: ../AppData/Configs/Default/settings.yaml
+DEBUG    : 2024-10-18 16:20:59,260 : utilities.py:112 : Using Input File: /Users/croy/URLs.txt
+DEBUG    : 2024-10-18 16:20:59,261 : utilities.py:112 : Using Download Folder: /Users/croy/Downloads
+DEBUG    : 2024-10-18 16:20:59,262 : utilities.py:112 : Using History File: ../AppData/Cache/cyberdrop.db
+DEBUG    : 2024-10-18 16:20:59,268 : utilities.py:112 : Using Authentication: 
+{
+    "Forums Credentials": {
+        "celebforum Credentials Provided": true,
+        "f95zone Credentials Provided": false,
+        "leakedmodels Credentials Provided": true,
+        "nudostar Credentials Provided": true,
+        "simpcity Credentials Provided": true,
+        "socialmediagirls Credentials Provided": true,
+        "xbunker Credentials Provided": true
+    },
+    "Forums XF Cookies": {
+        "celebforum XF Cookie Provided": true,
+        "f95zone XF Cookie Provided": false,
+        "leakedmodels XF Cookie Provided": false,
+        "nudostar XF Cookie Provided": true,
+        "simpcity XF Cookie Provided": true,
+        "socialmediagirls XF Cookie Provided": true,
+        "xbunker XF Cookie Provided": true
+    },
+    "GoFile Provided": false,
+    "Imgur Provided": false,
+    "JDownloader Provided": true,
+    "PixelDrain Provided": false,
+    "Reddit Provided": true
+}
+DEBUG    : 2024-10-18 16:20:59,273 : utilities.py:112 : Using Settings: 
+{
+    "Download_Options": {
+        "block_download_sub_folders": false,
+        "disable_download_attempt_limit": false,
+        "disable_file_timestamps": false,
+        "include_album_id_in_folder_name": false,
+        "include_thread_id_in_folder_name": false,
+        "remove_domains_from_folder_names": false,
+        "remove_generated_id_from_filenames": false,
+        "scrape_id": 1185,
+        "scrape_single_forum_post": false,
+        "separate_posts": false,
+        "skip_download_mark_completed": false
+    },
+    "File_Size_Limits": {
+        "maximum_image_size": 0,
+        "maximum_other_size": 0,
+        "maximum_video_size": 0,
+        "minimum_image_size": 0,
+        "minimum_other_size": 0,
+        "minimum_video_size": 0
+    },
+    "Files": {
+        "download_folder": "/Users/croy/Downloads",
+        "input_file": "/Users/croy/URLs.txt"
+    },
+    "Ignore_Options": {
+        "exclude_audio": true,
+        "exclude_images": false,
+        "exclude_other": false,
+        "exclude_videos": false,
+        "ignore_coomer_ads": false,
+        "only_hosts": [],
+        "skip_hosts": [
+            "coomer"
+        ]
+    },
+    "Logs": {
+        "download_error_urls_filename": "Download_Error_URLs.csv",
+        "last_forum_post_filename": "Last_Scraped_Forum_Posts.txt",
+        "log_folder": "AppData/Configs/Default/Logs",
+        "main_log_filename": "downloader.log",
+        "scrape_error_urls_filename": "Scrape_Error_URLs.csv",
+        "unsupported_urls_filename": "Unsupported_URLs.txt",
+        "webhook_url": ""
+    },
+    "Runtime_Options": {
+        "console_log_level": 100,
+        "delete_partial_files": false,
+        "ignore_history": false,
+        "log_level": 10,
+        "send_unsupported_to_jdownloader": true,
+        "skip_check_for_empty_folders": false,
+        "skip_check_for_partial_files": false,
+        "update_last_forum_post": false
+    },
+    "Sorting": {
+        "scan_folder": "None",
+        "sort_cdl_only": true,
+        "sort_downloads": false,
+        "sort_folder": "Downloads/Cyberdrop-DL Sorted Downloads",
+        "sort_incremementer_format": " ({i})",
+        "sorted_audio": "{sort_dir}/{base_dir}/Audio/{filename}{ext}",
+        "sorted_image": "{sort_dir}/{base_dir}/Images/{filename}{ext}",
+        "sorted_other": "{sort_dir}/{base_dir}/Other/{filename}{ext}",
+        "sorted_video": "{sort_dir}/{base_dir}/Videos/{filename}{ext}"
+    }
+}
+DEBUG    : 2024-10-18 16:20:59,276 : utilities.py:112 : Using Global Settings: 
+{
+    "Dupe_Cleanup_Options": {
+        "dedupe_already_downloaded": false,
+        "delete_after_download": false,
+        "delete_off_disk": false,
+        "hash_while_downloading": false,
+        "keep_new_download": true,
+        "keep_prev_download": false
+    },
+    "General": {
+        "allow_insecure_connections": false,
+        "flaresolverr": "127.0.0.1:8191",
+        "max_file_name_length": 95,
+        "max_folder_name_length": 60,
+        "proxy": "",
+        "required_free_space": 5,
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0"
+    },
+    "Rate_Limiting_Options": {
+        "connection_timeout": 15,
+        "download_attempts": 10,
+        "download_delay": 0,
+        "download_speed_limit": 0,
+        "max_simultaneous_downloads": 15,
+        "max_simultaneous_downloads_per_domain": 5,
+        "rate_limit": 50,
+        "read_timeout": 300
+    },
+    "UI_Options": {
+        "downloading_item_limit": 5,
+        "refresh_rate": 10,
+        "scraping_item_limit": 5,
+        "vi_mode": false
+    }
+}
+DEBUG    : 2024-10-18 16:20:59,308 : utilities.py:112 : Adding scrape 1185 to active scrapes
+INFO     : 2024-10-18 16:20:59,324 : utilities.py:112 : Starting UI...
+INFO     : 2024-10-18 16:21:01,630 : utilities.py:112 : Scrape Starting: https://celebforum.to/threads/getwilder.94785
+DEBUG    : 2024-10-18 16:21:01,633 : utilities.py:112 : Starting scrape GET request to https://celebforum.to/login
+DEBUG    : 2024-10-18 16:21:02,910 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to/login
+DEBUG    : 2024-10-18 16:21:02,911 : utilities.py:112 : Response status for https://celebforum.to/login: 200
+DEBUG    : 2024-10-18 16:21:07,962 : utilities.py:112 : Starting scrape POST request to https://celebforum.to/login/login
+DEBUG    : 2024-10-18 16:21:10,162 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to
+DEBUG    : 2024-10-18 16:21:10,164 : utilities.py:112 : Response status for https://celebforum.to: 200
+DEBUG    : 2024-10-18 16:21:15,168 : utilities.py:112 : Starting scrape GET request to https://celebforum.to/login
+DEBUG    : 2024-10-18 16:21:16,289 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to/login
+DEBUG    : 2024-10-18 16:21:16,290 : utilities.py:112 : Response status for https://celebforum.to/login: 200
+DEBUG    : 2024-10-18 16:21:16,294 : utilities.py:112 : Starting scrape GET request to https://celebforum.to/threads/getwilder.94785
+DEBUG    : 2024-10-18 16:21:18,371 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to/threads/getwilder.94785/
+DEBUG    : 2024-10-18 16:21:18,373 : utilities.py:112 : Response status for https://celebforum.to/threads/getwilder.94785/: 200
+INFO     : 2024-10-18 16:21:18,793 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vob7hsnhgx-jpg.3120280
+ERROR    : 2024-10-18 16:21:18,794 : utilities.py:122 : Checking lock for vob7hsnhgx.jpg
+ERROR    : 2024-10-18 16:21:18,794 : utilities.py:122 : Lock for vob7hsnhgx.jpg does not exist
+ERROR    : 2024-10-18 16:21:18,794 : utilities.py:122 : Lock for vob7hsnhgx.jpg acquired
+INFO     : 2024-10-18 16:21:18,798 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/unl2tpo1q9-jpg.3120294
+ERROR    : 2024-10-18 16:21:18,798 : utilities.py:122 : Checking lock for unl2tpo1q9.jpg
+ERROR    : 2024-10-18 16:21:18,799 : utilities.py:122 : Lock for unl2tpo1q9.jpg does not exist
+ERROR    : 2024-10-18 16:21:18,799 : utilities.py:122 : Lock for unl2tpo1q9.jpg acquired
+INFO     : 2024-10-18 16:21:18,802 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/kla91mshbt-jpg.3120295
+ERROR    : 2024-10-18 16:21:18,802 : utilities.py:122 : Checking lock for kla91mshbt.jpg
+ERROR    : 2024-10-18 16:21:18,802 : utilities.py:122 : Lock for kla91mshbt.jpg does not exist
+ERROR    : 2024-10-18 16:21:18,802 : utilities.py:122 : Lock for kla91mshbt.jpg acquired
+INFO     : 2024-10-18 16:21:18,812 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296
+ERROR    : 2024-10-18 16:21:18,812 : utilities.py:122 : Checking lock for gvsrvjrwzh.jpg
+ERROR    : 2024-10-18 16:21:18,812 : utilities.py:122 : Lock for gvsrvjrwzh.jpg does not exist
+ERROR    : 2024-10-18 16:21:18,812 : utilities.py:122 : Lock for gvsrvjrwzh.jpg acquired
+DEBUG    : 2024-10-18 16:21:18,815 : utilities.py:112 : Skipping https://celebforum.to/attachments/synj7i86cs-jpg.3120300 as it has already been downloaded
+DEBUG    : 2024-10-18 16:21:18,820 : utilities.py:112 : Skipping https://celebforum.to/attachments/95v0zb09mv-jpg.3120301 as it has already been downloaded
+INFO     : 2024-10-18 16:21:18,831 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/plpftpti9f-jpg.3120302
+ERROR    : 2024-10-18 16:21:18,831 : utilities.py:122 : Checking lock for plpftpti9f.jpg
+ERROR    : 2024-10-18 16:21:18,831 : utilities.py:122 : Lock for plpftpti9f.jpg does not exist
+ERROR    : 2024-10-18 16:21:18,831 : utilities.py:122 : Lock for plpftpti9f.jpg acquired
+ERROR    : 2024-10-18 16:21:18,924 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vob7hsnhgx-jpg.3120280
+ERROR    : 2024-10-18 16:21:18,927 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/unl2tpo1q9-jpg.3120294
+ERROR    : 2024-10-18 16:21:18,930 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/kla91mshbt-jpg.3120295
+ERROR    : 2024-10-18 16:21:18,933 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296
+ERROR    : 2024-10-18 16:21:18,948 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/plpftpti9f-jpg.3120302
+DEBUG    : 2024-10-18 16:21:18,973 : utilities.py:112 : Starting scrape GET request to https://celebforum.to/threads/getwilder.94785/page-2
+ERROR    : 2024-10-18 16:21:19,567 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/kla91mshbt-jpg.3120295/
+ERROR    : 2024-10-18 16:21:19,568 : utilities.py:112 : Response status for https://celebforum.to/attachments/kla91mshbt-jpg.3120295/: 200
+ERROR    : 2024-10-18 16:21:19,572 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/unl2tpo1q9-jpg.3120294/
+ERROR    : 2024-10-18 16:21:19,573 : utilities.py:112 : Response status for https://celebforum.to/attachments/unl2tpo1q9-jpg.3120294/: 200
+ERROR    : 2024-10-18 16:21:19,806 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vob7hsnhgx-jpg.3120280/
+ERROR    : 2024-10-18 16:21:19,807 : utilities.py:112 : Response status for https://celebforum.to/attachments/vob7hsnhgx-jpg.3120280/: 200
+ERROR    : 2024-10-18 16:21:19,811 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/plpftpti9f-jpg.3120302/
+ERROR    : 2024-10-18 16:21:19,812 : utilities.py:112 : Response status for https://celebforum.to/attachments/plpftpti9f-jpg.3120302/: 200
+ERROR    : 2024-10-18 16:21:19,853 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296/
+ERROR    : 2024-10-18 16:21:19,855 : utilities.py:112 : Response status for https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296/: 200
+DEBUG    : 2024-10-18 16:21:20,967 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to/threads/getwilder.94785/page-2
+DEBUG    : 2024-10-18 16:21:20,969 : utilities.py:112 : Response status for https://celebforum.to/threads/getwilder.94785/page-2: 200
+INFO     : 2024-10-18 16:21:26,681 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/plpftpti9f-jpg.3120302
+ERROR    : 2024-10-18 16:21:26,681 : utilities.py:122 : Releasing lock for plpftpti9f.jpg
+ERROR    : 2024-10-18 16:21:26,681 : utilities.py:122 : Lock for plpftpti9f.jpg released
+INFO     : 2024-10-18 16:21:26,684 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303
+ERROR    : 2024-10-18 16:21:26,684 : utilities.py:122 : Checking lock for 6cpujrg1cr.jpg
+ERROR    : 2024-10-18 16:21:26,684 : utilities.py:122 : Lock for 6cpujrg1cr.jpg does not exist
+ERROR    : 2024-10-18 16:21:26,684 : utilities.py:122 : Lock for 6cpujrg1cr.jpg acquired
+INFO     : 2024-10-18 16:21:28,037 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vob7hsnhgx-jpg.3120280
+ERROR    : 2024-10-18 16:21:28,037 : utilities.py:122 : Releasing lock for vob7hsnhgx.jpg
+ERROR    : 2024-10-18 16:21:28,038 : utilities.py:122 : Lock for vob7hsnhgx.jpg released
+ERROR    : 2024-10-18 16:21:28,039 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303
+INFO     : 2024-10-18 16:21:28,042 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/8qywzyamry-jpg.3120304
+ERROR    : 2024-10-18 16:21:28,042 : utilities.py:122 : Checking lock for 8qywzyamry.jpg
+ERROR    : 2024-10-18 16:21:28,042 : utilities.py:122 : Lock for 8qywzyamry.jpg does not exist
+ERROR    : 2024-10-18 16:21:28,042 : utilities.py:122 : Lock for 8qywzyamry.jpg acquired
+ERROR    : 2024-10-18 16:21:28,160 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/8qywzyamry-jpg.3120304
+DEBUG    : 2024-10-18 16:21:28,225 : utilities.py:112 : Starting scrape GET request to https://celebforum.to/threads/getwilder.94785/page-3
+ERROR    : 2024-10-18 16:21:50,680 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303/
+ERROR    : 2024-10-18 16:21:50,682 : utilities.py:112 : Response status for https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303/: 200
+ERROR    : 2024-10-18 16:21:50,684 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/8qywzyamry-jpg.3120304/
+ERROR    : 2024-10-18 16:21:50,685 : utilities.py:112 : Response status for https://celebforum.to/attachments/8qywzyamry-jpg.3120304/: 200
+DEBUG    : 2024-10-18 16:21:50,688 : utilities.py:112 : Finishing scrape GET request to https://celebforum.to/threads/getwilder.94785/page-3
+DEBUG    : 2024-10-18 16:21:50,689 : utilities.py:112 : Response status for https://celebforum.to/threads/getwilder.94785/page-3: 200
+INFO     : 2024-10-18 16:21:50,901 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/kla91mshbt-jpg.3120295
+ERROR    : 2024-10-18 16:21:50,901 : utilities.py:122 : Releasing lock for kla91mshbt.jpg
+ERROR    : 2024-10-18 16:21:50,901 : utilities.py:122 : Lock for kla91mshbt.jpg released
+INFO     : 2024-10-18 16:21:50,905 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/lpzw6lmhqz-jpg.3120962
+ERROR    : 2024-10-18 16:21:50,905 : utilities.py:122 : Checking lock for lpzw6lmhqz.jpg
+ERROR    : 2024-10-18 16:21:50,905 : utilities.py:122 : Lock for lpzw6lmhqz.jpg does not exist
+ERROR    : 2024-10-18 16:21:50,906 : utilities.py:122 : Lock for lpzw6lmhqz.jpg acquired
+INFO     : 2024-10-18 16:21:50,935 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/unl2tpo1q9-jpg.3120294
+ERROR    : 2024-10-18 16:21:50,935 : utilities.py:122 : Releasing lock for unl2tpo1q9.jpg
+ERROR    : 2024-10-18 16:21:50,935 : utilities.py:122 : Lock for unl2tpo1q9.jpg released
+INFO     : 2024-10-18 16:21:50,937 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qzxvzmfhg5-jpg.3120963
+ERROR    : 2024-10-18 16:21:50,937 : utilities.py:122 : Checking lock for qzxvzmfhg5.jpg
+ERROR    : 2024-10-18 16:21:50,937 : utilities.py:122 : Lock for qzxvzmfhg5.jpg does not exist
+ERROR    : 2024-10-18 16:21:50,937 : utilities.py:122 : Lock for qzxvzmfhg5.jpg acquired
+INFO     : 2024-10-18 16:21:51,001 : utilities.py:112 : Scrape Finished: https://celebforum.to/threads/getwilder.94785
+ERROR    : 2024-10-18 16:21:51,011 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/lpzw6lmhqz-jpg.3120962
+ERROR    : 2024-10-18 16:21:51,046 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qzxvzmfhg5-jpg.3120963
+ERROR    : 2024-10-18 16:21:51,538 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qzxvzmfhg5-jpg.3120963/
+ERROR    : 2024-10-18 16:21:51,539 : utilities.py:112 : Response status for https://celebforum.to/attachments/qzxvzmfhg5-jpg.3120963/: 200
+ERROR    : 2024-10-18 16:21:51,569 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/lpzw6lmhqz-jpg.3120962/
+ERROR    : 2024-10-18 16:21:51,570 : utilities.py:112 : Response status for https://celebforum.to/attachments/lpzw6lmhqz-jpg.3120962/: 200
+INFO     : 2024-10-18 16:21:51,845 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qzxvzmfhg5-jpg.3120963
+ERROR    : 2024-10-18 16:21:51,845 : utilities.py:122 : Releasing lock for qzxvzmfhg5.jpg
+ERROR    : 2024-10-18 16:21:51,845 : utilities.py:122 : Lock for qzxvzmfhg5.jpg released
+INFO     : 2024-10-18 16:21:51,847 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/tstgbfxei5-jpg.3120964
+ERROR    : 2024-10-18 16:21:51,847 : utilities.py:122 : Checking lock for tstgbfxei5.jpg
+ERROR    : 2024-10-18 16:21:51,847 : utilities.py:122 : Lock for tstgbfxei5.jpg does not exist
+ERROR    : 2024-10-18 16:21:51,847 : utilities.py:122 : Lock for tstgbfxei5.jpg acquired
+INFO     : 2024-10-18 16:21:51,886 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/lpzw6lmhqz-jpg.3120962
+ERROR    : 2024-10-18 16:21:51,886 : utilities.py:122 : Releasing lock for lpzw6lmhqz.jpg
+ERROR    : 2024-10-18 16:21:51,886 : utilities.py:122 : Lock for lpzw6lmhqz.jpg released
+INFO     : 2024-10-18 16:21:51,888 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vbfwr1gxop-jpg.3120965
+ERROR    : 2024-10-18 16:21:51,888 : utilities.py:122 : Checking lock for vbfwr1gxop.jpg
+ERROR    : 2024-10-18 16:21:51,888 : utilities.py:122 : Lock for vbfwr1gxop.jpg does not exist
+ERROR    : 2024-10-18 16:21:51,888 : utilities.py:122 : Lock for vbfwr1gxop.jpg acquired
+ERROR    : 2024-10-18 16:21:51,952 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/tstgbfxei5-jpg.3120964
+ERROR    : 2024-10-18 16:21:51,994 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vbfwr1gxop-jpg.3120965
+ERROR    : 2024-10-18 16:21:52,571 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/tstgbfxei5-jpg.3120964/
+ERROR    : 2024-10-18 16:21:52,572 : utilities.py:112 : Response status for https://celebforum.to/attachments/tstgbfxei5-jpg.3120964/: 200
+INFO     : 2024-10-18 16:21:52,758 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/tstgbfxei5-jpg.3120964
+ERROR    : 2024-10-18 16:21:52,758 : utilities.py:122 : Releasing lock for tstgbfxei5.jpg
+ERROR    : 2024-10-18 16:21:52,758 : utilities.py:122 : Lock for tstgbfxei5.jpg released
+INFO     : 2024-10-18 16:21:52,759 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/ij9dwvs05s-jpg.3120969
+ERROR    : 2024-10-18 16:21:52,760 : utilities.py:122 : Checking lock for ij9dwvs05s.jpg
+ERROR    : 2024-10-18 16:21:52,760 : utilities.py:122 : Lock for ij9dwvs05s.jpg does not exist
+ERROR    : 2024-10-18 16:21:52,760 : utilities.py:122 : Lock for ij9dwvs05s.jpg acquired
+ERROR    : 2024-10-18 16:21:52,826 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vbfwr1gxop-jpg.3120965/
+ERROR    : 2024-10-18 16:21:52,828 : utilities.py:112 : Response status for https://celebforum.to/attachments/vbfwr1gxop-jpg.3120965/: 200
+ERROR    : 2024-10-18 16:21:52,864 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/ij9dwvs05s-jpg.3120969
+INFO     : 2024-10-18 16:21:53,153 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vbfwr1gxop-jpg.3120965
+ERROR    : 2024-10-18 16:21:53,154 : utilities.py:122 : Releasing lock for vbfwr1gxop.jpg
+ERROR    : 2024-10-18 16:21:53,154 : utilities.py:122 : Lock for vbfwr1gxop.jpg released
+INFO     : 2024-10-18 16:21:53,156 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/wmwdizaamt-jpg.3120970
+ERROR    : 2024-10-18 16:21:53,156 : utilities.py:122 : Checking lock for wmwdizaamt.jpg
+ERROR    : 2024-10-18 16:21:53,156 : utilities.py:122 : Lock for wmwdizaamt.jpg does not exist
+ERROR    : 2024-10-18 16:21:53,156 : utilities.py:122 : Lock for wmwdizaamt.jpg acquired
+ERROR    : 2024-10-18 16:21:53,261 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/wmwdizaamt-jpg.3120970
+ERROR    : 2024-10-18 16:21:53,641 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/ij9dwvs05s-jpg.3120969/
+ERROR    : 2024-10-18 16:21:53,643 : utilities.py:112 : Response status for https://celebforum.to/attachments/ij9dwvs05s-jpg.3120969/: 200
+INFO     : 2024-10-18 16:21:53,937 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/ij9dwvs05s-jpg.3120969
+ERROR    : 2024-10-18 16:21:53,937 : utilities.py:122 : Releasing lock for ij9dwvs05s.jpg
+ERROR    : 2024-10-18 16:21:53,937 : utilities.py:122 : Lock for ij9dwvs05s.jpg released
+INFO     : 2024-10-18 16:21:53,951 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/mgqbdgkh81-jpg.3120971
+ERROR    : 2024-10-18 16:21:53,953 : utilities.py:122 : Checking lock for mgqbdgkh81.jpg
+ERROR    : 2024-10-18 16:21:53,954 : utilities.py:122 : Lock for mgqbdgkh81.jpg does not exist
+ERROR    : 2024-10-18 16:21:53,954 : utilities.py:122 : Lock for mgqbdgkh81.jpg acquired
+ERROR    : 2024-10-18 16:21:54,060 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/mgqbdgkh81-jpg.3120971
+ERROR    : 2024-10-18 16:21:54,125 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/wmwdizaamt-jpg.3120970/
+ERROR    : 2024-10-18 16:21:54,127 : utilities.py:112 : Response status for https://celebforum.to/attachments/wmwdizaamt-jpg.3120970/: 200
+INFO     : 2024-10-18 16:21:54,409 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/wmwdizaamt-jpg.3120970
+ERROR    : 2024-10-18 16:21:54,409 : utilities.py:122 : Releasing lock for wmwdizaamt.jpg
+ERROR    : 2024-10-18 16:21:54,410 : utilities.py:122 : Lock for wmwdizaamt.jpg released
+INFO     : 2024-10-18 16:21:54,411 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/3twwaewmuo-jpg.3120972
+ERROR    : 2024-10-18 16:21:54,411 : utilities.py:122 : Checking lock for 3twwaewmuo.jpg
+ERROR    : 2024-10-18 16:21:54,411 : utilities.py:122 : Lock for 3twwaewmuo.jpg does not exist
+ERROR    : 2024-10-18 16:21:54,412 : utilities.py:122 : Lock for 3twwaewmuo.jpg acquired
+ERROR    : 2024-10-18 16:21:54,517 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/3twwaewmuo-jpg.3120972
+ERROR    : 2024-10-18 16:21:54,882 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/mgqbdgkh81-jpg.3120971/
+ERROR    : 2024-10-18 16:21:54,884 : utilities.py:112 : Response status for https://celebforum.to/attachments/mgqbdgkh81-jpg.3120971/: 200
+ERROR    : 2024-10-18 16:21:54,955 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/3twwaewmuo-jpg.3120972/
+ERROR    : 2024-10-18 16:21:54,956 : utilities.py:112 : Response status for https://celebforum.to/attachments/3twwaewmuo-jpg.3120972/: 200
+INFO     : 2024-10-18 16:21:55,180 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/mgqbdgkh81-jpg.3120971
+ERROR    : 2024-10-18 16:21:55,180 : utilities.py:122 : Releasing lock for mgqbdgkh81.jpg
+ERROR    : 2024-10-18 16:21:55,181 : utilities.py:122 : Lock for mgqbdgkh81.jpg released
+INFO     : 2024-10-18 16:21:55,182 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/2ec3zicqab-jpg.3120973
+ERROR    : 2024-10-18 16:21:55,182 : utilities.py:122 : Checking lock for 2ec3zicqab.jpg
+ERROR    : 2024-10-18 16:21:55,182 : utilities.py:122 : Lock for 2ec3zicqab.jpg does not exist
+ERROR    : 2024-10-18 16:21:55,182 : utilities.py:122 : Lock for 2ec3zicqab.jpg acquired
+INFO     : 2024-10-18 16:21:55,269 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/3twwaewmuo-jpg.3120972
+ERROR    : 2024-10-18 16:21:55,269 : utilities.py:122 : Releasing lock for 3twwaewmuo.jpg
+ERROR    : 2024-10-18 16:21:55,269 : utilities.py:122 : Lock for 3twwaewmuo.jpg released
+INFO     : 2024-10-18 16:21:55,271 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/khhbcolbcd-jpg.3120974
+ERROR    : 2024-10-18 16:21:55,271 : utilities.py:122 : Checking lock for khhbcolbcd.jpg
+ERROR    : 2024-10-18 16:21:55,271 : utilities.py:122 : Lock for khhbcolbcd.jpg does not exist
+ERROR    : 2024-10-18 16:21:55,271 : utilities.py:122 : Lock for khhbcolbcd.jpg acquired
+ERROR    : 2024-10-18 16:21:55,286 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/2ec3zicqab-jpg.3120973
+ERROR    : 2024-10-18 16:21:55,376 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/khhbcolbcd-jpg.3120974
+ERROR    : 2024-10-18 16:21:56,166 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/khhbcolbcd-jpg.3120974/
+ERROR    : 2024-10-18 16:21:56,168 : utilities.py:112 : Response status for https://celebforum.to/attachments/khhbcolbcd-jpg.3120974/: 200
+ERROR    : 2024-10-18 16:21:56,244 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/2ec3zicqab-jpg.3120973/
+ERROR    : 2024-10-18 16:21:56,245 : utilities.py:112 : Response status for https://celebforum.to/attachments/2ec3zicqab-jpg.3120973/: 200
+INFO     : 2024-10-18 16:21:56,545 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/2ec3zicqab-jpg.3120973
+ERROR    : 2024-10-18 16:21:56,545 : utilities.py:122 : Releasing lock for 2ec3zicqab.jpg
+ERROR    : 2024-10-18 16:21:56,545 : utilities.py:122 : Lock for 2ec3zicqab.jpg released
+INFO     : 2024-10-18 16:21:56,547 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qi9ovmnacj-jpg.3120975
+ERROR    : 2024-10-18 16:21:56,547 : utilities.py:122 : Checking lock for qi9ovmnacj.jpg
+ERROR    : 2024-10-18 16:21:56,547 : utilities.py:122 : Lock for qi9ovmnacj.jpg does not exist
+ERROR    : 2024-10-18 16:21:56,547 : utilities.py:122 : Lock for qi9ovmnacj.jpg acquired
+INFO     : 2024-10-18 16:21:56,554 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/khhbcolbcd-jpg.3120974
+ERROR    : 2024-10-18 16:21:56,554 : utilities.py:122 : Releasing lock for khhbcolbcd.jpg
+ERROR    : 2024-10-18 16:21:56,555 : utilities.py:122 : Lock for khhbcolbcd.jpg released
+INFO     : 2024-10-18 16:21:56,556 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/xrf5cbbp9r-jpg.3120976
+ERROR    : 2024-10-18 16:21:56,557 : utilities.py:122 : Checking lock for xrf5cbbp9r.jpg
+ERROR    : 2024-10-18 16:21:56,557 : utilities.py:122 : Lock for xrf5cbbp9r.jpg does not exist
+ERROR    : 2024-10-18 16:21:56,557 : utilities.py:122 : Lock for xrf5cbbp9r.jpg acquired
+ERROR    : 2024-10-18 16:21:56,651 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qi9ovmnacj-jpg.3120975
+ERROR    : 2024-10-18 16:21:56,661 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/xrf5cbbp9r-jpg.3120976
+ERROR    : 2024-10-18 16:21:57,489 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qi9ovmnacj-jpg.3120975/
+ERROR    : 2024-10-18 16:21:57,491 : utilities.py:112 : Response status for https://celebforum.to/attachments/qi9ovmnacj-jpg.3120975/: 200
+ERROR    : 2024-10-18 16:21:57,507 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/xrf5cbbp9r-jpg.3120976/
+ERROR    : 2024-10-18 16:21:57,508 : utilities.py:112 : Response status for https://celebforum.to/attachments/xrf5cbbp9r-jpg.3120976/: 200
+INFO     : 2024-10-18 16:21:57,801 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qi9ovmnacj-jpg.3120975
+ERROR    : 2024-10-18 16:21:57,801 : utilities.py:122 : Releasing lock for qi9ovmnacj.jpg
+ERROR    : 2024-10-18 16:21:57,801 : utilities.py:122 : Lock for qi9ovmnacj.jpg released
+INFO     : 2024-10-18 16:21:57,803 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qlkplrizvq-jpg.3124117
+ERROR    : 2024-10-18 16:21:57,803 : utilities.py:122 : Checking lock for qlkplrizvq.jpg
+ERROR    : 2024-10-18 16:21:57,803 : utilities.py:122 : Lock for qlkplrizvq.jpg does not exist
+ERROR    : 2024-10-18 16:21:57,803 : utilities.py:122 : Lock for qlkplrizvq.jpg acquired
+INFO     : 2024-10-18 16:21:57,812 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/xrf5cbbp9r-jpg.3120976
+ERROR    : 2024-10-18 16:21:57,812 : utilities.py:122 : Releasing lock for xrf5cbbp9r.jpg
+ERROR    : 2024-10-18 16:21:57,812 : utilities.py:122 : Lock for xrf5cbbp9r.jpg released
+INFO     : 2024-10-18 16:21:57,814 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/h8ggepvlwk-jpg.3124118
+ERROR    : 2024-10-18 16:21:57,814 : utilities.py:122 : Checking lock for h8ggepvlwk.jpg
+ERROR    : 2024-10-18 16:21:57,814 : utilities.py:122 : Lock for h8ggepvlwk.jpg does not exist
+ERROR    : 2024-10-18 16:21:57,814 : utilities.py:122 : Lock for h8ggepvlwk.jpg acquired
+ERROR    : 2024-10-18 16:21:57,909 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qlkplrizvq-jpg.3124117
+ERROR    : 2024-10-18 16:21:57,918 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/h8ggepvlwk-jpg.3124118
+ERROR    : 2024-10-18 16:21:58,619 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/h8ggepvlwk-jpg.3124118/
+ERROR    : 2024-10-18 16:21:58,621 : utilities.py:112 : Response status for https://celebforum.to/attachments/h8ggepvlwk-jpg.3124118/: 200
+ERROR    : 2024-10-18 16:21:58,861 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qlkplrizvq-jpg.3124117/
+ERROR    : 2024-10-18 16:21:58,863 : utilities.py:112 : Response status for https://celebforum.to/attachments/qlkplrizvq-jpg.3124117/: 200
+INFO     : 2024-10-18 16:21:59,097 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qlkplrizvq-jpg.3124117
+ERROR    : 2024-10-18 16:21:59,097 : utilities.py:122 : Releasing lock for qlkplrizvq.jpg
+ERROR    : 2024-10-18 16:21:59,098 : utilities.py:122 : Lock for qlkplrizvq.jpg released
+INFO     : 2024-10-18 16:21:59,099 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/dgyoezlvup-jpg.3124120
+ERROR    : 2024-10-18 16:21:59,099 : utilities.py:122 : Checking lock for dgyoezlvup.jpg
+ERROR    : 2024-10-18 16:21:59,099 : utilities.py:122 : Lock for dgyoezlvup.jpg does not exist
+ERROR    : 2024-10-18 16:21:59,099 : utilities.py:122 : Lock for dgyoezlvup.jpg acquired
+ERROR    : 2024-10-18 16:21:59,203 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/dgyoezlvup-jpg.3124120
+INFO     : 2024-10-18 16:21:59,222 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/h8ggepvlwk-jpg.3124118
+ERROR    : 2024-10-18 16:21:59,222 : utilities.py:122 : Releasing lock for h8ggepvlwk.jpg
+ERROR    : 2024-10-18 16:21:59,223 : utilities.py:122 : Lock for h8ggepvlwk.jpg released
+INFO     : 2024-10-18 16:21:59,224 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/elnjpzsc7n-jpg.3124121
+ERROR    : 2024-10-18 16:21:59,224 : utilities.py:122 : Checking lock for elnjpzsc7n.jpg
+ERROR    : 2024-10-18 16:21:59,224 : utilities.py:122 : Lock for elnjpzsc7n.jpg does not exist
+ERROR    : 2024-10-18 16:21:59,225 : utilities.py:122 : Lock for elnjpzsc7n.jpg acquired
+ERROR    : 2024-10-18 16:21:59,331 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/elnjpzsc7n-jpg.3124121
+ERROR    : 2024-10-18 16:21:59,877 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/elnjpzsc7n-jpg.3124121/
+ERROR    : 2024-10-18 16:21:59,879 : utilities.py:112 : Response status for https://celebforum.to/attachments/elnjpzsc7n-jpg.3124121/: 200
+ERROR    : 2024-10-18 16:22:00,076 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/dgyoezlvup-jpg.3124120/
+ERROR    : 2024-10-18 16:22:00,078 : utilities.py:112 : Response status for https://celebforum.to/attachments/dgyoezlvup-jpg.3124120/: 200
+INFO     : 2024-10-18 16:22:00,979 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/elnjpzsc7n-jpg.3124121
+ERROR    : 2024-10-18 16:22:00,979 : utilities.py:122 : Releasing lock for elnjpzsc7n.jpg
+ERROR    : 2024-10-18 16:22:00,979 : utilities.py:122 : Lock for elnjpzsc7n.jpg released
+INFO     : 2024-10-18 16:22:00,981 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/skxwmdgatm-jpg.3124123
+ERROR    : 2024-10-18 16:22:00,981 : utilities.py:122 : Checking lock for skxwmdgatm.jpg
+ERROR    : 2024-10-18 16:22:00,981 : utilities.py:122 : Lock for skxwmdgatm.jpg does not exist
+ERROR    : 2024-10-18 16:22:00,981 : utilities.py:122 : Lock for skxwmdgatm.jpg acquired
+INFO     : 2024-10-18 16:22:01,035 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/dgyoezlvup-jpg.3124120
+ERROR    : 2024-10-18 16:22:01,035 : utilities.py:122 : Releasing lock for dgyoezlvup.jpg
+ERROR    : 2024-10-18 16:22:01,035 : utilities.py:122 : Lock for dgyoezlvup.jpg released
+INFO     : 2024-10-18 16:22:01,036 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vmuri6leww-jpg.3132504
+ERROR    : 2024-10-18 16:22:01,037 : utilities.py:122 : Checking lock for vmuri6leww.jpg
+ERROR    : 2024-10-18 16:22:01,037 : utilities.py:122 : Lock for vmuri6leww.jpg does not exist
+ERROR    : 2024-10-18 16:22:01,037 : utilities.py:122 : Lock for vmuri6leww.jpg acquired
+ERROR    : 2024-10-18 16:22:01,085 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/skxwmdgatm-jpg.3124123
+ERROR    : 2024-10-18 16:22:01,141 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vmuri6leww-jpg.3132504
+ERROR    : 2024-10-18 16:22:01,541 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/skxwmdgatm-jpg.3124123/
+ERROR    : 2024-10-18 16:22:01,543 : utilities.py:112 : Response status for https://celebforum.to/attachments/skxwmdgatm-jpg.3124123/: 200
+ERROR    : 2024-10-18 16:22:01,647 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vmuri6leww-jpg.3132504/
+ERROR    : 2024-10-18 16:22:01,649 : utilities.py:112 : Response status for https://celebforum.to/attachments/vmuri6leww-jpg.3132504/: 200
+INFO     : 2024-10-18 16:22:02,336 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/skxwmdgatm-jpg.3124123
+ERROR    : 2024-10-18 16:22:02,337 : utilities.py:122 : Releasing lock for skxwmdgatm.jpg
+ERROR    : 2024-10-18 16:22:02,337 : utilities.py:122 : Lock for skxwmdgatm.jpg released
+INFO     : 2024-10-18 16:22:02,338 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/xj6lehxebs-jpg.3132505
+ERROR    : 2024-10-18 16:22:02,339 : utilities.py:122 : Checking lock for xj6lehxebs.jpg
+ERROR    : 2024-10-18 16:22:02,339 : utilities.py:122 : Lock for xj6lehxebs.jpg does not exist
+ERROR    : 2024-10-18 16:22:02,339 : utilities.py:122 : Lock for xj6lehxebs.jpg acquired
+INFO     : 2024-10-18 16:22:02,417 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vmuri6leww-jpg.3132504
+ERROR    : 2024-10-18 16:22:02,418 : utilities.py:122 : Releasing lock for vmuri6leww.jpg
+ERROR    : 2024-10-18 16:22:02,418 : utilities.py:122 : Lock for vmuri6leww.jpg released
+INFO     : 2024-10-18 16:22:02,419 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/1jmu5bp2ix-jpg.3132506
+ERROR    : 2024-10-18 16:22:02,419 : utilities.py:122 : Checking lock for 1jmu5bp2ix.jpg
+ERROR    : 2024-10-18 16:22:02,419 : utilities.py:122 : Lock for 1jmu5bp2ix.jpg does not exist
+ERROR    : 2024-10-18 16:22:02,420 : utilities.py:122 : Lock for 1jmu5bp2ix.jpg acquired
+ERROR    : 2024-10-18 16:22:02,445 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/xj6lehxebs-jpg.3132505
+ERROR    : 2024-10-18 16:22:02,526 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/1jmu5bp2ix-jpg.3132506
+ERROR    : 2024-10-18 16:22:02,922 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/xj6lehxebs-jpg.3132505/
+ERROR    : 2024-10-18 16:22:02,923 : utilities.py:112 : Response status for https://celebforum.to/attachments/xj6lehxebs-jpg.3132505/: 200
+ERROR    : 2024-10-18 16:22:03,044 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/1jmu5bp2ix-jpg.3132506/
+ERROR    : 2024-10-18 16:22:03,046 : utilities.py:112 : Response status for https://celebforum.to/attachments/1jmu5bp2ix-jpg.3132506/: 200
+INFO     : 2024-10-18 16:22:03,627 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/xj6lehxebs-jpg.3132505
+ERROR    : 2024-10-18 16:22:03,627 : utilities.py:122 : Releasing lock for xj6lehxebs.jpg
+ERROR    : 2024-10-18 16:22:03,627 : utilities.py:122 : Lock for xj6lehxebs.jpg released
+INFO     : 2024-10-18 16:22:03,629 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/8mxu0gtljo-jpg.3132507
+ERROR    : 2024-10-18 16:22:03,630 : utilities.py:122 : Checking lock for 8mxu0gtljo.jpg
+ERROR    : 2024-10-18 16:22:03,630 : utilities.py:122 : Lock for 8mxu0gtljo.jpg does not exist
+ERROR    : 2024-10-18 16:22:03,630 : utilities.py:122 : Lock for 8mxu0gtljo.jpg acquired
+INFO     : 2024-10-18 16:22:03,733 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/1jmu5bp2ix-jpg.3132506
+ERROR    : 2024-10-18 16:22:03,733 : utilities.py:122 : Releasing lock for 1jmu5bp2ix.jpg
+ERROR    : 2024-10-18 16:22:03,733 : utilities.py:122 : Lock for 1jmu5bp2ix.jpg released
+INFO     : 2024-10-18 16:22:03,734 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/deqmqndiu1-jpg.3144633
+ERROR    : 2024-10-18 16:22:03,734 : utilities.py:122 : Checking lock for deqmqndiu1.jpg
+ERROR    : 2024-10-18 16:22:03,735 : utilities.py:122 : Lock for deqmqndiu1.jpg does not exist
+ERROR    : 2024-10-18 16:22:03,735 : utilities.py:122 : Lock for deqmqndiu1.jpg acquired
+ERROR    : 2024-10-18 16:22:03,738 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/8mxu0gtljo-jpg.3132507
+ERROR    : 2024-10-18 16:22:03,840 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/deqmqndiu1-jpg.3144633
+ERROR    : 2024-10-18 16:22:04,316 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/8mxu0gtljo-jpg.3132507/
+ERROR    : 2024-10-18 16:22:04,317 : utilities.py:112 : Response status for https://celebforum.to/attachments/8mxu0gtljo-jpg.3132507/: 200
+ERROR    : 2024-10-18 16:22:04,538 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/deqmqndiu1-jpg.3144633/
+ERROR    : 2024-10-18 16:22:04,540 : utilities.py:112 : Response status for https://celebforum.to/attachments/deqmqndiu1-jpg.3144633/: 200
+INFO     : 2024-10-18 16:22:04,919 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/8mxu0gtljo-jpg.3132507
+ERROR    : 2024-10-18 16:22:04,919 : utilities.py:122 : Releasing lock for 8mxu0gtljo.jpg
+ERROR    : 2024-10-18 16:22:04,919 : utilities.py:122 : Lock for 8mxu0gtljo.jpg released
+INFO     : 2024-10-18 16:22:04,921 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/ubyrdi0snw-jpg.3144630
+ERROR    : 2024-10-18 16:22:04,921 : utilities.py:122 : Checking lock for ubyrdi0snw.jpg
+ERROR    : 2024-10-18 16:22:04,921 : utilities.py:122 : Lock for ubyrdi0snw.jpg does not exist
+ERROR    : 2024-10-18 16:22:04,921 : utilities.py:122 : Lock for ubyrdi0snw.jpg acquired
+ERROR    : 2024-10-18 16:22:05,026 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/ubyrdi0snw-jpg.3144630
+INFO     : 2024-10-18 16:22:05,334 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/deqmqndiu1-jpg.3144633
+ERROR    : 2024-10-18 16:22:05,334 : utilities.py:122 : Releasing lock for deqmqndiu1.jpg
+ERROR    : 2024-10-18 16:22:05,334 : utilities.py:122 : Lock for deqmqndiu1.jpg released
+INFO     : 2024-10-18 16:22:05,335 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/geeywtedp0-jpg.3144631
+ERROR    : 2024-10-18 16:22:05,335 : utilities.py:122 : Checking lock for geeywtedp0.jpg
+ERROR    : 2024-10-18 16:22:05,336 : utilities.py:122 : Lock for geeywtedp0.jpg does not exist
+ERROR    : 2024-10-18 16:22:05,336 : utilities.py:122 : Lock for geeywtedp0.jpg acquired
+ERROR    : 2024-10-18 16:22:05,440 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/geeywtedp0-jpg.3144631
+ERROR    : 2024-10-18 16:22:06,087 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/ubyrdi0snw-jpg.3144630/
+ERROR    : 2024-10-18 16:22:06,089 : utilities.py:112 : Response status for https://celebforum.to/attachments/ubyrdi0snw-jpg.3144630/: 200
+ERROR    : 2024-10-18 16:22:06,454 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/geeywtedp0-jpg.3144631/
+ERROR    : 2024-10-18 16:22:06,456 : utilities.py:112 : Response status for https://celebforum.to/attachments/geeywtedp0-jpg.3144631/: 200
+INFO     : 2024-10-18 16:22:06,830 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/ubyrdi0snw-jpg.3144630
+ERROR    : 2024-10-18 16:22:06,830 : utilities.py:122 : Releasing lock for ubyrdi0snw.jpg
+ERROR    : 2024-10-18 16:22:06,830 : utilities.py:122 : Lock for ubyrdi0snw.jpg released
+INFO     : 2024-10-18 16:22:06,832 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/1orcizxsry-jpg.3145232
+ERROR    : 2024-10-18 16:22:06,832 : utilities.py:122 : Checking lock for 1orcizxsry.jpg
+ERROR    : 2024-10-18 16:22:06,832 : utilities.py:122 : Lock for 1orcizxsry.jpg does not exist
+ERROR    : 2024-10-18 16:22:06,832 : utilities.py:122 : Lock for 1orcizxsry.jpg acquired
+ERROR    : 2024-10-18 16:22:06,936 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/1orcizxsry-jpg.3145232
+INFO     : 2024-10-18 16:22:07,274 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/geeywtedp0-jpg.3144631
+ERROR    : 2024-10-18 16:22:07,274 : utilities.py:122 : Releasing lock for geeywtedp0.jpg
+ERROR    : 2024-10-18 16:22:07,274 : utilities.py:122 : Lock for geeywtedp0.jpg released
+INFO     : 2024-10-18 16:22:07,276 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/bpaqjnfv1a-jpg.3145233
+ERROR    : 2024-10-18 16:22:07,276 : utilities.py:122 : Checking lock for bpaqjnfv1a.jpg
+ERROR    : 2024-10-18 16:22:07,276 : utilities.py:122 : Lock for bpaqjnfv1a.jpg does not exist
+ERROR    : 2024-10-18 16:22:07,276 : utilities.py:122 : Lock for bpaqjnfv1a.jpg acquired
+ERROR    : 2024-10-18 16:22:07,380 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/bpaqjnfv1a-jpg.3145233
+ERROR    : 2024-10-18 16:22:07,766 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/1orcizxsry-jpg.3145232/
+ERROR    : 2024-10-18 16:22:07,768 : utilities.py:112 : Response status for https://celebforum.to/attachments/1orcizxsry-jpg.3145232/: 200
+ERROR    : 2024-10-18 16:22:07,882 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/bpaqjnfv1a-jpg.3145233/
+ERROR    : 2024-10-18 16:22:07,883 : utilities.py:112 : Response status for https://celebforum.to/attachments/bpaqjnfv1a-jpg.3145233/: 200
+INFO     : 2024-10-18 16:22:07,918 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/bpaqjnfv1a-jpg.3145233
+ERROR    : 2024-10-18 16:22:07,918 : utilities.py:122 : Releasing lock for bpaqjnfv1a.jpg
+ERROR    : 2024-10-18 16:22:07,918 : utilities.py:122 : Lock for bpaqjnfv1a.jpg released
+INFO     : 2024-10-18 16:22:07,919 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/af0idejrrp-jpg.3145234
+ERROR    : 2024-10-18 16:22:07,920 : utilities.py:122 : Checking lock for af0idejrrp.jpg
+ERROR    : 2024-10-18 16:22:07,920 : utilities.py:122 : Lock for af0idejrrp.jpg does not exist
+ERROR    : 2024-10-18 16:22:07,920 : utilities.py:122 : Lock for af0idejrrp.jpg acquired
+ERROR    : 2024-10-18 16:22:08,024 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/af0idejrrp-jpg.3145234
+INFO     : 2024-10-18 16:22:08,078 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/1orcizxsry-jpg.3145232
+ERROR    : 2024-10-18 16:22:08,078 : utilities.py:122 : Releasing lock for 1orcizxsry.jpg
+ERROR    : 2024-10-18 16:22:08,078 : utilities.py:122 : Lock for 1orcizxsry.jpg released
+INFO     : 2024-10-18 16:22:08,079 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/op2vlaiugx-jpg.3151088
+ERROR    : 2024-10-18 16:22:08,080 : utilities.py:122 : Checking lock for op2vlaiugx.jpg
+ERROR    : 2024-10-18 16:22:08,080 : utilities.py:122 : Lock for op2vlaiugx.jpg does not exist
+ERROR    : 2024-10-18 16:22:08,080 : utilities.py:122 : Lock for op2vlaiugx.jpg acquired
+ERROR    : 2024-10-18 16:22:08,185 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/op2vlaiugx-jpg.3151088
+ERROR    : 2024-10-18 16:22:08,488 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/af0idejrrp-jpg.3145234/
+ERROR    : 2024-10-18 16:22:08,489 : utilities.py:112 : Response status for https://celebforum.to/attachments/af0idejrrp-jpg.3145234/: 200
+ERROR    : 2024-10-18 16:22:08,767 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/op2vlaiugx-jpg.3151088/
+ERROR    : 2024-10-18 16:22:08,768 : utilities.py:112 : Response status for https://celebforum.to/attachments/op2vlaiugx-jpg.3151088/: 200
+INFO     : 2024-10-18 16:22:08,794 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/af0idejrrp-jpg.3145234
+ERROR    : 2024-10-18 16:22:08,794 : utilities.py:122 : Releasing lock for af0idejrrp.jpg
+ERROR    : 2024-10-18 16:22:08,794 : utilities.py:122 : Lock for af0idejrrp.jpg released
+INFO     : 2024-10-18 16:22:08,796 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/ekcccowaln-jpg.3151089
+ERROR    : 2024-10-18 16:22:08,796 : utilities.py:122 : Checking lock for ekcccowaln.jpg
+ERROR    : 2024-10-18 16:22:08,796 : utilities.py:122 : Lock for ekcccowaln.jpg does not exist
+ERROR    : 2024-10-18 16:22:08,796 : utilities.py:122 : Lock for ekcccowaln.jpg acquired
+ERROR    : 2024-10-18 16:22:08,901 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/ekcccowaln-jpg.3151089
+INFO     : 2024-10-18 16:22:09,695 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/op2vlaiugx-jpg.3151088
+ERROR    : 2024-10-18 16:22:09,695 : utilities.py:122 : Releasing lock for op2vlaiugx.jpg
+ERROR    : 2024-10-18 16:22:09,695 : utilities.py:122 : Lock for op2vlaiugx.jpg released
+INFO     : 2024-10-18 16:22:09,696 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/ez0wmaakwb-jpg.3151090
+ERROR    : 2024-10-18 16:22:09,696 : utilities.py:122 : Checking lock for ez0wmaakwb.jpg
+ERROR    : 2024-10-18 16:22:09,697 : utilities.py:122 : Lock for ez0wmaakwb.jpg does not exist
+ERROR    : 2024-10-18 16:22:09,697 : utilities.py:122 : Lock for ez0wmaakwb.jpg acquired
+ERROR    : 2024-10-18 16:22:09,787 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/ekcccowaln-jpg.3151089/
+ERROR    : 2024-10-18 16:22:09,789 : utilities.py:112 : Response status for https://celebforum.to/attachments/ekcccowaln-jpg.3151089/: 200
+ERROR    : 2024-10-18 16:22:09,801 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/ez0wmaakwb-jpg.3151090
+INFO     : 2024-10-18 16:22:10,276 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/ekcccowaln-jpg.3151089
+ERROR    : 2024-10-18 16:22:10,276 : utilities.py:122 : Releasing lock for ekcccowaln.jpg
+ERROR    : 2024-10-18 16:22:10,276 : utilities.py:122 : Lock for ekcccowaln.jpg released
+INFO     : 2024-10-18 16:22:10,278 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/z3knirpood-jpg.3173331
+ERROR    : 2024-10-18 16:22:10,278 : utilities.py:122 : Checking lock for z3knirpood.jpg
+ERROR    : 2024-10-18 16:22:10,278 : utilities.py:122 : Lock for z3knirpood.jpg does not exist
+ERROR    : 2024-10-18 16:22:10,278 : utilities.py:122 : Lock for z3knirpood.jpg acquired
+ERROR    : 2024-10-18 16:22:10,382 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/z3knirpood-jpg.3173331
+ERROR    : 2024-10-18 16:22:10,426 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/ez0wmaakwb-jpg.3151090/
+ERROR    : 2024-10-18 16:22:10,427 : utilities.py:112 : Response status for https://celebforum.to/attachments/ez0wmaakwb-jpg.3151090/: 200
+ERROR    : 2024-10-18 16:22:10,870 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/z3knirpood-jpg.3173331/
+ERROR    : 2024-10-18 16:22:10,871 : utilities.py:112 : Response status for https://celebforum.to/attachments/z3knirpood-jpg.3173331/: 200
+INFO     : 2024-10-18 16:22:11,119 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/ez0wmaakwb-jpg.3151090
+ERROR    : 2024-10-18 16:22:11,119 : utilities.py:122 : Releasing lock for ez0wmaakwb.jpg
+ERROR    : 2024-10-18 16:22:11,119 : utilities.py:122 : Lock for ez0wmaakwb.jpg released
+INFO     : 2024-10-18 16:22:11,121 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/0rghnbgzah-jpg.3173333
+ERROR    : 2024-10-18 16:22:11,121 : utilities.py:122 : Checking lock for 0rghnbgzah.jpg
+ERROR    : 2024-10-18 16:22:11,121 : utilities.py:122 : Lock for 0rghnbgzah.jpg does not exist
+ERROR    : 2024-10-18 16:22:11,121 : utilities.py:122 : Lock for 0rghnbgzah.jpg acquired
+ERROR    : 2024-10-18 16:22:11,225 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/0rghnbgzah-jpg.3173333
+INFO     : 2024-10-18 16:22:11,688 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/z3knirpood-jpg.3173331
+ERROR    : 2024-10-18 16:22:11,688 : utilities.py:122 : Releasing lock for z3knirpood.jpg
+ERROR    : 2024-10-18 16:22:11,688 : utilities.py:122 : Lock for z3knirpood.jpg released
+INFO     : 2024-10-18 16:22:11,690 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/mnbcnrq0rq-jpg.3173334
+ERROR    : 2024-10-18 16:22:11,690 : utilities.py:122 : Checking lock for mnbcnrq0rq.jpg
+ERROR    : 2024-10-18 16:22:11,690 : utilities.py:122 : Lock for mnbcnrq0rq.jpg does not exist
+ERROR    : 2024-10-18 16:22:11,690 : utilities.py:122 : Lock for mnbcnrq0rq.jpg acquired
+ERROR    : 2024-10-18 16:22:11,718 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/0rghnbgzah-jpg.3173333/
+ERROR    : 2024-10-18 16:22:11,720 : utilities.py:112 : Response status for https://celebforum.to/attachments/0rghnbgzah-jpg.3173333/: 200
+ERROR    : 2024-10-18 16:22:11,795 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/mnbcnrq0rq-jpg.3173334
+INFO     : 2024-10-18 16:22:12,554 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/0rghnbgzah-jpg.3173333
+ERROR    : 2024-10-18 16:22:12,554 : utilities.py:122 : Releasing lock for 0rghnbgzah.jpg
+ERROR    : 2024-10-18 16:22:12,554 : utilities.py:122 : Lock for 0rghnbgzah.jpg released
+INFO     : 2024-10-18 16:22:12,556 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qrs7vfdd7o-jpg.3182452
+ERROR    : 2024-10-18 16:22:12,556 : utilities.py:122 : Checking lock for qrs7vfdd7o.jpg
+ERROR    : 2024-10-18 16:22:12,557 : utilities.py:122 : Lock for qrs7vfdd7o.jpg does not exist
+ERROR    : 2024-10-18 16:22:12,557 : utilities.py:122 : Lock for qrs7vfdd7o.jpg acquired
+ERROR    : 2024-10-18 16:22:12,663 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qrs7vfdd7o-jpg.3182452
+ERROR    : 2024-10-18 16:22:12,710 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/mnbcnrq0rq-jpg.3173334/
+ERROR    : 2024-10-18 16:22:12,711 : utilities.py:112 : Response status for https://celebforum.to/attachments/mnbcnrq0rq-jpg.3173334/: 200
+INFO     : 2024-10-18 16:22:13,513 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/mnbcnrq0rq-jpg.3173334
+ERROR    : 2024-10-18 16:22:13,513 : utilities.py:122 : Releasing lock for mnbcnrq0rq.jpg
+ERROR    : 2024-10-18 16:22:13,513 : utilities.py:122 : Lock for mnbcnrq0rq.jpg released
+INFO     : 2024-10-18 16:22:13,515 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vojrzfmnyi-jpg.3182453
+ERROR    : 2024-10-18 16:22:13,515 : utilities.py:122 : Checking lock for vojrzfmnyi.jpg
+ERROR    : 2024-10-18 16:22:13,515 : utilities.py:122 : Lock for vojrzfmnyi.jpg does not exist
+ERROR    : 2024-10-18 16:22:13,515 : utilities.py:122 : Lock for vojrzfmnyi.jpg acquired
+ERROR    : 2024-10-18 16:22:13,585 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qrs7vfdd7o-jpg.3182452/
+ERROR    : 2024-10-18 16:22:13,587 : utilities.py:112 : Response status for https://celebforum.to/attachments/qrs7vfdd7o-jpg.3182452/: 200
+ERROR    : 2024-10-18 16:22:13,620 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vojrzfmnyi-jpg.3182453
+ERROR    : 2024-10-18 16:22:14,309 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vojrzfmnyi-jpg.3182453/
+ERROR    : 2024-10-18 16:22:14,311 : utilities.py:112 : Response status for https://celebforum.to/attachments/vojrzfmnyi-jpg.3182453/: 200
+INFO     : 2024-10-18 16:22:14,641 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qrs7vfdd7o-jpg.3182452
+ERROR    : 2024-10-18 16:22:14,641 : utilities.py:122 : Releasing lock for qrs7vfdd7o.jpg
+ERROR    : 2024-10-18 16:22:14,641 : utilities.py:122 : Lock for qrs7vfdd7o.jpg released
+INFO     : 2024-10-18 16:22:14,643 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/a42eauzspp-jpg.3191505
+ERROR    : 2024-10-18 16:22:14,643 : utilities.py:122 : Checking lock for a42eauzspp.jpg
+ERROR    : 2024-10-18 16:22:14,644 : utilities.py:122 : Lock for a42eauzspp.jpg does not exist
+ERROR    : 2024-10-18 16:22:14,644 : utilities.py:122 : Lock for a42eauzspp.jpg acquired
+ERROR    : 2024-10-18 16:22:14,748 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/a42eauzspp-jpg.3191505
+INFO     : 2024-10-18 16:22:15,148 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vojrzfmnyi-jpg.3182453
+ERROR    : 2024-10-18 16:22:15,148 : utilities.py:122 : Releasing lock for vojrzfmnyi.jpg
+ERROR    : 2024-10-18 16:22:15,148 : utilities.py:122 : Lock for vojrzfmnyi.jpg released
+INFO     : 2024-10-18 16:22:15,149 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/20go7jilpo-jpg.3191506
+ERROR    : 2024-10-18 16:22:15,150 : utilities.py:122 : Checking lock for 20go7jilpo.jpg
+ERROR    : 2024-10-18 16:22:15,150 : utilities.py:122 : Lock for 20go7jilpo.jpg does not exist
+ERROR    : 2024-10-18 16:22:15,150 : utilities.py:122 : Lock for 20go7jilpo.jpg acquired
+ERROR    : 2024-10-18 16:22:15,254 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/20go7jilpo-jpg.3191506
+ERROR    : 2024-10-18 16:22:15,468 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/a42eauzspp-jpg.3191505/
+ERROR    : 2024-10-18 16:22:15,470 : utilities.py:112 : Response status for https://celebforum.to/attachments/a42eauzspp-jpg.3191505/: 200
+INFO     : 2024-10-18 16:22:15,795 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/a42eauzspp-jpg.3191505
+ERROR    : 2024-10-18 16:22:15,795 : utilities.py:122 : Releasing lock for a42eauzspp.jpg
+ERROR    : 2024-10-18 16:22:15,795 : utilities.py:122 : Lock for a42eauzspp.jpg released
+INFO     : 2024-10-18 16:22:15,796 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/h41rn8sfyo-jpg.3191507
+ERROR    : 2024-10-18 16:22:15,797 : utilities.py:122 : Checking lock for h41rn8sfyo.jpg
+ERROR    : 2024-10-18 16:22:15,797 : utilities.py:122 : Lock for h41rn8sfyo.jpg does not exist
+ERROR    : 2024-10-18 16:22:15,797 : utilities.py:122 : Lock for h41rn8sfyo.jpg acquired
+ERROR    : 2024-10-18 16:22:15,902 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/h41rn8sfyo-jpg.3191507
+ERROR    : 2024-10-18 16:22:16,146 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/20go7jilpo-jpg.3191506/
+ERROR    : 2024-10-18 16:22:16,148 : utilities.py:112 : Response status for https://celebforum.to/attachments/20go7jilpo-jpg.3191506/: 200
+INFO     : 2024-10-18 16:22:16,450 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/20go7jilpo-jpg.3191506
+ERROR    : 2024-10-18 16:22:16,450 : utilities.py:122 : Releasing lock for 20go7jilpo.jpg
+ERROR    : 2024-10-18 16:22:16,450 : utilities.py:122 : Lock for 20go7jilpo.jpg released
+INFO     : 2024-10-18 16:22:16,451 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fxy9rojqlw-jpg.3191508
+ERROR    : 2024-10-18 16:22:16,451 : utilities.py:122 : Checking lock for fxy9rojqlw.jpg
+ERROR    : 2024-10-18 16:22:16,451 : utilities.py:122 : Lock for fxy9rojqlw.jpg does not exist
+ERROR    : 2024-10-18 16:22:16,452 : utilities.py:122 : Lock for fxy9rojqlw.jpg acquired
+ERROR    : 2024-10-18 16:22:16,555 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fxy9rojqlw-jpg.3191508
+ERROR    : 2024-10-18 16:22:16,728 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/h41rn8sfyo-jpg.3191507/
+ERROR    : 2024-10-18 16:22:16,730 : utilities.py:112 : Response status for https://celebforum.to/attachments/h41rn8sfyo-jpg.3191507/: 200
+INFO     : 2024-10-18 16:22:17,137 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/h41rn8sfyo-jpg.3191507
+ERROR    : 2024-10-18 16:22:17,137 : utilities.py:122 : Releasing lock for h41rn8sfyo.jpg
+ERROR    : 2024-10-18 16:22:17,137 : utilities.py:122 : Lock for h41rn8sfyo.jpg released
+INFO     : 2024-10-18 16:22:17,139 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fdv6vqwitm-jpg.3191509
+ERROR    : 2024-10-18 16:22:17,139 : utilities.py:122 : Checking lock for fdv6vqwitm.jpg
+ERROR    : 2024-10-18 16:22:17,139 : utilities.py:122 : Lock for fdv6vqwitm.jpg does not exist
+ERROR    : 2024-10-18 16:22:17,139 : utilities.py:122 : Lock for fdv6vqwitm.jpg acquired
+ERROR    : 2024-10-18 16:22:17,210 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fxy9rojqlw-jpg.3191508/
+ERROR    : 2024-10-18 16:22:17,212 : utilities.py:112 : Response status for https://celebforum.to/attachments/fxy9rojqlw-jpg.3191508/: 200
+ERROR    : 2024-10-18 16:22:17,244 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fdv6vqwitm-jpg.3191509
+INFO     : 2024-10-18 16:22:17,532 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fxy9rojqlw-jpg.3191508
+ERROR    : 2024-10-18 16:22:17,532 : utilities.py:122 : Releasing lock for fxy9rojqlw.jpg
+ERROR    : 2024-10-18 16:22:17,532 : utilities.py:122 : Lock for fxy9rojqlw.jpg released
+INFO     : 2024-10-18 16:22:17,534 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/iwzygebcif-jpg.3191510
+ERROR    : 2024-10-18 16:22:17,534 : utilities.py:122 : Checking lock for iwzygebcif.jpg
+ERROR    : 2024-10-18 16:22:17,534 : utilities.py:122 : Lock for iwzygebcif.jpg does not exist
+ERROR    : 2024-10-18 16:22:17,534 : utilities.py:122 : Lock for iwzygebcif.jpg acquired
+ERROR    : 2024-10-18 16:22:17,640 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/iwzygebcif-jpg.3191510
+ERROR    : 2024-10-18 16:22:17,735 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fdv6vqwitm-jpg.3191509/
+ERROR    : 2024-10-18 16:22:17,736 : utilities.py:112 : Response status for https://celebforum.to/attachments/fdv6vqwitm-jpg.3191509/: 200
+INFO     : 2024-10-18 16:22:18,158 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fdv6vqwitm-jpg.3191509
+ERROR    : 2024-10-18 16:22:18,158 : utilities.py:122 : Releasing lock for fdv6vqwitm.jpg
+ERROR    : 2024-10-18 16:22:18,158 : utilities.py:122 : Lock for fdv6vqwitm.jpg released
+INFO     : 2024-10-18 16:22:18,160 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fj8t0nir2n-jpg.3191511
+ERROR    : 2024-10-18 16:22:18,160 : utilities.py:122 : Checking lock for fj8t0nir2n.jpg
+ERROR    : 2024-10-18 16:22:18,160 : utilities.py:122 : Lock for fj8t0nir2n.jpg does not exist
+ERROR    : 2024-10-18 16:22:18,160 : utilities.py:122 : Lock for fj8t0nir2n.jpg acquired
+ERROR    : 2024-10-18 16:22:18,266 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fj8t0nir2n-jpg.3191511
+ERROR    : 2024-10-18 16:22:18,412 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/iwzygebcif-jpg.3191510/
+ERROR    : 2024-10-18 16:22:18,414 : utilities.py:112 : Response status for https://celebforum.to/attachments/iwzygebcif-jpg.3191510/: 200
+INFO     : 2024-10-18 16:22:18,523 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/iwzygebcif-jpg.3191510
+ERROR    : 2024-10-18 16:22:18,523 : utilities.py:122 : Releasing lock for iwzygebcif.jpg
+ERROR    : 2024-10-18 16:22:18,524 : utilities.py:122 : Lock for iwzygebcif.jpg released
+INFO     : 2024-10-18 16:22:18,525 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/a61mfwvrzz-jpg.3191512
+ERROR    : 2024-10-18 16:22:18,525 : utilities.py:122 : Checking lock for a61mfwvrzz.jpg
+ERROR    : 2024-10-18 16:22:18,526 : utilities.py:122 : Lock for a61mfwvrzz.jpg does not exist
+ERROR    : 2024-10-18 16:22:18,526 : utilities.py:122 : Lock for a61mfwvrzz.jpg acquired
+ERROR    : 2024-10-18 16:22:18,631 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/a61mfwvrzz-jpg.3191512
+ERROR    : 2024-10-18 16:22:19,051 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fj8t0nir2n-jpg.3191511/
+ERROR    : 2024-10-18 16:22:19,052 : utilities.py:112 : Response status for https://celebforum.to/attachments/fj8t0nir2n-jpg.3191511/: 200
+ERROR    : 2024-10-18 16:22:19,131 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/a61mfwvrzz-jpg.3191512/
+ERROR    : 2024-10-18 16:22:19,133 : utilities.py:112 : Response status for https://celebforum.to/attachments/a61mfwvrzz-jpg.3191512/: 200
+INFO     : 2024-10-18 16:22:19,216 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/a61mfwvrzz-jpg.3191512
+ERROR    : 2024-10-18 16:22:19,217 : utilities.py:122 : Releasing lock for a61mfwvrzz.jpg
+ERROR    : 2024-10-18 16:22:19,217 : utilities.py:122 : Lock for a61mfwvrzz.jpg released
+INFO     : 2024-10-18 16:22:19,218 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vxwsldo0qu-jpg.3311131
+ERROR    : 2024-10-18 16:22:19,218 : utilities.py:122 : Checking lock for vxwsldo0qu.jpg
+ERROR    : 2024-10-18 16:22:19,218 : utilities.py:122 : Lock for vxwsldo0qu.jpg does not exist
+ERROR    : 2024-10-18 16:22:19,219 : utilities.py:122 : Lock for vxwsldo0qu.jpg acquired
+ERROR    : 2024-10-18 16:22:19,323 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vxwsldo0qu-jpg.3311131
+INFO     : 2024-10-18 16:22:19,471 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fj8t0nir2n-jpg.3191511
+ERROR    : 2024-10-18 16:22:19,471 : utilities.py:122 : Releasing lock for fj8t0nir2n.jpg
+ERROR    : 2024-10-18 16:22:19,471 : utilities.py:122 : Lock for fj8t0nir2n.jpg released
+INFO     : 2024-10-18 16:22:19,473 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/cbkgkrk09g-jpg.3311132
+ERROR    : 2024-10-18 16:22:19,473 : utilities.py:122 : Checking lock for cbkgkrk09g.jpg
+ERROR    : 2024-10-18 16:22:19,473 : utilities.py:122 : Lock for cbkgkrk09g.jpg does not exist
+ERROR    : 2024-10-18 16:22:19,473 : utilities.py:122 : Lock for cbkgkrk09g.jpg acquired
+ERROR    : 2024-10-18 16:22:19,579 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/cbkgkrk09g-jpg.3311132
+ERROR    : 2024-10-18 16:22:20,201 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vxwsldo0qu-jpg.3311131/
+ERROR    : 2024-10-18 16:22:20,203 : utilities.py:112 : Response status for https://celebforum.to/attachments/vxwsldo0qu-jpg.3311131/: 200
+ERROR    : 2024-10-18 16:22:20,246 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/cbkgkrk09g-jpg.3311132/
+ERROR    : 2024-10-18 16:22:20,248 : utilities.py:112 : Response status for https://celebforum.to/attachments/cbkgkrk09g-jpg.3311132/: 200
+INFO     : 2024-10-18 16:22:21,421 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/cbkgkrk09g-jpg.3311132
+ERROR    : 2024-10-18 16:22:21,421 : utilities.py:122 : Releasing lock for cbkgkrk09g.jpg
+ERROR    : 2024-10-18 16:22:21,421 : utilities.py:122 : Lock for cbkgkrk09g.jpg released
+INFO     : 2024-10-18 16:22:21,423 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/bhzmiuwhl3-png.3445325
+ERROR    : 2024-10-18 16:22:21,423 : utilities.py:122 : Checking lock for bhzmiuwhl3.png
+ERROR    : 2024-10-18 16:22:21,423 : utilities.py:122 : Lock for bhzmiuwhl3.png does not exist
+ERROR    : 2024-10-18 16:22:21,424 : utilities.py:122 : Lock for bhzmiuwhl3.png acquired
+ERROR    : 2024-10-18 16:22:21,528 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/bhzmiuwhl3-png.3445325
+INFO     : 2024-10-18 16:22:21,660 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vxwsldo0qu-jpg.3311131
+ERROR    : 2024-10-18 16:22:21,660 : utilities.py:122 : Releasing lock for vxwsldo0qu.jpg
+ERROR    : 2024-10-18 16:22:21,660 : utilities.py:122 : Lock for vxwsldo0qu.jpg released
+INFO     : 2024-10-18 16:22:21,662 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/kvgympomjz-png.3445326
+ERROR    : 2024-10-18 16:22:21,662 : utilities.py:122 : Checking lock for kvgympomjz.png
+ERROR    : 2024-10-18 16:22:21,662 : utilities.py:122 : Lock for kvgympomjz.png does not exist
+ERROR    : 2024-10-18 16:22:21,662 : utilities.py:122 : Lock for kvgympomjz.png acquired
+ERROR    : 2024-10-18 16:22:21,767 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/kvgympomjz-png.3445326
+ERROR    : 2024-10-18 16:22:22,164 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/bhzmiuwhl3-png.3445325/
+ERROR    : 2024-10-18 16:22:22,166 : utilities.py:112 : Response status for https://celebforum.to/attachments/bhzmiuwhl3-png.3445325/: 200
+ERROR    : 2024-10-18 16:22:22,286 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/kvgympomjz-png.3445326/
+ERROR    : 2024-10-18 16:22:22,288 : utilities.py:112 : Response status for https://celebforum.to/attachments/kvgympomjz-png.3445326/: 200
+INFO     : 2024-10-18 16:22:22,966 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/kvgympomjz-png.3445326
+ERROR    : 2024-10-18 16:22:22,966 : utilities.py:122 : Releasing lock for kvgympomjz.png
+ERROR    : 2024-10-18 16:22:22,966 : utilities.py:122 : Lock for kvgympomjz.png released
+INFO     : 2024-10-18 16:22:22,968 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/5j7p5pzovj-png.3445327
+ERROR    : 2024-10-18 16:22:22,968 : utilities.py:122 : Checking lock for 5j7p5pzovj.png
+ERROR    : 2024-10-18 16:22:22,968 : utilities.py:122 : Lock for 5j7p5pzovj.png does not exist
+ERROR    : 2024-10-18 16:22:22,968 : utilities.py:122 : Lock for 5j7p5pzovj.png acquired
+ERROR    : 2024-10-18 16:22:23,072 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/5j7p5pzovj-png.3445327
+ERROR    : 2024-10-18 16:22:38,689 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/5j7p5pzovj-png.3445327/
+ERROR    : 2024-10-18 16:22:38,690 : utilities.py:112 : Response status for https://celebforum.to/attachments/5j7p5pzovj-png.3445327/: 200
+INFO     : 2024-10-18 16:22:39,586 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/5j7p5pzovj-png.3445327
+ERROR    : 2024-10-18 16:22:39,586 : utilities.py:122 : Releasing lock for 5j7p5pzovj.png
+ERROR    : 2024-10-18 16:22:39,586 : utilities.py:122 : Lock for 5j7p5pzovj.png released
+INFO     : 2024-10-18 16:22:39,588 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/6ugjpavyva-png.3445330
+ERROR    : 2024-10-18 16:22:39,588 : utilities.py:122 : Checking lock for 6ugjpavyva.png
+ERROR    : 2024-10-18 16:22:39,588 : utilities.py:122 : Lock for 6ugjpavyva.png does not exist
+ERROR    : 2024-10-18 16:22:39,588 : utilities.py:122 : Lock for 6ugjpavyva.png acquired
+ERROR    : 2024-10-18 16:22:39,692 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/6ugjpavyva-png.3445330
+ERROR    : 2024-10-18 16:22:40,595 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/6ugjpavyva-png.3445330/
+ERROR    : 2024-10-18 16:22:40,597 : utilities.py:112 : Response status for https://celebforum.to/attachments/6ugjpavyva-png.3445330/: 200
+INFO     : 2024-10-18 16:22:41,444 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/6ugjpavyva-png.3445330
+ERROR    : 2024-10-18 16:22:41,444 : utilities.py:122 : Releasing lock for 6ugjpavyva.png
+ERROR    : 2024-10-18 16:22:41,444 : utilities.py:122 : Lock for 6ugjpavyva.png released
+INFO     : 2024-10-18 16:22:41,446 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/ru2chv2zfu-png.3445332
+ERROR    : 2024-10-18 16:22:41,446 : utilities.py:122 : Checking lock for ru2chv2zfu.png
+ERROR    : 2024-10-18 16:22:41,446 : utilities.py:122 : Lock for ru2chv2zfu.png does not exist
+ERROR    : 2024-10-18 16:22:41,446 : utilities.py:122 : Lock for ru2chv2zfu.png acquired
+ERROR    : 2024-10-18 16:22:41,551 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/ru2chv2zfu-png.3445332
+ERROR    : 2024-10-18 16:22:42,025 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/ru2chv2zfu-png.3445332/
+ERROR    : 2024-10-18 16:22:42,026 : utilities.py:112 : Response status for https://celebforum.to/attachments/ru2chv2zfu-png.3445332/: 200
+INFO     : 2024-10-18 16:22:42,334 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/ru2chv2zfu-png.3445332
+ERROR    : 2024-10-18 16:22:42,334 : utilities.py:122 : Releasing lock for ru2chv2zfu.png
+ERROR    : 2024-10-18 16:22:42,334 : utilities.py:122 : Lock for ru2chv2zfu.png released
+INFO     : 2024-10-18 16:22:42,336 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/2wdqtupdve-jpg.3483402
+ERROR    : 2024-10-18 16:22:42,336 : utilities.py:122 : Checking lock for 2wdqtupdve.jpg
+ERROR    : 2024-10-18 16:22:42,336 : utilities.py:122 : Lock for 2wdqtupdve.jpg does not exist
+ERROR    : 2024-10-18 16:22:42,336 : utilities.py:122 : Lock for 2wdqtupdve.jpg acquired
+ERROR    : 2024-10-18 16:22:42,441 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/2wdqtupdve-jpg.3483402
+ERROR    : 2024-10-18 16:22:43,188 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/2wdqtupdve-jpg.3483402/
+ERROR    : 2024-10-18 16:22:43,189 : utilities.py:112 : Response status for https://celebforum.to/attachments/2wdqtupdve-jpg.3483402/: 200
+INFO     : 2024-10-18 16:22:44,027 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/2wdqtupdve-jpg.3483402
+ERROR    : 2024-10-18 16:22:44,027 : utilities.py:122 : Releasing lock for 2wdqtupdve.jpg
+ERROR    : 2024-10-18 16:22:44,027 : utilities.py:122 : Lock for 2wdqtupdve.jpg released
+INFO     : 2024-10-18 16:22:44,029 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/g3xlps3wmx-jpg.3483403
+ERROR    : 2024-10-18 16:22:44,029 : utilities.py:122 : Checking lock for g3xlps3wmx.jpg
+ERROR    : 2024-10-18 16:22:44,029 : utilities.py:122 : Lock for g3xlps3wmx.jpg does not exist
+ERROR    : 2024-10-18 16:22:44,029 : utilities.py:122 : Lock for g3xlps3wmx.jpg acquired
+ERROR    : 2024-10-18 16:22:44,133 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/g3xlps3wmx-jpg.3483403
+ERROR    : 2024-10-18 16:22:44,627 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/g3xlps3wmx-jpg.3483403/
+ERROR    : 2024-10-18 16:22:44,629 : utilities.py:112 : Response status for https://celebforum.to/attachments/g3xlps3wmx-jpg.3483403/: 200
+INFO     : 2024-10-18 16:22:45,638 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/g3xlps3wmx-jpg.3483403
+ERROR    : 2024-10-18 16:22:45,638 : utilities.py:122 : Releasing lock for g3xlps3wmx.jpg
+ERROR    : 2024-10-18 16:22:45,638 : utilities.py:122 : Lock for g3xlps3wmx.jpg released
+INFO     : 2024-10-18 16:22:45,640 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/zhvmdpnruv-jpg.3483404
+ERROR    : 2024-10-18 16:22:45,640 : utilities.py:122 : Checking lock for zhvmdpnruv.jpg
+ERROR    : 2024-10-18 16:22:45,640 : utilities.py:122 : Lock for zhvmdpnruv.jpg does not exist
+ERROR    : 2024-10-18 16:22:45,640 : utilities.py:122 : Lock for zhvmdpnruv.jpg acquired
+ERROR    : 2024-10-18 16:22:45,744 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/zhvmdpnruv-jpg.3483404
+ERROR    : 2024-10-18 16:22:46,532 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/zhvmdpnruv-jpg.3483404/
+ERROR    : 2024-10-18 16:22:46,534 : utilities.py:112 : Response status for https://celebforum.to/attachments/zhvmdpnruv-jpg.3483404/: 200
+INFO     : 2024-10-18 16:22:47,324 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/zhvmdpnruv-jpg.3483404
+ERROR    : 2024-10-18 16:22:47,324 : utilities.py:122 : Releasing lock for zhvmdpnruv.jpg
+ERROR    : 2024-10-18 16:22:47,324 : utilities.py:122 : Lock for zhvmdpnruv.jpg released
+INFO     : 2024-10-18 16:22:47,325 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/16lf6pdp48-jpg.4022941
+ERROR    : 2024-10-18 16:22:47,326 : utilities.py:122 : Checking lock for 16lf6pdp48.jpg
+ERROR    : 2024-10-18 16:22:47,326 : utilities.py:122 : Lock for 16lf6pdp48.jpg does not exist
+ERROR    : 2024-10-18 16:22:47,326 : utilities.py:122 : Lock for 16lf6pdp48.jpg acquired
+ERROR    : 2024-10-18 16:22:47,430 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/16lf6pdp48-jpg.4022941
+ERROR    : 2024-10-18 16:22:48,042 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/16lf6pdp48-jpg.4022941/
+ERROR    : 2024-10-18 16:22:48,043 : utilities.py:112 : Response status for https://celebforum.to/attachments/16lf6pdp48-jpg.4022941/: 200
+INFO     : 2024-10-18 16:22:48,868 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/16lf6pdp48-jpg.4022941
+ERROR    : 2024-10-18 16:22:48,868 : utilities.py:122 : Releasing lock for 16lf6pdp48.jpg
+ERROR    : 2024-10-18 16:22:48,868 : utilities.py:122 : Lock for 16lf6pdp48.jpg released
+INFO     : 2024-10-18 16:22:48,870 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/iln0tnrl0g-jpg.4022951
+ERROR    : 2024-10-18 16:22:48,870 : utilities.py:122 : Checking lock for iln0tnrl0g.jpg
+ERROR    : 2024-10-18 16:22:48,870 : utilities.py:122 : Lock for iln0tnrl0g.jpg does not exist
+ERROR    : 2024-10-18 16:22:48,870 : utilities.py:122 : Lock for iln0tnrl0g.jpg acquired
+ERROR    : 2024-10-18 16:22:48,975 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/iln0tnrl0g-jpg.4022951
+ERROR    : 2024-10-18 16:22:49,983 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/iln0tnrl0g-jpg.4022951/
+ERROR    : 2024-10-18 16:22:49,984 : utilities.py:112 : Response status for https://celebforum.to/attachments/iln0tnrl0g-jpg.4022951/: 200
+INFO     : 2024-10-18 16:22:50,154 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/iln0tnrl0g-jpg.4022951
+ERROR    : 2024-10-18 16:22:50,154 : utilities.py:122 : Releasing lock for iln0tnrl0g.jpg
+ERROR    : 2024-10-18 16:22:50,154 : utilities.py:122 : Lock for iln0tnrl0g.jpg released
+INFO     : 2024-10-18 16:22:50,156 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fzyf0jtup3-jpg.4022952
+ERROR    : 2024-10-18 16:22:50,157 : utilities.py:122 : Checking lock for fzyf0jtup3.jpg
+ERROR    : 2024-10-18 16:22:50,157 : utilities.py:122 : Lock for fzyf0jtup3.jpg does not exist
+ERROR    : 2024-10-18 16:22:50,157 : utilities.py:122 : Lock for fzyf0jtup3.jpg acquired
+ERROR    : 2024-10-18 16:22:50,261 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fzyf0jtup3-jpg.4022952
+ERROR    : 2024-10-18 16:22:51,233 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fzyf0jtup3-jpg.4022952/
+ERROR    : 2024-10-18 16:22:51,235 : utilities.py:112 : Response status for https://celebforum.to/attachments/fzyf0jtup3-jpg.4022952/: 200
+INFO     : 2024-10-18 16:22:51,435 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fzyf0jtup3-jpg.4022952
+ERROR    : 2024-10-18 16:22:51,435 : utilities.py:122 : Releasing lock for fzyf0jtup3.jpg
+ERROR    : 2024-10-18 16:22:51,435 : utilities.py:122 : Lock for fzyf0jtup3.jpg released
+INFO     : 2024-10-18 16:22:51,438 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/caijrxm55l-jpg.4022954
+ERROR    : 2024-10-18 16:22:51,438 : utilities.py:122 : Checking lock for caijrxm55l.jpg
+ERROR    : 2024-10-18 16:22:51,438 : utilities.py:122 : Lock for caijrxm55l.jpg does not exist
+ERROR    : 2024-10-18 16:22:51,438 : utilities.py:122 : Lock for caijrxm55l.jpg acquired
+ERROR    : 2024-10-18 16:22:51,542 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/caijrxm55l-jpg.4022954
+ERROR    : 2024-10-18 16:22:52,039 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/caijrxm55l-jpg.4022954/
+ERROR    : 2024-10-18 16:22:52,040 : utilities.py:112 : Response status for https://celebforum.to/attachments/caijrxm55l-jpg.4022954/: 200
+INFO     : 2024-10-18 16:22:52,630 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/caijrxm55l-jpg.4022954
+ERROR    : 2024-10-18 16:22:52,630 : utilities.py:122 : Releasing lock for caijrxm55l.jpg
+ERROR    : 2024-10-18 16:22:52,630 : utilities.py:122 : Lock for caijrxm55l.jpg released
+INFO     : 2024-10-18 16:22:52,632 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/hzm0fsiuzf-jpg.4022958
+ERROR    : 2024-10-18 16:22:52,632 : utilities.py:122 : Checking lock for hzm0fsiuzf.jpg
+ERROR    : 2024-10-18 16:22:52,632 : utilities.py:122 : Lock for hzm0fsiuzf.jpg does not exist
+ERROR    : 2024-10-18 16:22:52,632 : utilities.py:122 : Lock for hzm0fsiuzf.jpg acquired
+ERROR    : 2024-10-18 16:22:52,740 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/hzm0fsiuzf-jpg.4022958
+ERROR    : 2024-10-18 16:22:53,806 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/hzm0fsiuzf-jpg.4022958/
+ERROR    : 2024-10-18 16:22:53,808 : utilities.py:112 : Response status for https://celebforum.to/attachments/hzm0fsiuzf-jpg.4022958/: 200
+INFO     : 2024-10-18 16:22:54,335 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/hzm0fsiuzf-jpg.4022958
+ERROR    : 2024-10-18 16:22:54,335 : utilities.py:122 : Releasing lock for hzm0fsiuzf.jpg
+ERROR    : 2024-10-18 16:22:54,335 : utilities.py:122 : Lock for hzm0fsiuzf.jpg released
+INFO     : 2024-10-18 16:22:54,337 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/balusrznzr-jpg.4022961
+ERROR    : 2024-10-18 16:22:54,337 : utilities.py:122 : Checking lock for balusrznzr.jpg
+ERROR    : 2024-10-18 16:22:54,337 : utilities.py:122 : Lock for balusrznzr.jpg does not exist
+ERROR    : 2024-10-18 16:22:54,338 : utilities.py:122 : Lock for balusrznzr.jpg acquired
+ERROR    : 2024-10-18 16:22:54,442 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/balusrznzr-jpg.4022961
+ERROR    : 2024-10-18 16:22:54,948 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/balusrznzr-jpg.4022961/
+ERROR    : 2024-10-18 16:22:54,950 : utilities.py:112 : Response status for https://celebforum.to/attachments/balusrznzr-jpg.4022961/: 200
+INFO     : 2024-10-18 16:22:55,480 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/balusrznzr-jpg.4022961
+ERROR    : 2024-10-18 16:22:55,480 : utilities.py:122 : Releasing lock for balusrznzr.jpg
+ERROR    : 2024-10-18 16:22:55,481 : utilities.py:122 : Lock for balusrznzr.jpg released
+INFO     : 2024-10-18 16:22:55,482 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/jvy3syc85g-jpg.4022973
+ERROR    : 2024-10-18 16:22:55,482 : utilities.py:122 : Checking lock for jvy3syc85g.jpg
+ERROR    : 2024-10-18 16:22:55,482 : utilities.py:122 : Lock for jvy3syc85g.jpg does not exist
+ERROR    : 2024-10-18 16:22:55,482 : utilities.py:122 : Lock for jvy3syc85g.jpg acquired
+ERROR    : 2024-10-18 16:22:55,588 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/jvy3syc85g-jpg.4022973
+ERROR    : 2024-10-18 16:22:56,527 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/jvy3syc85g-jpg.4022973/
+ERROR    : 2024-10-18 16:22:56,528 : utilities.py:112 : Response status for https://celebforum.to/attachments/jvy3syc85g-jpg.4022973/: 200
+INFO     : 2024-10-18 16:22:57,691 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/jvy3syc85g-jpg.4022973
+ERROR    : 2024-10-18 16:22:57,692 : utilities.py:122 : Releasing lock for jvy3syc85g.jpg
+ERROR    : 2024-10-18 16:22:57,692 : utilities.py:122 : Lock for jvy3syc85g.jpg released
+INFO     : 2024-10-18 16:22:57,694 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/lniukcqbxv-jpg.4022978
+ERROR    : 2024-10-18 16:22:57,694 : utilities.py:122 : Checking lock for lniukcqbxv.jpg
+ERROR    : 2024-10-18 16:22:57,694 : utilities.py:122 : Lock for lniukcqbxv.jpg does not exist
+ERROR    : 2024-10-18 16:22:57,695 : utilities.py:122 : Lock for lniukcqbxv.jpg acquired
+ERROR    : 2024-10-18 16:22:57,799 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/lniukcqbxv-jpg.4022978
+ERROR    : 2024-10-18 16:22:58,410 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/lniukcqbxv-jpg.4022978/
+ERROR    : 2024-10-18 16:22:58,412 : utilities.py:112 : Response status for https://celebforum.to/attachments/lniukcqbxv-jpg.4022978/: 200
+INFO     : 2024-10-18 16:22:59,019 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/lniukcqbxv-jpg.4022978
+ERROR    : 2024-10-18 16:22:59,019 : utilities.py:122 : Releasing lock for lniukcqbxv.jpg
+ERROR    : 2024-10-18 16:22:59,019 : utilities.py:122 : Lock for lniukcqbxv.jpg released
+INFO     : 2024-10-18 16:22:59,021 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qd3i1arrzs-jpg.4145979
+ERROR    : 2024-10-18 16:22:59,021 : utilities.py:122 : Checking lock for qd3i1arrzs.jpg
+ERROR    : 2024-10-18 16:22:59,021 : utilities.py:122 : Lock for qd3i1arrzs.jpg does not exist
+ERROR    : 2024-10-18 16:22:59,022 : utilities.py:122 : Lock for qd3i1arrzs.jpg acquired
+ERROR    : 2024-10-18 16:22:59,127 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qd3i1arrzs-jpg.4145979
+ERROR    : 2024-10-18 16:22:59,943 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qd3i1arrzs-jpg.4145979/
+ERROR    : 2024-10-18 16:22:59,944 : utilities.py:112 : Response status for https://celebforum.to/attachments/qd3i1arrzs-jpg.4145979/: 200
+INFO     : 2024-10-18 16:23:00,567 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qd3i1arrzs-jpg.4145979
+ERROR    : 2024-10-18 16:23:00,567 : utilities.py:122 : Releasing lock for qd3i1arrzs.jpg
+ERROR    : 2024-10-18 16:23:00,568 : utilities.py:122 : Lock for qd3i1arrzs.jpg released
+INFO     : 2024-10-18 16:23:00,569 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/wpswxsocdx-jpg.4145980
+ERROR    : 2024-10-18 16:23:00,569 : utilities.py:122 : Checking lock for wpswxsocdx.jpg
+ERROR    : 2024-10-18 16:23:00,569 : utilities.py:122 : Lock for wpswxsocdx.jpg does not exist
+ERROR    : 2024-10-18 16:23:00,569 : utilities.py:122 : Lock for wpswxsocdx.jpg acquired
+ERROR    : 2024-10-18 16:23:00,675 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/wpswxsocdx-jpg.4145980
+ERROR    : 2024-10-18 16:23:01,675 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/wpswxsocdx-jpg.4145980/
+ERROR    : 2024-10-18 16:23:01,676 : utilities.py:112 : Response status for https://celebforum.to/attachments/wpswxsocdx-jpg.4145980/: 200
+INFO     : 2024-10-18 16:23:02,113 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/wpswxsocdx-jpg.4145980
+ERROR    : 2024-10-18 16:23:02,114 : utilities.py:122 : Releasing lock for wpswxsocdx.jpg
+ERROR    : 2024-10-18 16:23:02,114 : utilities.py:122 : Lock for wpswxsocdx.jpg released
+INFO     : 2024-10-18 16:23:02,115 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/xhjxxqix20-jpg.4145981
+ERROR    : 2024-10-18 16:23:02,115 : utilities.py:122 : Checking lock for xhjxxqix20.jpg
+ERROR    : 2024-10-18 16:23:02,115 : utilities.py:122 : Lock for xhjxxqix20.jpg does not exist
+ERROR    : 2024-10-18 16:23:02,116 : utilities.py:122 : Lock for xhjxxqix20.jpg acquired
+ERROR    : 2024-10-18 16:23:02,220 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/xhjxxqix20-jpg.4145981
+ERROR    : 2024-10-18 16:23:02,748 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/xhjxxqix20-jpg.4145981/
+ERROR    : 2024-10-18 16:23:02,750 : utilities.py:112 : Response status for https://celebforum.to/attachments/xhjxxqix20-jpg.4145981/: 200
+INFO     : 2024-10-18 16:23:03,338 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/xhjxxqix20-jpg.4145981
+ERROR    : 2024-10-18 16:23:03,338 : utilities.py:122 : Releasing lock for xhjxxqix20.jpg
+ERROR    : 2024-10-18 16:23:03,338 : utilities.py:122 : Lock for xhjxxqix20.jpg released
+INFO     : 2024-10-18 16:23:03,339 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/t6vkaj95bc-jpg.4145982
+ERROR    : 2024-10-18 16:23:03,340 : utilities.py:122 : Checking lock for t6vkaj95bc.jpg
+ERROR    : 2024-10-18 16:23:03,340 : utilities.py:122 : Lock for t6vkaj95bc.jpg does not exist
+ERROR    : 2024-10-18 16:23:03,340 : utilities.py:122 : Lock for t6vkaj95bc.jpg acquired
+ERROR    : 2024-10-18 16:23:03,445 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/t6vkaj95bc-jpg.4145982
+ERROR    : 2024-10-18 16:23:04,159 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/t6vkaj95bc-jpg.4145982/
+ERROR    : 2024-10-18 16:23:04,161 : utilities.py:112 : Response status for https://celebforum.to/attachments/t6vkaj95bc-jpg.4145982/: 200
+INFO     : 2024-10-18 16:23:05,223 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/t6vkaj95bc-jpg.4145982
+ERROR    : 2024-10-18 16:23:05,223 : utilities.py:122 : Releasing lock for t6vkaj95bc.jpg
+ERROR    : 2024-10-18 16:23:05,223 : utilities.py:122 : Lock for t6vkaj95bc.jpg released
+INFO     : 2024-10-18 16:23:05,225 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/2tenf60p1n-jpg.4145983
+ERROR    : 2024-10-18 16:23:05,226 : utilities.py:122 : Checking lock for 2tenf60p1n.jpg
+ERROR    : 2024-10-18 16:23:05,226 : utilities.py:122 : Lock for 2tenf60p1n.jpg does not exist
+ERROR    : 2024-10-18 16:23:05,226 : utilities.py:122 : Lock for 2tenf60p1n.jpg acquired
+ERROR    : 2024-10-18 16:23:05,331 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/2tenf60p1n-jpg.4145983
+ERROR    : 2024-10-18 16:23:06,094 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/2tenf60p1n-jpg.4145983/
+ERROR    : 2024-10-18 16:23:06,096 : utilities.py:112 : Response status for https://celebforum.to/attachments/2tenf60p1n-jpg.4145983/: 200
+INFO     : 2024-10-18 16:23:06,684 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/2tenf60p1n-jpg.4145983
+ERROR    : 2024-10-18 16:23:06,684 : utilities.py:122 : Releasing lock for 2tenf60p1n.jpg
+ERROR    : 2024-10-18 16:23:06,684 : utilities.py:122 : Lock for 2tenf60p1n.jpg released
+INFO     : 2024-10-18 16:23:06,686 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/cwyvbymzya-jpg.4145984
+ERROR    : 2024-10-18 16:23:06,686 : utilities.py:122 : Checking lock for cwyvbymzya.jpg
+ERROR    : 2024-10-18 16:23:06,686 : utilities.py:122 : Lock for cwyvbymzya.jpg does not exist
+ERROR    : 2024-10-18 16:23:06,686 : utilities.py:122 : Lock for cwyvbymzya.jpg acquired
+ERROR    : 2024-10-18 16:23:06,791 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/cwyvbymzya-jpg.4145984
+ERROR    : 2024-10-18 16:23:07,821 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/cwyvbymzya-jpg.4145984/
+ERROR    : 2024-10-18 16:23:07,822 : utilities.py:112 : Response status for https://celebforum.to/attachments/cwyvbymzya-jpg.4145984/: 200
+INFO     : 2024-10-18 16:23:08,263 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/cwyvbymzya-jpg.4145984
+ERROR    : 2024-10-18 16:23:08,263 : utilities.py:122 : Releasing lock for cwyvbymzya.jpg
+ERROR    : 2024-10-18 16:23:08,263 : utilities.py:122 : Lock for cwyvbymzya.jpg released
+INFO     : 2024-10-18 16:23:08,264 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/wrpzrbr2on-jpg.4145985
+ERROR    : 2024-10-18 16:23:08,264 : utilities.py:122 : Checking lock for wrpzrbr2on.jpg
+ERROR    : 2024-10-18 16:23:08,265 : utilities.py:122 : Lock for wrpzrbr2on.jpg does not exist
+ERROR    : 2024-10-18 16:23:08,265 : utilities.py:122 : Lock for wrpzrbr2on.jpg acquired
+ERROR    : 2024-10-18 16:23:08,369 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/wrpzrbr2on-jpg.4145985
+ERROR    : 2024-10-18 16:23:09,266 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/wrpzrbr2on-jpg.4145985/
+ERROR    : 2024-10-18 16:23:09,267 : utilities.py:112 : Response status for https://celebforum.to/attachments/wrpzrbr2on-jpg.4145985/: 200
+INFO     : 2024-10-18 16:23:09,745 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/wrpzrbr2on-jpg.4145985
+ERROR    : 2024-10-18 16:23:09,745 : utilities.py:122 : Releasing lock for wrpzrbr2on.jpg
+ERROR    : 2024-10-18 16:23:09,745 : utilities.py:122 : Lock for wrpzrbr2on.jpg released
+INFO     : 2024-10-18 16:23:09,746 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qodhoktynt-jpg.4145986
+ERROR    : 2024-10-18 16:23:09,747 : utilities.py:122 : Checking lock for qodhoktynt.jpg
+ERROR    : 2024-10-18 16:23:09,747 : utilities.py:122 : Lock for qodhoktynt.jpg does not exist
+ERROR    : 2024-10-18 16:23:09,747 : utilities.py:122 : Lock for qodhoktynt.jpg acquired
+ERROR    : 2024-10-18 16:23:09,851 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qodhoktynt-jpg.4145986
+ERROR    : 2024-10-18 16:23:10,273 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qodhoktynt-jpg.4145986/
+ERROR    : 2024-10-18 16:23:10,275 : utilities.py:112 : Response status for https://celebforum.to/attachments/qodhoktynt-jpg.4145986/: 200
+INFO     : 2024-10-18 16:23:10,864 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qodhoktynt-jpg.4145986
+ERROR    : 2024-10-18 16:23:10,864 : utilities.py:122 : Releasing lock for qodhoktynt.jpg
+ERROR    : 2024-10-18 16:23:10,865 : utilities.py:122 : Lock for qodhoktynt.jpg released
+INFO     : 2024-10-18 16:23:10,866 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/wavp9xr0gg-jpg.4145987
+ERROR    : 2024-10-18 16:23:10,867 : utilities.py:122 : Checking lock for wavp9xr0gg.jpg
+ERROR    : 2024-10-18 16:23:10,867 : utilities.py:122 : Lock for wavp9xr0gg.jpg does not exist
+ERROR    : 2024-10-18 16:23:10,867 : utilities.py:122 : Lock for wavp9xr0gg.jpg acquired
+ERROR    : 2024-10-18 16:23:10,971 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/wavp9xr0gg-jpg.4145987
+ERROR    : 2024-10-18 16:23:11,608 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/wavp9xr0gg-jpg.4145987/
+ERROR    : 2024-10-18 16:23:11,610 : utilities.py:112 : Response status for https://celebforum.to/attachments/wavp9xr0gg-jpg.4145987/: 200
+INFO     : 2024-10-18 16:23:12,060 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/wavp9xr0gg-jpg.4145987
+ERROR    : 2024-10-18 16:23:12,060 : utilities.py:122 : Releasing lock for wavp9xr0gg.jpg
+ERROR    : 2024-10-18 16:23:12,060 : utilities.py:122 : Lock for wavp9xr0gg.jpg released
+INFO     : 2024-10-18 16:23:12,062 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/dobyn0wxzr-jpg.4145988
+ERROR    : 2024-10-18 16:23:12,062 : utilities.py:122 : Checking lock for dobyn0wxzr.jpg
+ERROR    : 2024-10-18 16:23:12,062 : utilities.py:122 : Lock for dobyn0wxzr.jpg does not exist
+ERROR    : 2024-10-18 16:23:12,062 : utilities.py:122 : Lock for dobyn0wxzr.jpg acquired
+ERROR    : 2024-10-18 16:23:12,167 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/dobyn0wxzr-jpg.4145988
+ERROR    : 2024-10-18 16:23:12,631 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/dobyn0wxzr-jpg.4145988/
+ERROR    : 2024-10-18 16:23:12,633 : utilities.py:112 : Response status for https://celebforum.to/attachments/dobyn0wxzr-jpg.4145988/: 200
+INFO     : 2024-10-18 16:23:13,141 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/dobyn0wxzr-jpg.4145988
+ERROR    : 2024-10-18 16:23:13,141 : utilities.py:122 : Releasing lock for dobyn0wxzr.jpg
+ERROR    : 2024-10-18 16:23:13,142 : utilities.py:122 : Lock for dobyn0wxzr.jpg released
+INFO     : 2024-10-18 16:23:13,143 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/rbcqupdsou-jpg.4744201
+ERROR    : 2024-10-18 16:23:13,143 : utilities.py:122 : Checking lock for rbcqupdsou.jpg
+ERROR    : 2024-10-18 16:23:13,143 : utilities.py:122 : Lock for rbcqupdsou.jpg does not exist
+ERROR    : 2024-10-18 16:23:13,144 : utilities.py:122 : Lock for rbcqupdsou.jpg acquired
+ERROR    : 2024-10-18 16:23:13,248 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/rbcqupdsou-jpg.4744201
+ERROR    : 2024-10-18 16:23:13,735 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/rbcqupdsou-jpg.4744201/
+ERROR    : 2024-10-18 16:23:13,737 : utilities.py:112 : Response status for https://celebforum.to/attachments/rbcqupdsou-jpg.4744201/: 200
+INFO     : 2024-10-18 16:23:13,962 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/rbcqupdsou-jpg.4744201
+ERROR    : 2024-10-18 16:23:13,963 : utilities.py:122 : Releasing lock for rbcqupdsou.jpg
+ERROR    : 2024-10-18 16:23:13,963 : utilities.py:122 : Lock for rbcqupdsou.jpg released
+INFO     : 2024-10-18 16:23:13,965 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/uqdrl89ryd-jpg.4744202
+ERROR    : 2024-10-18 16:23:13,965 : utilities.py:122 : Checking lock for uqdrl89ryd.jpg
+ERROR    : 2024-10-18 16:23:13,966 : utilities.py:122 : Lock for uqdrl89ryd.jpg does not exist
+ERROR    : 2024-10-18 16:23:13,966 : utilities.py:122 : Lock for uqdrl89ryd.jpg acquired
+ERROR    : 2024-10-18 16:23:14,071 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/uqdrl89ryd-jpg.4744202
+ERROR    : 2024-10-18 16:23:14,586 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/uqdrl89ryd-jpg.4744202/
+ERROR    : 2024-10-18 16:23:14,588 : utilities.py:112 : Response status for https://celebforum.to/attachments/uqdrl89ryd-jpg.4744202/: 200
+INFO     : 2024-10-18 16:23:14,909 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/uqdrl89ryd-jpg.4744202
+ERROR    : 2024-10-18 16:23:14,909 : utilities.py:122 : Releasing lock for uqdrl89ryd.jpg
+ERROR    : 2024-10-18 16:23:14,910 : utilities.py:122 : Lock for uqdrl89ryd.jpg released
+INFO     : 2024-10-18 16:23:14,911 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fbxhkgsmyo-jpg.4744203
+ERROR    : 2024-10-18 16:23:14,911 : utilities.py:122 : Checking lock for fbxhkgsmyo.jpg
+ERROR    : 2024-10-18 16:23:14,912 : utilities.py:122 : Lock for fbxhkgsmyo.jpg does not exist
+ERROR    : 2024-10-18 16:23:14,912 : utilities.py:122 : Lock for fbxhkgsmyo.jpg acquired
+ERROR    : 2024-10-18 16:23:15,016 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fbxhkgsmyo-jpg.4744203
+ERROR    : 2024-10-18 16:23:15,447 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fbxhkgsmyo-jpg.4744203/
+ERROR    : 2024-10-18 16:23:15,449 : utilities.py:112 : Response status for https://celebforum.to/attachments/fbxhkgsmyo-jpg.4744203/: 200
+INFO     : 2024-10-18 16:23:15,893 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fbxhkgsmyo-jpg.4744203
+ERROR    : 2024-10-18 16:23:15,893 : utilities.py:122 : Releasing lock for fbxhkgsmyo.jpg
+ERROR    : 2024-10-18 16:23:15,893 : utilities.py:122 : Lock for fbxhkgsmyo.jpg released
+INFO     : 2024-10-18 16:23:15,895 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/g7k4qabngz-jpg.4744204
+ERROR    : 2024-10-18 16:23:15,895 : utilities.py:122 : Checking lock for g7k4qabngz.jpg
+ERROR    : 2024-10-18 16:23:15,895 : utilities.py:122 : Lock for g7k4qabngz.jpg does not exist
+ERROR    : 2024-10-18 16:23:15,896 : utilities.py:122 : Lock for g7k4qabngz.jpg acquired
+ERROR    : 2024-10-18 16:23:16,000 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/g7k4qabngz-jpg.4744204
+ERROR    : 2024-10-18 16:23:16,494 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/g7k4qabngz-jpg.4744204/
+ERROR    : 2024-10-18 16:23:16,496 : utilities.py:112 : Response status for https://celebforum.to/attachments/g7k4qabngz-jpg.4744204/: 200
+INFO     : 2024-10-18 16:23:16,895 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/g7k4qabngz-jpg.4744204
+ERROR    : 2024-10-18 16:23:16,895 : utilities.py:122 : Releasing lock for g7k4qabngz.jpg
+ERROR    : 2024-10-18 16:23:16,896 : utilities.py:122 : Lock for g7k4qabngz.jpg released
+INFO     : 2024-10-18 16:23:16,897 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/eovhh4chpc-jpg.5569888
+ERROR    : 2024-10-18 16:23:16,897 : utilities.py:122 : Checking lock for eovhh4chpc.jpg
+ERROR    : 2024-10-18 16:23:16,897 : utilities.py:122 : Lock for eovhh4chpc.jpg does not exist
+ERROR    : 2024-10-18 16:23:16,897 : utilities.py:122 : Lock for eovhh4chpc.jpg acquired
+ERROR    : 2024-10-18 16:23:17,001 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/eovhh4chpc-jpg.5569888
+ERROR    : 2024-10-18 16:23:17,460 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/eovhh4chpc-jpg.5569888/
+ERROR    : 2024-10-18 16:23:17,462 : utilities.py:112 : Response status for https://celebforum.to/attachments/eovhh4chpc-jpg.5569888/: 200
+INFO     : 2024-10-18 16:23:18,347 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/eovhh4chpc-jpg.5569888
+ERROR    : 2024-10-18 16:23:18,348 : utilities.py:122 : Releasing lock for eovhh4chpc.jpg
+ERROR    : 2024-10-18 16:23:18,348 : utilities.py:122 : Lock for eovhh4chpc.jpg released
+INFO     : 2024-10-18 16:23:18,349 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/79ogqeogtj-jpg.5569889
+ERROR    : 2024-10-18 16:23:18,349 : utilities.py:122 : Checking lock for 79ogqeogtj.jpg
+ERROR    : 2024-10-18 16:23:18,350 : utilities.py:122 : Lock for 79ogqeogtj.jpg does not exist
+ERROR    : 2024-10-18 16:23:18,350 : utilities.py:122 : Lock for 79ogqeogtj.jpg acquired
+ERROR    : 2024-10-18 16:23:18,455 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/79ogqeogtj-jpg.5569889
+ERROR    : 2024-10-18 16:23:19,379 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/79ogqeogtj-jpg.5569889/
+ERROR    : 2024-10-18 16:23:19,380 : utilities.py:112 : Response status for https://celebforum.to/attachments/79ogqeogtj-jpg.5569889/: 200
+ERROR    : 2024-10-18 16:26:34,743 : utilities.py:112 : Download Failed: https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296 with status 999 and message Download timeout reached, retrying
+INFO     : 2024-10-18 16:26:34,745 : utilities.py:112 : Download Retrying: https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296 with attempt 0
+ERROR    : 2024-10-18 16:26:34,850 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296
+ERROR    : 2024-10-18 16:26:35,375 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296/
+ERROR    : 2024-10-18 16:26:35,377 : utilities.py:112 : Response status for https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296/: 200
+INFO     : 2024-10-18 16:26:36,998 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/gvsrvjrwzh-jpg.3120296
+ERROR    : 2024-10-18 16:26:36,998 : utilities.py:122 : Releasing lock for gvsrvjrwzh.jpg
+ERROR    : 2024-10-18 16:26:36,998 : utilities.py:122 : Lock for gvsrvjrwzh.jpg released
+INFO     : 2024-10-18 16:26:36,999 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/cyzrw9hjfy-jpg.5569890
+ERROR    : 2024-10-18 16:26:37,000 : utilities.py:122 : Checking lock for cyzrw9hjfy.jpg
+ERROR    : 2024-10-18 16:26:37,000 : utilities.py:122 : Lock for cyzrw9hjfy.jpg does not exist
+ERROR    : 2024-10-18 16:26:37,000 : utilities.py:122 : Lock for cyzrw9hjfy.jpg acquired
+ERROR    : 2024-10-18 16:26:37,105 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/cyzrw9hjfy-jpg.5569890
+ERROR    : 2024-10-18 16:26:38,057 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/cyzrw9hjfy-jpg.5569890/
+ERROR    : 2024-10-18 16:26:38,059 : utilities.py:112 : Response status for https://celebforum.to/attachments/cyzrw9hjfy-jpg.5569890/: 200
+INFO     : 2024-10-18 16:26:38,377 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/cyzrw9hjfy-jpg.5569890
+ERROR    : 2024-10-18 16:26:38,377 : utilities.py:122 : Releasing lock for cyzrw9hjfy.jpg
+ERROR    : 2024-10-18 16:26:38,377 : utilities.py:122 : Lock for cyzrw9hjfy.jpg released
+INFO     : 2024-10-18 16:26:38,378 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/rmxcjlfl23-jpg.5569891
+ERROR    : 2024-10-18 16:26:38,379 : utilities.py:122 : Checking lock for rmxcjlfl23.jpg
+ERROR    : 2024-10-18 16:26:38,379 : utilities.py:122 : Lock for rmxcjlfl23.jpg does not exist
+ERROR    : 2024-10-18 16:26:38,379 : utilities.py:122 : Lock for rmxcjlfl23.jpg acquired
+ERROR    : 2024-10-18 16:26:38,484 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/rmxcjlfl23-jpg.5569891
+ERROR    : 2024-10-18 16:26:39,135 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/rmxcjlfl23-jpg.5569891/
+ERROR    : 2024-10-18 16:26:39,136 : utilities.py:112 : Response status for https://celebforum.to/attachments/rmxcjlfl23-jpg.5569891/: 200
+INFO     : 2024-10-18 16:26:39,936 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/rmxcjlfl23-jpg.5569891
+ERROR    : 2024-10-18 16:26:39,936 : utilities.py:122 : Releasing lock for rmxcjlfl23.jpg
+ERROR    : 2024-10-18 16:26:39,937 : utilities.py:122 : Lock for rmxcjlfl23.jpg released
+INFO     : 2024-10-18 16:26:39,938 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/qxfuyyk727-jpg.5569892
+ERROR    : 2024-10-18 16:26:39,938 : utilities.py:122 : Checking lock for qxfuyyk727.jpg
+ERROR    : 2024-10-18 16:26:39,939 : utilities.py:122 : Lock for qxfuyyk727.jpg does not exist
+ERROR    : 2024-10-18 16:26:39,939 : utilities.py:122 : Lock for qxfuyyk727.jpg acquired
+ERROR    : 2024-10-18 16:26:40,043 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/qxfuyyk727-jpg.5569892
+ERROR    : 2024-10-18 16:26:41,069 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/qxfuyyk727-jpg.5569892/
+ERROR    : 2024-10-18 16:26:41,071 : utilities.py:112 : Response status for https://celebforum.to/attachments/qxfuyyk727-jpg.5569892/: 200
+INFO     : 2024-10-18 16:26:41,887 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/qxfuyyk727-jpg.5569892
+ERROR    : 2024-10-18 16:26:41,887 : utilities.py:122 : Releasing lock for qxfuyyk727.jpg
+ERROR    : 2024-10-18 16:26:41,887 : utilities.py:122 : Lock for qxfuyyk727.jpg released
+INFO     : 2024-10-18 16:26:41,889 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/fcj7giieyr-jpg.5569893
+ERROR    : 2024-10-18 16:26:41,889 : utilities.py:122 : Checking lock for fcj7giieyr.jpg
+ERROR    : 2024-10-18 16:26:41,889 : utilities.py:122 : Lock for fcj7giieyr.jpg does not exist
+ERROR    : 2024-10-18 16:26:41,889 : utilities.py:122 : Lock for fcj7giieyr.jpg acquired
+ERROR    : 2024-10-18 16:26:41,994 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/fcj7giieyr-jpg.5569893
+ERROR    : 2024-10-18 16:26:42,962 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/fcj7giieyr-jpg.5569893/
+ERROR    : 2024-10-18 16:26:42,964 : utilities.py:112 : Response status for https://celebforum.to/attachments/fcj7giieyr-jpg.5569893/: 200
+ERROR    : 2024-10-18 16:26:43,740 : utilities.py:112 : Download Failed: https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303 with status 999 and message Download timeout reached, retrying
+INFO     : 2024-10-18 16:26:43,742 : utilities.py:112 : Download Retrying: https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303 with attempt 0
+ERROR    : 2024-10-18 16:26:43,745 : utilities.py:112 : Download Failed: https://celebforum.to/attachments/8qywzyamry-jpg.3120304 with status 999 and message Download timeout reached, retrying
+INFO     : 2024-10-18 16:26:43,746 : utilities.py:112 : Download Retrying: https://celebforum.to/attachments/8qywzyamry-jpg.3120304 with attempt 0
+INFO     : 2024-10-18 16:26:43,759 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/fcj7giieyr-jpg.5569893
+ERROR    : 2024-10-18 16:26:43,759 : utilities.py:122 : Releasing lock for fcj7giieyr.jpg
+ERROR    : 2024-10-18 16:26:43,759 : utilities.py:122 : Lock for fcj7giieyr.jpg released
+INFO     : 2024-10-18 16:26:43,761 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/vbizd42sty-jpg.5569895
+ERROR    : 2024-10-18 16:26:43,761 : utilities.py:122 : Checking lock for vbizd42sty.jpg
+ERROR    : 2024-10-18 16:26:43,761 : utilities.py:122 : Lock for vbizd42sty.jpg does not exist
+ERROR    : 2024-10-18 16:26:43,761 : utilities.py:122 : Lock for vbizd42sty.jpg acquired
+ERROR    : 2024-10-18 16:26:43,848 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303
+ERROR    : 2024-10-18 16:26:43,853 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/8qywzyamry-jpg.3120304
+ERROR    : 2024-10-18 16:26:43,865 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/vbizd42sty-jpg.5569895
+ERROR    : 2024-10-18 16:26:44,378 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303/
+ERROR    : 2024-10-18 16:26:44,379 : utilities.py:112 : Response status for https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303/: 200
+ERROR    : 2024-10-18 16:26:44,505 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/vbizd42sty-jpg.5569895/
+ERROR    : 2024-10-18 16:26:44,507 : utilities.py:112 : Response status for https://celebforum.to/attachments/vbizd42sty-jpg.5569895/: 200
+ERROR    : 2024-10-18 16:26:44,750 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/8qywzyamry-jpg.3120304/
+ERROR    : 2024-10-18 16:26:44,752 : utilities.py:112 : Response status for https://celebforum.to/attachments/8qywzyamry-jpg.3120304/: 200
+INFO     : 2024-10-18 16:26:45,740 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/6cpujrg1cr-jpg.3120303
+ERROR    : 2024-10-18 16:26:45,741 : utilities.py:122 : Releasing lock for 6cpujrg1cr.jpg
+ERROR    : 2024-10-18 16:26:45,741 : utilities.py:122 : Lock for 6cpujrg1cr.jpg released
+INFO     : 2024-10-18 16:26:45,742 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/c5q6xn44nm-jpg.5569898
+ERROR    : 2024-10-18 16:26:45,743 : utilities.py:122 : Checking lock for c5q6xn44nm.jpg
+ERROR    : 2024-10-18 16:26:45,743 : utilities.py:122 : Lock for c5q6xn44nm.jpg does not exist
+ERROR    : 2024-10-18 16:26:45,743 : utilities.py:122 : Lock for c5q6xn44nm.jpg acquired
+INFO     : 2024-10-18 16:26:45,816 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/8qywzyamry-jpg.3120304
+ERROR    : 2024-10-18 16:26:45,816 : utilities.py:122 : Releasing lock for 8qywzyamry.jpg
+ERROR    : 2024-10-18 16:26:45,816 : utilities.py:122 : Lock for 8qywzyamry.jpg released
+INFO     : 2024-10-18 16:26:45,817 : utilities.py:112 : Download Starting: https://celebforum.to/attachments/t4q8z8owcf-jpg.5569899
+ERROR    : 2024-10-18 16:26:45,817 : utilities.py:122 : Checking lock for t4q8z8owcf.jpg
+ERROR    : 2024-10-18 16:26:45,818 : utilities.py:122 : Lock for t4q8z8owcf.jpg does not exist
+ERROR    : 2024-10-18 16:26:45,818 : utilities.py:122 : Lock for t4q8z8owcf.jpg acquired
+ERROR    : 2024-10-18 16:26:45,846 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/c5q6xn44nm-jpg.5569898
+ERROR    : 2024-10-18 16:26:45,922 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/t4q8z8owcf-jpg.5569899
+INFO     : 2024-10-18 16:26:45,987 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/vbizd42sty-jpg.5569895
+ERROR    : 2024-10-18 16:26:45,988 : utilities.py:122 : Releasing lock for vbizd42sty.jpg
+ERROR    : 2024-10-18 16:26:45,988 : utilities.py:122 : Lock for vbizd42sty.jpg released
+ERROR    : 2024-10-18 16:26:46,721 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/t4q8z8owcf-jpg.5569899/
+ERROR    : 2024-10-18 16:26:46,723 : utilities.py:112 : Response status for https://celebforum.to/attachments/t4q8z8owcf-jpg.5569899/: 200
+ERROR    : 2024-10-18 16:26:46,830 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/c5q6xn44nm-jpg.5569898/
+ERROR    : 2024-10-18 16:26:46,832 : utilities.py:112 : Response status for https://celebforum.to/attachments/c5q6xn44nm-jpg.5569898/: 200
+INFO     : 2024-10-18 16:26:47,339 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/t4q8z8owcf-jpg.5569899
+ERROR    : 2024-10-18 16:26:47,339 : utilities.py:122 : Releasing lock for t4q8z8owcf.jpg
+ERROR    : 2024-10-18 16:26:47,339 : utilities.py:122 : Lock for t4q8z8owcf.jpg released
+INFO     : 2024-10-18 16:26:47,583 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/c5q6xn44nm-jpg.5569898
+ERROR    : 2024-10-18 16:26:47,583 : utilities.py:122 : Releasing lock for c5q6xn44nm.jpg
+ERROR    : 2024-10-18 16:26:47,583 : utilities.py:122 : Lock for c5q6xn44nm.jpg released
+ERROR    : 2024-10-18 16:27:36,740 : utilities.py:112 : Download Failed: https://celebforum.to/attachments/bhzmiuwhl3-png.3445325 with status 999 and message Download timeout reached, retrying
+INFO     : 2024-10-18 16:27:36,741 : utilities.py:112 : Download Retrying: https://celebforum.to/attachments/bhzmiuwhl3-png.3445325 with attempt 0
+ERROR    : 2024-10-18 16:27:36,847 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/bhzmiuwhl3-png.3445325
+ERROR    : 2024-10-18 16:27:37,327 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/bhzmiuwhl3-png.3445325/
+ERROR    : 2024-10-18 16:27:37,328 : utilities.py:112 : Response status for https://celebforum.to/attachments/bhzmiuwhl3-png.3445325/: 200
+INFO     : 2024-10-18 16:27:38,165 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/bhzmiuwhl3-png.3445325
+ERROR    : 2024-10-18 16:27:38,165 : utilities.py:122 : Releasing lock for bhzmiuwhl3.png
+ERROR    : 2024-10-18 16:27:38,166 : utilities.py:122 : Lock for bhzmiuwhl3.png released
+ERROR    : 2024-10-18 16:28:33,739 : utilities.py:112 : Download Failed: https://celebforum.to/attachments/79ogqeogtj-jpg.5569889 with status 999 and message Download timeout reached, retrying
+INFO     : 2024-10-18 16:28:33,741 : utilities.py:112 : Download Retrying: https://celebforum.to/attachments/79ogqeogtj-jpg.5569889 with attempt 0
+ERROR    : 2024-10-18 16:28:33,847 : utilities.py:112 : Starting download GET request to https://celebforum.to/attachments/79ogqeogtj-jpg.5569889
+ERROR    : 2024-10-18 16:28:34,669 : utilities.py:112 : Finishing download GET request to https://celebforum.to/attachments/79ogqeogtj-jpg.5569889/
+ERROR    : 2024-10-18 16:28:34,671 : utilities.py:112 : Response status for https://celebforum.to/attachments/79ogqeogtj-jpg.5569889/: 200
+INFO     : 2024-10-18 16:28:35,365 : utilities.py:112 : Download Finished: https://celebforum.to/attachments/79ogqeogtj-jpg.5569889
+ERROR    : 2024-10-18 16:28:35,365 : utilities.py:122 : Releasing lock for 79ogqeogtj.jpg
+ERROR    : 2024-10-18 16:28:35,365 : utilities.py:122 : Lock for 79ogqeogtj.jpg released
+INFO     : 2024-10-18 16:28:35,434 : utilities.py:135 : Running Post-Download Processes For Config: Default...
+INFO     : 2024-10-18 16:28:35,460 : utilities.py:135 : Checking for partial downloads...
+INFO     : 2024-10-18 16:28:35,477 : utilities.py:135 : There are partial downloads in the downloads folder
+INFO     : 2024-10-18 16:28:35,490 : utilities.py:135 : Checking for empty folders...
+INFO     : 2024-10-18 16:28:35,571 : utilities.py:112 : Printing Stats...
+INFO     : 2024-10-18 16:28:35,573 : utilities.py:135 : 
+Download Stats:
+INFO     : 2024-10-18 16:28:35,576 : utilities.py:135 : Downloaded 91 files
+INFO     : 2024-10-18 16:28:35,579 : utilities.py:135 : Previously Downloaded 2 files
+INFO     : 2024-10-18 16:28:35,582 : utilities.py:135 : Skipped By Config 0 files
+INFO     : 2024-10-18 16:28:35,585 : utilities.py:135 : Failed 0 files
+INFO     : 2024-10-18 16:28:35,587 : utilities.py:135 : 
+Dupe Stats:
+INFO     : 2024-10-18 16:28:35,589 : utilities.py:135 : Previously Hashed 0 files
+INFO     : 2024-10-18 16:28:35,592 : utilities.py:135 : Newly Hashed 0 files
+INFO     : 2024-10-18 16:28:35,595 : utilities.py:135 : Removed From Current Downloads 0 files
+INFO     : 2024-10-18 16:28:35,598 : utilities.py:135 : Removed From Previous Downloads 0 files
+INFO     : 2024-10-18 16:28:35,600 : utilities.py:135 : 
+Sort Stats:
+INFO     : 2024-10-18 16:28:35,603 : utilities.py:135 : Organized: 0 Audios
+INFO     : 2024-10-18 16:28:35,606 : utilities.py:135 : Organized: 0 Images
+INFO     : 2024-10-18 16:28:35,608 : utilities.py:135 : Organized: 0 Videos
+INFO     : 2024-10-18 16:28:35,611 : utilities.py:135 : Organized: 0 Other Files
+INFO     : 2024-10-18 16:28:35,613 : utilities.py:135 : 
+Scrape Failures:
+INFO     : 2024-10-18 16:28:35,616 : utilities.py:135 : 
+Download Failures:
+INFO     : 2024-10-18 16:28:35,639 : utilities.py:112 : Checking for Program End...
+INFO     : 2024-10-18 16:28:35,641 : utilities.py:112 : Closing Program...
+DEBUG    : 2024-10-18 16:28:38,898 : utilities.py:112 : Removing scrape 1185 to active scrapes
+INFO     : 2024-10-18 16:28:40,981 : utilities.py:135 : 
+Finished downloading. Enjoy :)

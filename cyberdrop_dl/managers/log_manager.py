@@ -1,3 +1,4 @@
+import json
 from typing import TYPE_CHECKING
 
 import aiofiles
@@ -33,23 +34,31 @@ class LogManager:
 
     async def write_last_post_log(self, url: 'URL') -> None:
         """Writes to the last post log"""
+        payload = {'url': url.human_repr()}
+        await self.manager.redis_manager.update_errors('last_post', url, '')
         async with aiofiles.open(self.last_post_log, 'a') as f:
-            await f.write(f"{url}\n")
+            await f.write(json.dumps(payload) + "\n")
 
     async def write_unsupported_urls_log(self, url: 'URL') -> None:
+        await self.manager.redis_manager.update_errors('unsupported', url, '')
+        payload = {'url': url.human_repr()}
         """Writes to the unsupported urls log"""
         async with aiofiles.open(self.unsupported_urls_log, 'a') as f:
-            await f.write(f"{url}\n")
+            await f.write(json.dumps(payload) + "\n")
 
     async def write_download_error_log(self, url: 'URL', error_message: str) -> None:
         """Writes to the download error log"""
+        await self.manager.redis_manager.update_errors('download_error', url, error_message)
+        payload = {'url': url.human_repr(), 'message': error_message}
         async with aiofiles.open(self.download_error_log, 'a') as f:
-            await f.write(f"{url},{error_message}\n")
+            await f.write(json.dumps(payload) + "\n")
 
     async def write_scrape_error_log(self, url: 'URL', error_message: str) -> None:
         """Writes to the scrape error log"""
+        payload = { 'url': url.human_repr(),'message': error_message}
+        await self.manager.redis_manager.update_errors('scrape_error',url,error_message)
         async with aiofiles.open(self.scrape_error_log, 'a') as f:
-            await f.write(f"{url},{error_message}\n")
+            await f.write(json.dumps(payload)+"\n")
             
     async def update_last_forum_post(self) -> None:
         """Updates the last forum post"""

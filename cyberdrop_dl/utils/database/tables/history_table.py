@@ -138,7 +138,7 @@ class HistoryTable:
         file_size=pathlib.Path(media_item.complete_file).stat().st_size
         async with self.db_conn.acquire() as conn:
             async with conn.cursor() as cursor:
-                await self.db_conn.execute("""UPDATE media SET file_size=%s WHERE domain = %s and url_path = %s""",
+                await cursor.execute("""UPDATE media SET file_size=%s WHERE domain = %s and url_path = %s""",
                                            (file_size,domain, url_path))
     async def check_filename_exists(self, filename: str) -> bool:
         """Checks whether a downloaded filename exists in the database"""

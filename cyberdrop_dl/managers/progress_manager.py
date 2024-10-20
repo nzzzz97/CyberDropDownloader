@@ -1,3 +1,4 @@
+import json
 from dataclasses import field
 from typing import TYPE_CHECKING
 
@@ -13,6 +14,8 @@ from cyberdrop_dl.ui.progress.scraping_progress import ScrapingProgress
 from cyberdrop_dl.ui.progress.statistic_progress import DownloadStatsProgress, ScrapeStatsProgress
 from cyberdrop_dl.utils.utilities import log_with_color, get_log_output_text
 from aiohttp import ClientSession
+import os
+from cyberdrop_dl.utils.globals import *
 
 if TYPE_CHECKING:
     from cyberdrop_dl.managers.manager import Manager
@@ -99,14 +102,27 @@ class ProgressManager:
         for key, value in download_failures.items():
             await log_with_color(f"Download Failures ({key}): {value}", "red", 20)
 
-        if self.manager.args_manager.parsed_args['scrape_id'] > 0:
-            await self.manager.db_manager.scrape_table.update_scrape(self.manager.args_manager.parsed_args['scrape_id'],
+        if 'SCRAPE_ID' in globals() and SCRAPE_ID > 0:
+            log_folder = self.manager.path_manager.get_log_dir()
+            downloadedLogs = get_json_logs("{}/downloader.log".format(log_folder))
+            scrappedErrorLogs = get_json_logs("{}/Scrape_Error_URLs.csv".format(log_folder))
+            lastScrapedLogs = get_json_logs("{}/Last_Scraped_Forum_Posts.txt".format(log_folder))
+            downloadErrorLogs = get_json_logs("{}/Download_Error_URLs.csv".format(log_folder))
+            unsupportedLogs = get_json_logs("{}/Unsupported_URLs.txt".format(log_folder))
+            await self.manager.db_manager.scrape_table.update_scrape(SCRAPE_ID,
                                                                self.download_progress.completed_files,
                                                                self.download_progress.previously_completed_files,
                                                                self.download_progress.skipped_files,
                                                                self.download_progress.failed_files,
                                                                scrape_failures,
-                                                               download_failures)
+                                                               download_failures,
+                                                               json.dumps(downloadedLogs),
+                                                               json.dumps(scrappedErrorLogs),
+                                                               json.dumps(lastScrapedLogs),
+                                                               json.dumps(downloadErrorLogs),
+                                                               json.dumps(unsupportedLogs),
+                                                               1
+                                                            )
 
 
 
@@ -128,3 +144,20 @@ class ProgressManager:
             async with ClientSession() as session:
                 async with session.post(webhook_url, json=data) as response:
                     await response.text()
+
+def read_file_if_exists(file_path):
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Open the file and read its contents
+        with open(file_path, 'r') as file:
+            return file.read()
+    # Return an empty string if the file doesn't exist
+    return ""
+
+def get_json_logs(filename):
+    logs = []
+    with open(filename, 'r') as file:
+        for jsonObj in file:
+            data = json.loads(jsonObj)
+            logs.append(data)
+    return logs

@@ -199,7 +199,8 @@ class DownloadClient:
         try:
             await self.manager.hash_manager.hash_client.hash_item_during_download(media_item)
             if downloaded or self.manager.config_manager.global_settings_data['Dupe_Cleanup_Options']['dedupe_already_downloaded']:
-                    self.manager.path_manager.add_completed(media_item)
+                    await self.manager.redis_manager.add_completed_file(media_item)
+                    await self.manager.path_manager.add_completed(media_item)
             if not downloaded:
                 self.manager.path_manager.add_prev(media_item)
         except Exception as e:

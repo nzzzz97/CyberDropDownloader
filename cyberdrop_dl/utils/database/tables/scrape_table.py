@@ -25,7 +25,10 @@ class ScrapeTable:
     async def startup(self) -> None:
         pass
 
-    async def update_scrape(self, scrape_id, downloaded, previous, skipped, failed, scrape_failures,download_failures):
+    async def update_scrape(self, scrape_id, downloaded, previous, skipped, failed, scrape_failures,download_failures,download_log,scrape_errors_log,last_scraped,
+                            download_error_urls,unsupported_url,completed):
+
+
         async with self.db_conn.acquire() as conn:
             async with conn.cursor() as cursor:
                 try:
@@ -36,9 +39,16 @@ class ScrapeTable:
                         skipped = %s,
                         failed = %s,
                         scrape_failures = %s,
-                        download_failures = %s
+                        download_failures = %s,
+                        download_logs = %s,
+                        scrape_errors_log = %s,
+                        last_scraped_post = %s,
+                        download_error_urls = %s,
+                        unsupported_urls = %s,
+                        completed = %s
                         WHERE id = %s
-                            """,(downloaded, previous, skipped, failed, sf, df, scrape_id))
+                            """,(downloaded, previous, skipped, failed, sf, df,download_log,scrape_errors_log,last_scraped,
+                                download_error_urls,unsupported_url,completed, scrape_id))
                 except Exception as e:
                     await log(f"Error updated scrape: {e}",20)
                     return []

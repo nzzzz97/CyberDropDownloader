@@ -3,13 +3,14 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
+import sys
 import re
 import traceback
 from enum import IntEnum
 from functools import wraps
 from pathlib import Path
 from typing import TYPE_CHECKING
-
+from cyberdrop_dl.utils.globals import *
 import rich
 from yarl import URL
 
@@ -105,9 +106,10 @@ def error_handling_wrapper(func):
 
 async def log(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
-    logger.log(level, message)
+    extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
+    logger.log(level, message,extra=extras)
     if DEBUG_VAR:
-        logger_debug.log(level, message)
+        logger_debug.log(level, message,extra=extras)
     log_console(level, message, sleep=sleep)
 
 
@@ -116,18 +118,21 @@ async def log(message: [str, Exception], level: int, sleep: int = None) -> None:
 async def log_debug(message: [str, Exception], level: int, sleep: int = None) -> None:
     """Simple logging function"""
     if DEBUG_VAR:
-        logger_debug.log(level, message.encode('ascii', 'ignore').decode('ascii'))
+        extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
+        logger_debug.log(level, message.encode('ascii', 'ignore').decode('ascii'),extra=extras)
 async def log_debug_console(message: [str, Exception], level: int, sleep: int = None):
     if CONSOLE_DEBUG_VAR:
-        log_console(level, message.encode('ascii', 'ignore').decode('ascii'), sleep=sleep)
+        extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
+        log_console(level, message.encode('ascii', 'ignore').decode('ascii'), sleep=sleep,extra=extras)
 
 
 async def log_with_color(message: str, style: str, level: int) -> None:
     """Simple logging function with color"""
     global LOG_OUTPUT_TEXT
-    logger.log(level, message)
+    extras = {'url': SUBMITTED_URL, 'scrape_id': SCRAPE_ID}
+    logger.log(level, message,extra=extras)
     if DEBUG_VAR:
-        logger_debug.log(level, message)
+        logger_debug.log(level, message,extra=extras)
     rich.print(f"[{style}]{message}[/{style}]")
     LOG_OUTPUT_TEXT += f"[{style}]{message}\n"
 

@@ -15,6 +15,7 @@ from cyberdrop_dl.managers.path_manager import PathManager
 from cyberdrop_dl.managers.progress_manager import ProgressManager
 from cyberdrop_dl.managers.hash_manager import HashManager
 from cyberdrop_dl.managers.live_manager import LiveManager
+from cyberdrop_dl.managers.redis_manager import RedisManager
 
 from cyberdrop_dl.utils.args import config_definitions
 from cyberdrop_dl.utils.dataclasses.supported_domains import SupportedDomains
@@ -40,6 +41,7 @@ class Manager:
         self.download_manager: DownloadManager = field(init=False)
         self.progress_manager: ProgressManager = field(init=False)
         self.live_manager: LiveManager = field(init=False)
+        self.redis_manager: RedisManager = field(init=False)
 
         self.first_time_setup: TransitionManager = TransitionManager(self)
 
@@ -70,6 +72,7 @@ class Manager:
 
         self.path_manager.startup()
         self.log_manager = LogManager(self)
+        self.redis_manager = RedisManager(self)
 
     def args_startup(self) -> None:
         """Start the args manager"""
@@ -102,6 +105,7 @@ class Manager:
             self.console_manager.startup()
         self.progress_manager = ProgressManager(self)
         await self.progress_manager.startup()
+        await self.redis_manager.activate_scrape()
 
         # set files from args
         from cyberdrop_dl.utils.utilities import MAX_NAME_LENGTHS
@@ -207,6 +211,8 @@ class Manager:
 
     async def close(self) -> None:
         """Closes the manager"""
+        await self.redis_manager.deactivate_scrape()
+        await self.redis_manager.close()
         await self.db_manager.close()
         self.console_manager.close()
         self.db_manager: DBManager = field(init=False)

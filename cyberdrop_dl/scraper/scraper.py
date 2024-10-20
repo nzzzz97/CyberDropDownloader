@@ -13,6 +13,7 @@ from yarl import URL
 from cyberdrop_dl.clients.errors import NoExtensionFailure, JDownloaderFailure
 from cyberdrop_dl.downloader.downloader import Downloader
 from cyberdrop_dl.scraper.jdownloader import JDownloader
+from cyberdrop_dl.scraper.jdownloader_local import JDownloaderLocal
 from cyberdrop_dl.utils.dataclasses.url_objects import ScrapeItem, MediaItem
 from cyberdrop_dl.utils.utilities import log, get_filename_and_ext, get_download_path
 
@@ -44,7 +45,7 @@ class ScrapeMapper:
                         "xbunker": self.xbunker, "xbunkr": self.xbunkr, "bunkr": self.bunkrr}
         self.existing_crawlers = {}
         self.no_crawler_downloader = Downloader(self.manager, "no_crawler")
-        self.jdownloader = JDownloader(self.manager)
+        self.jdownloader = JDownloaderLocal(self.manager)
         self.lock=asyncio.Lock()
         self.count=0
 

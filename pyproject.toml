@@ -34,6 +34,12 @@ mysql-connector = "^2.2.9"
 aiomysql = "^0.2.0"
 coverage = "^7.6.1"
 arrow = "^1.3.0"
+websockets = "^13.0.1"
+redis = "^5.0.8"
+pydevd-pycharm = ">=212.5284.44,<212.5285.0"
+python-json-logger = "^2.0.7"
+aiosignal = "^1.3.1"
+httpx = "^0.27.2"
 
 [tool.poetry.scripts]
 cyberdrop-dl = "cyberdrop_dl.main:main"
