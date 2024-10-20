@@ -107,20 +107,7 @@ def parse_args() -> argparse.Namespace:
                                 help="skip these domains when scraping", default=[])
     ignore_options.add_argument("--only-hosts", choices=SupportedDomains.supported_hosts, action="append",
                                 help="only scrape these domains", default=[])
-    ignore_options.add_argument("--exclude-videos", action=argparse.BooleanOptionalAction,
-                                help="exclude videos from downloading")
-    ignore_options.add_argument("--exclude-images", action=argparse.BooleanOptionalAction,
-                                help="exclude images from downloading")
-    ignore_options.add_argument("--exclude-audio", action=argparse.BooleanOptionalAction,
-                                help="exclude images from downloading")
-    ignore_options.add_argument("--exclude-other", action=argparse.BooleanOptionalAction,
-                                help="exclude other files from downloading")
-    ignore_options.add_argument("--ignore-coomer-ads", action=argparse.BooleanOptionalAction,
-                                help="ignore coomer ads when scraping")
-    ignore_options.add_argument("--skip-hosts", choices=SupportedDomains.supported_hosts, action="append",
-                                help="skip these domains when scraping", default=[])
-    ignore_options.add_argument("--only-hosts", choices=SupportedDomains.supported_hosts, action="append",
-                                help="only scrape these domains", default=[])
+
 
     runtime_options = parser.add_argument_group("Runtime_Options")
     runtime_options.add_argument("--ignore-history", action=argparse.BooleanOptionalAction,
