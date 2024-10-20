@@ -15,6 +15,7 @@ from cyberdrop_dl.managers.console_manager import print_
 from cyberdrop_dl.utils.redis_logger import RedisChannelHandler
 from cyberdrop_dl.utils.globals import *
 
+from cyberdrop_dl.clients.errors import InvalidYamlConfig
 
 def startup() -> Manager:
     """
@@ -31,6 +32,10 @@ def startup() -> Manager:
             program_ui(manager)
 
         return manager
+
+    except InvalidYamlConfig as e:
+        print_ (e.message_rich)
+        exit (1)
 
     except KeyboardInterrupt:
         print_("\nExiting...")
@@ -137,8 +142,12 @@ async def director(manager: Manager) -> None:
                 print_(traceback.format_exc())
                 exit(1)
 
-        clear_screen_proc = await asyncio.create_subprocess_shell('cls' if os.name == 'nt' else 'clear')
-        await clear_screen_proc.wait()
+        # Skip clearing console if running with no UI
+        if not manager.args_manager.no_ui:
+            clear_screen_proc = await asyncio.create_subprocess_shell('cls' if os.name == 'nt' else 'clear')
+            await clear_screen_proc.wait()
+        else:
+            print('\n\n')
 
         await log_with_color(f"Running Post-Download Processes For Config: {manager.config_manager.loaded_config}...", "green", 20)
         if isinstance(manager.args_manager.sort_downloads, bool):
@@ -184,6 +193,7 @@ def main():
     with contextlib.suppress(RuntimeError):
         try:
             asyncio.run(director(manager))
+
         except KeyboardInterrupt:
             print_("\nTrying to Exit...")
             with contextlib.suppress(Exception):

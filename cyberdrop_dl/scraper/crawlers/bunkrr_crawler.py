@@ -86,8 +86,7 @@ class BunkrrCrawler(Crawler):
                 if "no-image" in src.name:
                     raise FileNotFoundError("No image found, reverting to parent")
 
-                new_scrape_item = await self.create_scrape_item(scrape_item, link, "", True, album_id, date,
-                                                                add_parent=scrape_item.url)
+                new_scrape_item = await self.create_scrape_item(scrape_item, link, "", True, album_id, date, add_parent = scrape_item.url)
 
                 filename, ext = await get_filename_and_ext(src.name)
                 if not await self.check_album_results(src, results):
@@ -111,11 +110,11 @@ class BunkrrCrawler(Crawler):
         # try video
         link_container = soup.select_one("video")
         src_selector = "src"
-
+        
         # try image
         if not link_container:
             link_container = soup.select_one("img.max-h-full.w-auto.object-cover.relative")
-
+            
         # fallback for evething else
         if not link_container:
             link_container = soup.select_one("a.btn.ic-download-01")

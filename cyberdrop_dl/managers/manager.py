@@ -23,7 +23,6 @@ from cyberdrop_dl.utils.utilities import log
 from cyberdrop_dl.managers.redis_manager import RedisManager
 
 
-
 class Manager:
     def __init__(self):
         self.args_manager: ArgsManager = ArgsManager()
@@ -73,6 +72,22 @@ class Manager:
         self.log_manager = LogManager(self)
         self.redis_manager = RedisManager(self)
 
+        # Adjust settings for SimpCity update
+        simp_settings_adjusted = self.cache_manager.get("simp_settings_adjusted")
+        if simp_settings_adjusted == None:
+            for config in self.config_manager.get_configs():
+                if config != self.config_manager.loaded_config:
+                    self.config_manager.change_config(config)
+                self.config_manager.settings_data['Runtime_Options']['update_last_forum_post'] = True
+                self.config_manager.write_updated_settings_config()
+            global_settings = self.config_manager.global_settings_data
+            if global_settings['Rate_Limiting_Options']['download_attempts'] >= 10:
+                global_settings['Rate_Limiting_Options']['download_attempts'] = 5
+            if global_settings['Rate_Limiting_Options']['max_simultaneous_downloads_per_domain'] > 15:
+                global_settings['Rate_Limiting_Options']['max_simultaneous_downloads_per_domain'] = 5
+            self.config_manager.write_updated_global_settings_config()
+        self.cache_manager.save('simp_settings_adjusted', True)
+
     def args_startup(self) -> None:
         """Start the args manager"""
         if not self.args_manager.parsed_args:
@@ -80,7 +95,6 @@ class Manager:
 
     """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
 
-    
     async def async_startup(self) -> None:
         """Async startup process for the manager"""
         await self.args_consolidation()
@@ -129,19 +143,17 @@ class Manager:
 
     async def args_consolidation(self) -> None:
         """Consolidates runtime arguments with config values"""
+        cli_settings_groups = ["Download_Options","File_Size_Limits","Ignore_Options","Runtime_Options"]
         for arg in self.args_manager.parsed_args:
-            if arg in config_definitions.settings['Download_Options']:
-                if self.args_manager.parsed_args[arg] != config_definitions.settings['Download_Options'][arg]:
-                    self.config_manager.settings_data['Download_Options'][arg] = self.args_manager.parsed_args[arg]
-            elif arg in config_definitions.settings['File_Size_Limits']:
-                if self.args_manager.parsed_args[arg] != config_definitions.settings['File_Size_Limits'][arg]:
-                    self.config_manager.settings_data['File_Size_Limits'][arg] = self.args_manager.parsed_args[arg]
-            elif arg in config_definitions.settings['Ignore_Options']:
-                if self.args_manager.parsed_args[arg] != config_definitions.settings['Ignore_Options'][arg]:
-                    self.config_manager.settings_data['Ignore_Options'][arg] = self.args_manager.parsed_args[arg]
-            elif arg in config_definitions.settings['Runtime_Options']:
-                if self.args_manager.parsed_args[arg] != config_definitions.settings['Runtime_Options'][arg]:
-                    self.config_manager.settings_data['Runtime_Options'][arg] = self.args_manager.parsed_args[arg]
+            for cli_settings_group in cli_settings_groups:
+                if arg in config_definitions.settings[cli_settings_group]:
+                    if self.args_manager.parsed_args[arg] == config_definitions.settings[cli_settings_group][arg]:
+                        continue
+                    if arg in self.args_manager.additive_args:
+                        self.config_manager.settings_data[cli_settings_group][arg] += self.args_manager.parsed_args[arg]
+                    else:
+                        if self.args_manager.parsed_args[arg] is not None:
+                            self.config_manager.settings_data[cli_settings_group][arg] = self.args_manager.parsed_args[arg]
 
     async def args_logging(self) -> None:
         """Logs the runtime arguments"""
@@ -220,4 +232,3 @@ class Manager:
         await self.db_manager.close()
         self.console_manager.close()
         self.db_manager: DBManager = field(init=False)
-

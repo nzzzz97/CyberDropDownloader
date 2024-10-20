@@ -41,6 +41,7 @@ class Rule34XYZCrawler(Crawler):
             soup = await self.client.get_BS4(self.domain, scrape_item.url)
 
         title = await self.create_title(scrape_item.url.parts[1], None, None)
+        scrape_item.part_of_album = True
 
         content_block = soup.select_one('div[class="box-grid ng-star-inserted"]')
         content = content_block.select("a[class=boxInner]")
@@ -49,7 +50,7 @@ class Rule34XYZCrawler(Crawler):
             if link.startswith("/"):
                 link = f"{self.primary_base_url}{link}"
             link = URL(link)
-            new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True)
+            new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True,add_parent = scrape_item.url)
             self.manager.task_group.create_task(self.run(new_scrape_item))
         if not content:
             return

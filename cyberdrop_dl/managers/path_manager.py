@@ -48,8 +48,6 @@ class PathManager:
         self._prev_downloads = set()
         self._prev_downloads_set = set()
 
-
-    
     def pre_startup(self) -> None:
         if self.manager.args_manager.appdata_dir:
             global APP_STORAGE
@@ -96,7 +94,7 @@ class PathManager:
             self.input_file.touch(exist_ok=True)
         self.history_db.touch(exist_ok=True)
 
-    async def add_completed(self, media_item: MediaItem):
+    def add_completed(self, media_item: MediaItem):
         self._completed_downloads.add(media_item)
         self._completed_downloads_set.add(media_item.complete_file.absolute())
 
@@ -119,6 +117,7 @@ class PathManager:
     @property
     def prev_downloads_paths(self):
         return self._prev_downloads_set
+
 
     def get_log_dir(self):
         return self.log_dir

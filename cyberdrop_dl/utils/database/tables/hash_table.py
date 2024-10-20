@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import pathlib
 from sqlite3 import IntegrityError
 
@@ -62,6 +61,7 @@ class HashTable:
             # Connect to the database
             cursor = await self.db_conn.cursor()
 
+            # Check if the file exists with matching folder, filename, and size
             async with self.db_conn.acquire() as conn:
                 async with conn.cursor() as cursor:
                     # Check if the file exists with matching folder, filename, and size
@@ -74,7 +74,7 @@ class HashTable:
             console.print(f"Error checking file: {e}")
             return False
 
-    async def get_files_with_hash_matches(self,hash_value,size):
+    async def get_files_with_hash_matches(self, hash_value, size):
         """
         Retrieves a list of (folder, filename) tuples based on a given hash.
 
@@ -96,9 +96,8 @@ class HashTable:
         except Exception as e:
             console.print(f"Error retrieving folder and filename: {e}")
             return []
-    
-   
-    async def insert_or_update_hash_db(self, hash_value, file,original_filename,referer):
+
+    async def insert_or_update_hash_db(self, hash_value, file, original_filename, referer):
         """
         Inserts or updates a record in the specified SQLite database.
 
@@ -142,7 +141,6 @@ class HashTable:
                     console.print(f"Error inserting/updating record: {e}")
                     return False
 
-
     async def get_all_unique_hashes(self):
         """
         Retrieves a list of (folder, filename) tuples based on a given hash.
@@ -164,6 +162,3 @@ class HashTable:
         except Exception as e:
             console.print(f"Error retrieving folder and filename: {e}")
             return []
-
-
-

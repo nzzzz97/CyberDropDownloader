@@ -4,6 +4,7 @@ from typing import Dict
 
 from cyberdrop_dl.managers.path_manager import APP_STORAGE, DOWNLOAD_STORAGE
 
+
 authentication_settings: Dict = {
     "Forums": {
         "celebforum_xf_user_cookie": "",
@@ -50,6 +51,7 @@ authentication_settings: Dict = {
     }
 }
 
+
 settings: Dict = {
     "Download_Options": {
         "block_download_sub_folders": False,
@@ -63,6 +65,7 @@ settings: Dict = {
         "separate_posts": False,
         "skip_download_mark_completed": False,
         "scrape_id": 0,
+        "skip_referer_seen_before": False,
     },
     "Files": {
         "input_file": str(APP_STORAGE / "Configs" / "{config}" / "URLs.txt"),
@@ -117,6 +120,7 @@ settings: Dict = {
     }
 }
 
+
 global_settings: Dict = {
     "General": {
         "allow_insecure_connections": False,
@@ -129,12 +133,12 @@ global_settings: Dict = {
     },
     "Rate_Limiting_Options": {
         "connection_timeout": 15,
-        "download_attempts": 10,
+        "download_attempts": 5,
         "read_timeout": 300,
         "rate_limit": 50,
         "download_delay": 0.5,
         "max_simultaneous_downloads": 15,
-        "max_simultaneous_downloads_per_domain": 5,
+        "max_simultaneous_downloads_per_domain": 3,
         "download_speed_limit": 0
     },
     "Dupe_Cleanup_Options":
@@ -155,3 +159,4 @@ global_settings: Dict = {
         "downloading_item_limit": 5,
     }
 }
+

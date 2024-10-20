@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import arrow
-
 import re
 from dataclasses import Field
 from pathlib import Path
@@ -15,7 +13,6 @@ from yarl import URL
 from cyberdrop_dl.clients.errors import NoExtensionFailure, JDownloaderFailure
 from cyberdrop_dl.downloader.downloader import Downloader
 from cyberdrop_dl.scraper.jdownloader import JDownloader
-from cyberdrop_dl.scraper.jdownloader_local import JDownloaderLocal
 from cyberdrop_dl.utils.dataclasses.url_objects import ScrapeItem, MediaItem
 from cyberdrop_dl.utils.utilities import log, get_filename_and_ext, get_download_path
 
@@ -37,20 +34,22 @@ class ScrapeMapper:
                         "imgur": self.imgur, "img.kiwi": self.imgwiki, "jpg.church": self.jpgchurch,
                         "jpg.homes": self.jpgchurch, "jpg.fish": self.jpgchurch, "jpg.fishing": self.jpgchurch,
                         "jpg.pet": self.jpgchurch, "jpeg.pet": self.jpgchurch, "jpg1.su": self.jpgchurch,
-                        "jpg2.su": self.jpgchurch, "jpg3.su": self.jpgchurch, "jpg4.su": self.jpgchurch, "jpg5.su": self.jpgchurch,
+                        "jpg2.su": self.jpgchurch, "jpg3.su": self.jpgchurch, "jpg4.su": self.jpgchurch,
+                        "jpg5.su": self.jpgchurch,
                         "host.church": self.jpgchurch, "kemono": self.kemono, "leakedmodels": self.leakedmodels,
                         "mediafire": self.mediafire, "nudostar.com": self.nudostar, "nudostar.tv": self.nudostartv,
                         "omegascans": self.omegascans, "pimpandhost": self.pimpandhost, "pixeldrain": self.pixeldrain,
-                        "postimg": self.postimg, "realbooru": self.realbooru, "reddit": self.reddit, 
-                        "redd.it": self.reddit, "redgifs": self.redgifs, "rule34vault": self.rule34vault, "rule34.xxx": self.rule34xxx,
+                        "postimg": self.postimg, "realbooru": self.realbooru, "reddit": self.reddit,
+                        "redd.it": self.reddit, "redgifs": self.redgifs, "rule34vault": self.rule34vault,
+                        "rule34.xxx": self.rule34xxx,
                         "rule34.xyz": self.rule34xyz, "saint": self.saint, "scrolller": self.scrolller,
-                        "simpcity": self.simpcity, "socialmediagirls": self.socialmediagirls, "toonily": self.toonily, 
+                        "socialmediagirls": self.socialmediagirls, "toonily": self.toonily,
                         "xbunker": self.xbunker, "xbunkr": self.xbunkr, "bunkr": self.bunkrr}
         self.existing_crawlers = {}
         self.no_crawler_downloader = Downloader(self.manager, "no_crawler")
-        self.jdownloader = JDownloaderLocal(self.manager)
-        self.lock=asyncio.Lock()
-        self.count=0
+        self.jdownloader = JDownloader(self.manager)
+        self.lock = asyncio.Lock()
+        self.count = 0
 
     async def bunkrr(self) -> None:
         """Creates a Bunkr Crawler instance"""
@@ -193,7 +192,7 @@ class ScrapeMapper:
         """Creates a PostImg Crawler instance"""
         from cyberdrop_dl.scraper.crawlers.postimg_crawler import PostImgCrawler
         self.existing_crawlers['postimg'] = PostImgCrawler(self.manager)
-        
+
     async def realbooru(self) -> None:
         """Creates a RealBooru Crawler instance"""
         from cyberdrop_dl.scraper.crawlers.realbooru_crawler import RealBooruCrawler
@@ -310,27 +309,44 @@ class ScrapeMapper:
     async def load_links(self) -> None:
         """Loads links from args / input file"""
         input_file = self.manager.path_manager.input_file
+          # we need to touch the file just in case, purge_tree deletes it
+        input_file.touch(exist_ok=True)
 
-        links = []
+        links = {'': []}
         if not self.manager.args_manager.other_links:
             block_quote = False
+            thread_title = ""
             async with aiofiles.open(input_file, "r", encoding="utf8") as f:
                 async for line in f:
                     assert isinstance(line, str)
-                    block_quote = not block_quote if line == "#\n" else block_quote
-                    if not block_quote:
-                        links.extend(await self.regex_links(line))
+
+                    if line.startswith("---") or line.startswith("==="):
+                        thread_title = line.replace("---", "").replace("===", "").strip()
+                        if thread_title:
+                            if thread_title not in links.keys():
+                                links[thread_title] = []
+
+                    if thread_title:
+                        links[thread_title].extend(await self.regex_links(line))
+                    else:
+                        block_quote = not block_quote if line == "#\n" else block_quote
+                        if not block_quote:
+                            links[''].extend(await self.regex_links(line))
         else:
-            links.extend(self.manager.args_manager.other_links)
-        links = list(filter(None, links))
+            links[''].extend(self.manager.args_manager.other_links)
+
+        links = {k: list(filter(None, v)) for k, v in links.items()}
         items = []
 
         if not links:
             await log("No valid links found.", 30)
-        for link in links:
-            item = self.get_item_from_link(link)
-            if await self.filter_items(item):
-                items.append(item)
+        for title in links:
+            for url in links[title]:
+                item = self.get_item_from_link(url)
+                await item.add_to_parent_title(title)
+                item.part_of_album = True
+                if await self.filter_items(item):
+                    items.append(item)
         for item in items:
             self.manager.task_group.create_task(self.add_item_to_group(item))
 
@@ -414,7 +430,7 @@ class ScrapeMapper:
         scrape_item.created_at = created_at
         return scrape_item
 
-    async def add_item_to_group(self, scrape_item):
+    async def add_item_to_group(self, scrape_item: ScrapeItem):
         if str(scrape_item.url).endswith("/"):
             if scrape_item.url.query_string:
                 query = scrape_item.url.query_string[:-1]
@@ -435,6 +451,18 @@ class ScrapeMapper:
                 await log(f"Skipping {scrape_item.url} as it has already been downloaded", 10)
                 await self.manager.progress_manager.download_progress.add_previously_completed()
                 return
+
+            if scrape_item.parents:
+                posible_referer = scrape_item.parents[-1]
+                check_referer = False
+                if self.manager.config_manager.settings_data['Download_Options']['skip_referer_seen_before']:
+                    check_referer = await self.manager.db_manager.temp_referer_table.check_referer(posible_referer)
+
+                if check_referer:
+                    await log(f"Skipping {scrape_item.url} as referer has been seen before", 10)
+                    await self.manager.progress_manager.download_progress.add_skipped()
+                    return
+
             await scrape_item.add_to_parent_title("Loose Files")
             scrape_item.part_of_album = True
             download_folder = await get_download_path(self.manager, scrape_item, "no_crawler")
@@ -449,13 +477,13 @@ class ScrapeMapper:
             except JDownloaderFailure as e:
                 await log(f"Failed to send {scrape_item.url} to JDownloader", 40)
                 await log(e.message, 40)
-                await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url)
+                await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url, scrape_item.parents[0] if scrape_item.parents else None)
 
         else:
             await log(f"Unsupported URL: {scrape_item.url}", 30)
-            await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url)
+            await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url, scrape_item.parents[0] if scrape_item.parents else None)
 
-    async def filter_items(self, scrape_item) -> None:
+    async def filter_items(self, scrape_item: ScrapeItem) -> None:
         """Maps URLs to their respective handlers"""
         if not scrape_item.url:
             return
@@ -522,8 +550,8 @@ class ScrapeMapper:
             except JDownloaderFailure as e:
                 await log(f"Failed to send {scrape_item.url} to JDownloader", 40)
                 await log(e.message, 40)
-                await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url)
+                await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url, scrape_item.parents[0] if scrape_item.parents else None)
 
         else:
             await log(f"Unsupported URL: {scrape_item.url}", 30)
-            await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url)
+            await self.manager.log_manager.write_unsupported_urls_log(scrape_item.url, scrape_item.parents[0] if scrape_item.parents else None)

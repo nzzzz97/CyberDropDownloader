@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import pathlib
 
 from sqlite3 import Row, IntegrityError
@@ -33,7 +34,7 @@ async def get_db_path(url: URL, referer: str = "") -> str:
 async def get_db_domain(domain: str) -> str:
     """Gets the domain to be put into the DB and checked from the DB"""
     if domain in ("img.kiwi", "jpg.church", "jpg.homes", "jpg.fish", "jpg.fishing", "jpg.pet", "jpeg.pet", "jpg1.su",
-                  "jpg2.su", "jpg3.su"):
+                "jpg2.su", "jpg3.su"):
         domain = "sharex"
     return domain
 
@@ -179,7 +180,6 @@ class HistoryTable:
                 all_files = await result.fetchall()
                 return all_files
 
-
     async def get_unique_download_paths(self) -> Iterable[Row]:
         """Returns a list of unique download paths"""
         async with self.db_conn.acquire() as conn:
@@ -190,8 +190,8 @@ class HistoryTable:
 
 
     async def get_all_bunkr_failed(self):
-        hash_list= await self.get_all_bunkr_failed_via_hash()
-        size_list= await self.get_all_bunkr_failed_via_size()
+        hash_list = await self.get_all_bunkr_failed_via_hash()
+        size_list = await self.get_all_bunkr_failed_via_size()
         return hash_list + size_list
 
     async def get_all_bunkr_failed_via_size(self) -> Iterable[Row]:

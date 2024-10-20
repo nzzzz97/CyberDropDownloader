@@ -3,6 +3,7 @@
 /Test-AppData-Dir/
 /AppData/
 /Downloads/
+cyberdrop_dl_debug.log
 
 # Python cache
 __pycache__
@@ -18,3 +19,7 @@ cyberdrop_dl/AppData/Configs/Default/Logs/downloader.log
 cyberdrop_dl/AppData/Configs/Default/Logs/Last_Scraped_Forum_Posts.txt
 cyberdrop_dl/AppData/Configs/Default/Logs/Scrape_Error_URLs.csv
 cyberdrop_dl/AppData/Configs/Default/Logs/Unsupported_URLs.txt
+
+
+# Compiled package
+/dist/

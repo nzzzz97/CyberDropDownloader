@@ -63,7 +63,7 @@ class RedGifsCrawler(Crawler):
                     link = URL(links["sd"])
 
                 filename, ext = await get_filename_and_ext(link.name)
-                new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True, date)
+                new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True, date,add_parent = scrape_item.url)
                 await self.handle_file(link, new_scrape_item, filename, ext)
             page += 1
 
@@ -74,7 +74,7 @@ class RedGifsCrawler(Crawler):
 
         async with self.request_limiter:
             JSON_Resp = await self.client.get_json(self.domain, self.redgifs_api / "v2/gifs" / post_id,
-                                                   headers_inc=self.headers)
+                                                headers_inc=self.headers)
 
         title_part = JSON_Resp["gif"].get("title", "Loose Files")
         title = await self.create_title(title_part, None, None)
@@ -84,7 +84,7 @@ class RedGifsCrawler(Crawler):
         link = URL(links["hd"] if "hd" in links else links["sd"])
 
         filename, ext = await get_filename_and_ext(link.name)
-        new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True, date)
+        new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True, date, add_parent = scrape_item.url)
         await self.handle_file(link, new_scrape_item, filename, ext)
 
     """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""

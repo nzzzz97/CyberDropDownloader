@@ -39,7 +39,7 @@ class LogManager:
         async with aiofiles.open(self.last_post_log, 'a') as f:
             await f.write(json.dumps(payload) + "\n")
 
-    async def write_unsupported_urls_log(self, url: 'URL') -> None:
+    async def write_unsupported_urls_log(self, url: 'URL', parent_url: Optional['URL'] = None ) -> None:
         await self.manager.redis_manager.update_errors('unsupported', url, '')
         payload = {'url': url.human_repr()}
         """Writes to the unsupported urls log"""
@@ -63,6 +63,9 @@ class LogManager:
     async def update_last_forum_post(self) -> None:
         """Updates the last forum post"""
         input_file = self.manager.path_manager.input_file
+        # we need to touch the file just in case, purge_tree deletes it
+        if not input_file.exists():
+            return
         base_urls = []
 
         async with aiofiles.open(input_file, 'r') as f:

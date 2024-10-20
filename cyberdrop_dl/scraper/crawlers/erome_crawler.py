@@ -42,7 +42,7 @@ class EromeCrawler(Crawler):
 
         for album in albums:
             link = URL(album['href'])
-            new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True)
+            new_scrape_item = await self.create_scrape_item(scrape_item, link, title, True, add_parent = scrape_item.url)
             self.manager.task_group.create_task(self.run(new_scrape_item))
 
         next_page = soup.select_one('a[rel="next"]')
@@ -57,6 +57,8 @@ class EromeCrawler(Crawler):
         """Scrapes an album"""
         album_id = scrape_item.url.parts[2]
         results = await self.get_album_results(album_id)
+        scrape_item.album_id = album_id
+        scrape_item.part_of_album = True
 
         async with self.request_limiter:
             soup = await self.client.get_BS4(self.domain, scrape_item.url)

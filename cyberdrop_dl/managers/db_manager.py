@@ -7,9 +7,10 @@ import asyncio
 import aiomysql
 import aiosqlite
 
+from cyberdrop_dl.utils.database.tables.hash_table import HashTable
 from cyberdrop_dl.utils.database.tables.history_table import HistoryTable
 from cyberdrop_dl.utils.database.tables.temp_table import TempTable
-from cyberdrop_dl.utils.database.tables.hash_table import HashTable
+from cyberdrop_dl.utils.database.tables.temp_referer_table import TempRefererTable
 from cyberdrop_dl.utils.database.tables.scrape_table import ScrapeTable
 
 if TYPE_CHECKING:
@@ -28,6 +29,7 @@ class DBManager:
         self.history_table: HistoryTable = field(init=False)
         self.hash_table: HashTable = field(init=False)
         self.temp_table: TempTable = field(init=False)
+        self.temp_referer_table: TempRefererTable = field(init=False)
         self.scrape_table: ScrapeTable = field(init=False)
 
     async def startup(self) -> None:
@@ -39,22 +41,26 @@ class DBManager:
         self.ignore_history = self.manager.config_manager.settings_data['Runtime_Options']['ignore_history']
 
         self.history_table = HistoryTable(self._db_conn)
-        self.hash_table=HashTable(self._db_conn)
+        self.hash_table = HashTable(self._db_conn)
         self.temp_table = TempTable(self._db_conn)
+        self.temp_referer_table = TempRefererTable(self._db_conn)
         self.scrape_table = ScrapeTable(self._db_conn)
 
         self.history_table.ignore_history = self.ignore_history
+        self.temp_referer_table.ignore_history = self.ignore_history
 
         await self._pre_allocate()
 
         #await self.history_table.startup()
         #await self.hash_table.startup()
         await self.temp_table.startup()
+        await self.temp_referer_table.startup()
 
     async def close(self) -> None:
         """Close the DBManager"""
-        #await self._db_conn.wait_closed()
+        await self.temp_referer_table.sql_drop_temp_referers()
         self._db_conn.terminate()
+
 
     async def _pre_allocate(self) -> None:
         return True

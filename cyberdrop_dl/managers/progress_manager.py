@@ -66,12 +66,13 @@ class ProgressManager:
         self.hash_layout = await self.hash_progress.get_hash_progress()
         self.sort_layout = await self.sort_progress.get_progress()
 
+
     async def print_stats(self) -> None:
         """Prints the stats of the program"""
         await log_with_color("\nDownload Stats:", "cyan", 20)
         await log_with_color(f"Downloaded {self.download_progress.completed_files} files", "green", 20)
         await log_with_color(f"Previously Downloaded {self.download_progress.previously_completed_files} files",
-                             "yellow", 20)
+                            "yellow", 20)
 
         await log_with_color(f"Skipped By Config {self.download_progress.skipped_files} files", "yellow", 20)
         await log_with_color(f"Failed {self.download_stats_progress.failed_files} files", "red", 20)
@@ -81,7 +82,7 @@ class ProgressManager:
         await log_with_color(f"Newly Hashed {self.hash_progress.hashed_files} files", "yellow", 20)
         await log_with_color(f"Removed From Current Downloads {self.hash_progress.removed_files} files", "yellow", 20)
         await log_with_color(f"Removed From Previous Downloads {self.hash_progress.removed_prev_files} files", "yellow",
-                             20)
+                            20)
 
         await log_with_color("\nSort Stats:", "cyan", 20)
         await log_with_color(f"Organized: {self.sort_progress.audio_count} Audios", "green", 20)
